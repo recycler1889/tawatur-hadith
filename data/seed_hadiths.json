@@ -1533,6 +1533,166 @@
         "Fihrist al-Tusi"
       ],
       "notes": "Compilateur du Nahj al-Balagha ; Sharif de Bagdad"
+    },
+    "abu_shurayh": {
+      "id": "abu_shurayh",
+      "name": "Abu Shuraih al-Khuza'i",
+      "kunya": "Abu Shuraih",
+      "nisba": "Al-Khuza'i",
+      "tabaqa": "Sahaba",
+      "reliability": "thiqa",
+      "birth_date": null,
+      "death_date": 68,
+      "sources": [
+        "Al-Isaba fi Tamyiz al-Sahaba (Ibn Hajar)",
+        "Al-Isti'ab fi Ma'rifat al-Ashab (Ibn Abd al-Barr)",
+        "Usd al-Ghaba (Ibn al-Athir)"
+      ],
+      "notes": "Compagnon (Sahaba) — 'adala générale (ta'dil d'ensemble) ; narrateur des hadiths sur l'hôte (dayf) et le voisin"
+    },
+    "shaddad": {
+      "id": "shaddad",
+      "name": "Shaddad ibn Aws",
+      "kunya": "Abu Yazan",
+      "nisba": "Al-Ansari",
+      "tabaqa": "Sahaba",
+      "reliability": "thiqa",
+      "birth_date": null,
+      "death_date": 58,
+      "sources": [
+        "Al-Isaba fi Tamyiz al-Sahaba (Ibn Hajar)",
+        "Al-Isti'ab fi Ma'rifat al-Ashab (Ibn Abd al-Barr)",
+        "Usd al-Ghaba (Ibn al-Athir)"
+      ],
+      "notes": "Compagnon (Sahaba) — 'adala générale (ta'dil d'ensemble) ; narrateur du hadith al-ihsan"
+    },
+    "muawiya": {
+      "id": "muawiya",
+      "name": "Mu'awiya ibn Abi Sufyan",
+      "kunya": "Abu Abd al-Rahman",
+      "nisba": "Al-Umawi",
+      "tabaqa": "Sahaba",
+      "reliability": "thiqa",
+      "birth_date": null,
+      "death_date": 60,
+      "sources": [
+        "Al-Isaba fi Tamyiz al-Sahaba (Ibn Hajar)",
+        "Al-Isti'ab fi Ma'rifat al-Ashab (Ibn Abd al-Barr)",
+        "Usd al-Ghaba (Ibn al-Athir)"
+      ],
+      "notes": "Compagnon (Sahaba) — 'adala générale (ta'dil d'ensemble) ; scribe de la révélation"
+    },
+    "malik_hu": {
+      "id": "malik_hu",
+      "name": "Malik ibn al-Huwayrith al-Laythi",
+      "kunya": "Abu Sulayman",
+      "nisba": "Al-Laythi",
+      "tabaqa": "Sahaba",
+      "reliability": "thiqa",
+      "birth_date": null,
+      "death_date": 74,
+      "sources": [
+        "Al-Isaba fi Tamyiz al-Sahaba (Ibn Hajar)",
+        "Al-Isti'ab fi Ma'rifat al-Ashab (Ibn Abd al-Barr)",
+        "Usd al-Ghaba (Ibn al-Athir)"
+      ],
+      "notes": "Compagnon (Sahaba) — 'adala générale (ta'dil d'ensemble) ; narrateur de 'Valinyu-llah bi as-salat'"
+    },
+    "adi_hatim": {
+      "id": "adi_hatim",
+      "name": "'Adi ibn Hatim al-Ta'i",
+      "kunya": "Abu Tarif",
+      "nisba": "Al-Ta'i",
+      "tabaqa": "Sahaba",
+      "reliability": "thiqa",
+      "birth_date": null,
+      "death_date": 68,
+      "sources": [
+        "Al-Isaba fi Tamyiz al-Sahaba (Ibn Hajar)",
+        "Al-Isti'ab fi Ma'rifat al-Ashab (Ibn Abd al-Barr)",
+        "Usd al-Ghaba (Ibn al-Athir)"
+      ],
+      "notes": "Compagnon (Sahaba) — 'adala générale (ta'dil d'ensemble)"
+    },
+    "numan": {
+      "id": "numan",
+      "name": "Al-Nu'man ibn Bashir",
+      "kunya": "Abu Abd Allah",
+      "nisba": "Al-Ansari",
+      "tabaqa": "Sahaba",
+      "reliability": "thiqa",
+      "birth_date": null,
+      "death_date": 64,
+      "sources": [
+        "Al-Isaba fi Tamyiz al-Sahaba (Ibn Hajar)",
+        "Al-Isti'ab fi Ma'rifat al-Ashab (Ibn Abd al-Barr)",
+        "Usd al-Ghaba (Ibn al-Athir)"
+      ],
+      "notes": "Compagnon (Sahaba) — 'adala générale (ta'dil d'ensemble) ; narrateur du hadith al-halal wa al-haram"
+    },
+    "ubayy": {
+      "id": "ubayy",
+      "name": "Ubayy ibn Ka'b",
+      "kunya": "Abu al-Mundhir",
+      "nisba": "Al-Ansari",
+      "tabaqa": "Sahaba",
+      "reliability": "thiqa",
+      "birth_date": null,
+      "death_date": 30,
+      "sources": [
+        "Al-Isaba fi Tamyiz al-Sahaba (Ibn Hajar)",
+        "Al-Isti'ab fi Ma'rifat al-Ashab (Ibn Abd al-Barr)",
+        "Usd al-Ghaba (Ibn al-Athir)"
+      ],
+      "notes": "Compagnon (Sahaba) — 'adala générale (ta'dil d'ensemble) ; maître des récitateurs"
+    },
+    "abdullah_zubayr": {
+      "id": "abdullah_zubayr",
+      "name": "Abdullah ibn al-Zubayr",
+      "kunya": "Abu Bakr",
+      "nisba": "Al-Qurashi",
+      "tabaqa": "Sahaba",
+      "reliability": "thiqa",
+      "birth_date": null,
+      "death_date": 73,
+      "sources": [
+        "Al-Isaba fi Tamyiz al-Sahaba (Ibn Hajar)",
+        "Al-Isti'ab fi Ma'rifat al-Ashab (Ibn Abd al-Barr)",
+        "Usd al-Ghaba (Ibn al-Athir)"
+      ],
+      "notes": "Compagnon (Sahaba) — 'adala générale (ta'dil d'ensemble)"
+    },
+    "ibn_khuzayma": {
+      "id": "ibn_khuzayma",
+      "name": "Ibn Khuzayma al-Naysaburi",
+      "kunya": "Abu Bakr",
+      "nisba": "Al-Naysaburi",
+      "tabaqa": "Muhaddith",
+      "reliability": "thiqa",
+      "birth_date": 223,
+      "death_date": 311,
+      "sources": [
+        "Tahdhib al-Tahdhib (Ibn Hajar)",
+        "Taqrib al-Tahdhib (Ibn Hajar)",
+        "Siyar A'lam al-Nubala' (al-Dhahabi)"
+      ],
+      "notes": "Imam, hafiz — auteur du Sahih"
+    },
+    "alqama": {
+      "id": "alqama",
+      "name": "'Alqama ibn Qays",
+      "kunya": "Abu Shibl",
+      "nisba": "Al-Nakha'i",
+      "tabaqa": "Tabi'in",
+      "reliability": "thiqa",
+      "birth_date": null,
+      "death_date": 62,
+      "sources": [
+        "Tahdhib al-Tahdhib (Ibn Hajar)",
+        "Taqrib al-Tahdhib (Ibn Hajar)",
+        "Siyar A'lam al-Nubala' (al-Dhahabi)"
+      ],
+      "notes": "Thiqa, hafiz ; grand faqih de Koufa"
     }
   },
   "isnad_chains": {
@@ -5585,6 +5745,2886 @@
         "Sunan Abi Dawud 1452"
       ],
       "description": null
+    },
+    "h_mar_c1": {
+      "id": "h_mar_c1",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 18,
+      "sources": [
+        "Sahih al-Bukhari 6168"
+      ],
+      "description": null
+    },
+    "h_mar_c2": {
+      "id": "h_mar_c2",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 15,
+      "sources": [
+        "Sahih Muslim 2640"
+      ],
+      "description": null
+    },
+    "h_mar_c3": {
+      "id": "h_mar_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "ahmad",
+          "rawi_name": "Ahmad ibn Hanbal",
+          "level": 0
+        }
+      ],
+      "path_count": 10,
+      "sources": [
+        "Musnad Ahmad 2/468"
+      ],
+      "description": null
+    },
+    "h_tahabb_c1": {
+      "id": "h_tahabb_c1",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 16,
+      "sources": [
+        "Sahih Muslim 54"
+      ],
+      "description": null
+    },
+    "h_tahabb_c2": {
+      "id": "h_tahabb_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sunan al-Tirmidhi 2685"
+      ],
+      "description": null
+    },
+    "h_tahabb_c3": {
+      "id": "h_tahabb_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_saeed",
+          "rawi_name": "Abu Sa'id al-Khudri",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan Abi Dawud 5193"
+      ],
+      "description": null
+    },
+    "h_umirtu_c1": {
+      "id": "h_umirtu_c1",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_umar",
+          "rawi_name": "Abdullah ibn Umar",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 20,
+      "sources": [
+        "Sahih al-Bukhari 25"
+      ],
+      "description": null
+    },
+    "h_umirtu_c2": {
+      "id": "h_umirtu_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 16,
+      "sources": [
+        "Sahih Muslim 21"
+      ],
+      "description": null
+    },
+    "h_umirtu_c3": {
+      "id": "h_umirtu_c3",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "nasai",
+          "rawi_name": "Ahmad ibn Shu'ayb al-Nasa'i",
+          "level": 0
+        }
+      ],
+      "path_count": 10,
+      "sources": [
+        "Sunan al-Nasa'i 3974"
+      ],
+      "description": null
+    },
+    "h_dayf_c1": {
+      "id": "h_dayf_c1",
+      "nodes": [
+        {
+          "rawi_id": "abu_shurayh",
+          "rawi_name": "Abu Shuraih al-Khuza'i",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sahih al-Bukhari 6018"
+      ],
+      "description": null
+    },
+    "h_dayf_c2": {
+      "id": "h_dayf_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_shurayh",
+          "rawi_name": "Abu Shuraih al-Khuza'i",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 10,
+      "sources": [
+        "Sahih Muslim 47"
+      ],
+      "description": null
+    },
+    "h_dayf_c3": {
+      "id": "h_dayf_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "ahmad",
+          "rawi_name": "Ahmad ibn Hanbal",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Musnad Ahmad 4/31"
+      ],
+      "description": null
+    },
+    "h_khayr_samt_c1": {
+      "id": "h_khayr_samt_c1",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 14,
+      "sources": [
+        "Sahih al-Bukhari 6136"
+      ],
+      "description": null
+    },
+    "h_khayr_samt_c2": {
+      "id": "h_khayr_samt_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sahih Muslim 47"
+      ],
+      "description": null
+    },
+    "h_khayr_samt_c3": {
+      "id": "h_khayr_samt_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_shurayh",
+          "rawi_name": "Abu Shuraih al-Khuza'i",
+          "level": 4
+        },
+        {
+          "rawi_id": "ahmad",
+          "rawi_name": "Ahmad ibn Hanbal",
+          "level": 0
+        }
+      ],
+      "path_count": 6,
+      "sources": [
+        "Musnad Ahmad 4/31"
+      ],
+      "description": null
+    },
+    "h_siyam_2_c1": {
+      "id": "h_siyam_2_c1",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 18,
+      "sources": [
+        "Sahih al-Bukhari 1894"
+      ],
+      "description": null
+    },
+    "h_siyam_2_c2": {
+      "id": "h_siyam_2_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 15,
+      "sources": [
+        "Sahih Muslim 1151"
+      ],
+      "description": null
+    },
+    "h_siyam_2_c3": {
+      "id": "h_siyam_2_c3",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 9,
+      "sources": [
+        "Sunan al-Tirmidhi 764"
+      ],
+      "description": null
+    },
+    "h_ayn_c1": {
+      "id": "h_ayn_c1",
+      "nodes": [
+        {
+          "rawi_id": "ibn_abbas",
+          "rawi_name": "Abdullah ibn Abbas",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sahih al-Bukhari 5740"
+      ],
+      "description": null
+    },
+    "h_ayn_c2": {
+      "id": "h_ayn_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 10,
+      "sources": [
+        "Sahih Muslim 2187"
+      ],
+      "description": null
+    },
+    "h_ayn_c3": {
+      "id": "h_ayn_c3",
+      "nodes": [
+        {
+          "rawi_id": "jabir",
+          "rawi_name": "Jabir ibn Abdullah",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Sunan al-Tirmidhi 2060"
+      ],
+      "description": null
+    },
+    "h_kafala_c1": {
+      "id": "h_kafala_c1",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_umar",
+          "rawi_name": "Abdullah ibn Umar",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 14,
+      "sources": [
+        "Sahih al-Bukhari 2442"
+      ],
+      "description": null
+    },
+    "h_kafala_c2": {
+      "id": "h_kafala_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sahih Muslim 2580"
+      ],
+      "description": null
+    },
+    "h_kafala_c3": {
+      "id": "h_kafala_c3",
+      "nodes": [
+        {
+          "rawi_id": "jabir",
+          "rawi_name": "Jabir ibn Abdullah",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan al-Tirmidhi 1930"
+      ],
+      "description": null
+    },
+    "h_akh_muslim_c1": {
+      "id": "h_akh_muslim_c1",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_umar",
+          "rawi_name": "Abdullah ibn Umar",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 14,
+      "sources": [
+        "Sahih al-Bukhari 2442"
+      ],
+      "description": null
+    },
+    "h_akh_muslim_c2": {
+      "id": "h_akh_muslim_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sahih Muslim 2564"
+      ],
+      "description": null
+    },
+    "h_akh_muslim_c3": {
+      "id": "h_akh_muslim_c3",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_amr",
+          "rawi_name": "Abdullah ibn Amr ibn al-As",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan Abi Dawud 4880"
+      ],
+      "description": null
+    },
+    "h_darar_c1": {
+      "id": "h_darar_c1",
+      "nodes": [
+        {
+          "rawi_id": "abu_saeed",
+          "rawi_name": "Abu Sa'id al-Khudri",
+          "level": 4
+        },
+        {
+          "rawi_id": "ibn_majah",
+          "rawi_name": "Muhammad ibn Yazid Ibn Majah",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sunan Ibn Majah 2341"
+      ],
+      "description": null
+    },
+    "h_darar_c2": {
+      "id": "h_darar_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_saeed",
+          "rawi_name": "Abu Sa'id al-Khudri",
+          "level": 4
+        },
+        {
+          "rawi_id": "malik",
+          "rawi_name": "Malik ibn Anas",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Al-Muwatta' (Malik)"
+      ],
+      "description": null
+    },
+    "h_darar_c3": {
+      "id": "h_darar_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_lubaba",
+          "rawi_name": "Abu Lubaba al-Ansari",
+          "level": 4
+        },
+        {
+          "rawi_id": "ahmad",
+          "rawi_name": "Ahmad ibn Hanbal",
+          "level": 0
+        }
+      ],
+      "path_count": 6,
+      "sources": [
+        "Musnad Ahmad"
+      ],
+      "description": null
+    },
+    "h_ihsan_c1": {
+      "id": "h_ihsan_c1",
+      "nodes": [
+        {
+          "rawi_id": "shaddad",
+          "rawi_name": "Shaddad ibn Aws",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 15,
+      "sources": [
+        "Sahih Muslim 1955"
+      ],
+      "description": null
+    },
+    "h_ihsan_c2": {
+      "id": "h_ihsan_c2",
+      "nodes": [
+        {
+          "rawi_id": "shaddad",
+          "rawi_name": "Shaddad ibn Aws",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 10,
+      "sources": [
+        "Sunan Abi Dawud 2815"
+      ],
+      "description": null
+    },
+    "h_ihsan_c3": {
+      "id": "h_ihsan_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan al-Tirmidhi 1409"
+      ],
+      "description": null
+    },
+    "h_rahimun_c1": {
+      "id": "h_rahimun_c1",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_amr",
+          "rawi_name": "Abdullah ibn Amr ibn al-As",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sunan al-Tirmidhi 1924"
+      ],
+      "description": null
+    },
+    "h_rahimun_c2": {
+      "id": "h_rahimun_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 10,
+      "sources": [
+        "Sunan Abi Dawud 4941"
+      ],
+      "description": null
+    },
+    "h_rahimun_c3": {
+      "id": "h_rahimun_c3",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_umar",
+          "rawi_name": "Abdullah ibn Umar",
+          "level": 4
+        },
+        {
+          "rawi_id": "hakim",
+          "rawi_name": "Al-Hakim al-Naysaburi",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Mustadrak al-Hakim 7351"
+      ],
+      "description": null
+    },
+    "h_siwak_c1": {
+      "id": "h_siwak_c1",
+      "nodes": [
+        {
+          "rawi_id": "aisha",
+          "rawi_name": "Aisha bint Abi Bakr",
+          "level": 4
+        },
+        {
+          "rawi_id": "nasai",
+          "rawi_name": "Ahmad ibn Shu'ayb al-Nasa'i",
+          "level": 0
+        }
+      ],
+      "path_count": 10,
+      "sources": [
+        "Sunan al-Nasa'i 5"
+      ],
+      "description": null
+    },
+    "h_siwak_c2": {
+      "id": "h_siwak_c2",
+      "nodes": [
+        {
+          "rawi_id": "aisha",
+          "rawi_name": "Aisha bint Abi Bakr",
+          "level": 4
+        },
+        {
+          "rawi_id": "ibn_majah",
+          "rawi_name": "Muhammad ibn Yazid Ibn Majah",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan Ibn Majah 287"
+      ],
+      "description": null
+    },
+    "h_siwak_c3": {
+      "id": "h_siwak_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "ibn_khuzayma",
+          "rawi_name": "Ibn Khuzayma al-Naysaburi",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Sahih Ibn Khuzayma 141"
+      ],
+      "description": null
+    },
+    "h_qarn_c1": {
+      "id": "h_qarn_c1",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_umar",
+          "rawi_name": "Abdullah ibn Umar",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 18,
+      "sources": [
+        "Sahih al-Bukhari 2650"
+      ],
+      "description": null
+    },
+    "h_qarn_c2": {
+      "id": "h_qarn_c2",
+      "nodes": [
+        {
+          "rawi_id": "imran",
+          "rawi_name": "Imran ibn Husayn",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 14,
+      "sources": [
+        "Sahih Muslim 2533"
+      ],
+      "description": null
+    },
+    "h_qarn_c3": {
+      "id": "h_qarn_c3",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 10,
+      "sources": [
+        "Sunan al-Tirmidhi 3858"
+      ],
+      "description": null
+    },
+    "h_salatu_kama_c1": {
+      "id": "h_salatu_kama_c1",
+      "nodes": [
+        {
+          "rawi_id": "malik_hu",
+          "rawi_name": "Malik ibn al-Huwayrith al-Laythi",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sahih al-Bukhari"
+      ],
+      "description": null
+    },
+    "h_salatu_kama_c2": {
+      "id": "h_salatu_kama_c2",
+      "nodes": [
+        {
+          "rawi_id": "malik_hu",
+          "rawi_name": "Malik ibn al-Huwayrith al-Laythi",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 9,
+      "sources": [
+        "Sunan Abi Dawud 403"
+      ],
+      "description": null
+    },
+    "h_salatu_kama_c3": {
+      "id": "h_salatu_kama_c3",
+      "nodes": [
+        {
+          "rawi_id": "malik_hu",
+          "rawi_name": "Malik ibn al-Huwayrith al-Laythi",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Sunan al-Tirmidhi 205"
+      ],
+      "description": null
+    },
+    "h_mawt_jahil_c1": {
+      "id": "h_mawt_jahil_c1",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_umar",
+          "rawi_name": "Abdullah ibn Umar",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sahih Muslim 1851"
+      ],
+      "description": null
+    },
+    "h_mawt_jahil_c2": {
+      "id": "h_mawt_jahil_c2",
+      "nodes": [
+        {
+          "rawi_id": "muawiya",
+          "rawi_name": "Mu'awiya ibn Abi Sufyan",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan Abi Dawud 4756"
+      ],
+      "description": null
+    },
+    "h_mawt_jahil_c3": {
+      "id": "h_mawt_jahil_c3",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_amr",
+          "rawi_name": "Abdullah ibn Amr ibn al-As",
+          "level": 4
+        },
+        {
+          "rawi_id": "ahmad",
+          "rawi_name": "Ahmad ibn Hanbal",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Musnad Ahmad 2/159"
+      ],
+      "description": null
+    },
+    "h_bayna_c1": {
+      "id": "h_bayna_c1",
+      "nodes": [
+        {
+          "rawi_id": "jabir",
+          "rawi_name": "Jabir ibn Abdullah",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 14,
+      "sources": [
+        "Sahih Muslim 82"
+      ],
+      "description": null
+    },
+    "h_bayna_c2": {
+      "id": "h_bayna_c2",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "ibn_majah",
+          "rawi_name": "Muhammad ibn Yazid Ibn Majah",
+          "level": 0
+        }
+      ],
+      "path_count": 9,
+      "sources": [
+        "Sunan Ibn Majah 1078"
+      ],
+      "description": null
+    },
+    "h_bayna_c3": {
+      "id": "h_bayna_c3",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_amr",
+          "rawi_name": "Abdullah ibn Amr ibn al-As",
+          "level": 4
+        },
+        {
+          "rawi_id": "ahmad",
+          "rawi_name": "Ahmad ibn Hanbal",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Musnad Ahmad 2/197"
+      ],
+      "description": null
+    },
+    "h_rihal_c1": {
+      "id": "h_rihal_c1",
+      "nodes": [
+        {
+          "rawi_id": "abu_saeed",
+          "rawi_name": "Abu Sa'id al-Khudri",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sahih al-Bukhari 1189"
+      ],
+      "description": null
+    },
+    "h_rihal_c2": {
+      "id": "h_rihal_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 10,
+      "sources": [
+        "Sahih Muslim 1397"
+      ],
+      "description": null
+    },
+    "h_rihal_c3": {
+      "id": "h_rihal_c3",
+      "nodes": [
+        {
+          "rawi_id": "jabir",
+          "rawi_name": "Jabir ibn Abdullah",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan Abi Dawud 2028"
+      ],
+      "description": null
+    },
+    "h_ilm_tariq_c1": {
+      "id": "h_ilm_tariq_c1",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 14,
+      "sources": [
+        "Sahih Muslim 2699"
+      ],
+      "description": null
+    },
+    "h_ilm_tariq_c2": {
+      "id": "h_ilm_tariq_c2",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 9,
+      "sources": [
+        "Sunan al-Tirmidhi 2646"
+      ],
+      "description": null
+    },
+    "h_ilm_tariq_c3": {
+      "id": "h_ilm_tariq_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_ayyub",
+          "rawi_name": "Abu Ayyub al-Ansari",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Sunan Abi Dawud 3641"
+      ],
+      "description": null
+    },
+    "h_dhikr_jama_c1": {
+      "id": "h_dhikr_jama_c1",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 14,
+      "sources": [
+        "Sahih Muslim 2699"
+      ],
+      "description": null
+    },
+    "h_dhikr_jama_c2": {
+      "id": "h_dhikr_jama_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_saeed",
+          "rawi_name": "Abu Sa'id al-Khudri",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan Abi Dawud 1455"
+      ],
+      "description": null
+    },
+    "h_dhikr_jama_c3": {
+      "id": "h_dhikr_jama_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Sunan al-Tirmidhi 2945"
+      ],
+      "description": null
+    },
+    "h_sabr_c1": {
+      "id": "h_sabr_c1",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 16,
+      "sources": [
+        "Sahih al-Bukhari 1469"
+      ],
+      "description": null
+    },
+    "h_sabr_c2": {
+      "id": "h_sabr_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_saeed",
+          "rawi_name": "Abu Sa'id al-Khudri",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sahih Muslim 1053"
+      ],
+      "description": null
+    },
+    "h_sabr_c3": {
+      "id": "h_sabr_c3",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 9,
+      "sources": [
+        "Sunan al-Tirmidhi 2024"
+      ],
+      "description": null
+    },
+    "h_shukr_c1": {
+      "id": "h_shukr_c1",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sunan Abi Dawud 4811"
+      ],
+      "description": null
+    },
+    "h_shukr_c2": {
+      "id": "h_shukr_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 10,
+      "sources": [
+        "Sunan al-Tirmidhi 1954"
+      ],
+      "description": null
+    },
+    "h_shukr_c3": {
+      "id": "h_shukr_c3",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "ahmad",
+          "rawi_name": "Ahmad ibn Hanbal",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Musnad Ahmad 2/258"
+      ],
+      "description": null
+    },
+    "h_qanaa_c1": {
+      "id": "h_qanaa_c1",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_amr",
+          "rawi_name": "Abdullah ibn Amr ibn al-As",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 11,
+      "sources": [
+        "Sahih Muslim 1054"
+      ],
+      "description": null
+    },
+    "h_qanaa_c2": {
+      "id": "h_qanaa_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 9,
+      "sources": [
+        "Sunan al-Tirmidhi 2348"
+      ],
+      "description": null
+    },
+    "h_qanaa_c3": {
+      "id": "h_qanaa_c3",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "ibn_majah",
+          "rawi_name": "Muhammad ibn Yazid Ibn Majah",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Sunan Ibn Majah 4138"
+      ],
+      "description": null
+    },
+    "h_tawakkul_c1": {
+      "id": "h_tawakkul_c1",
+      "nodes": [
+        {
+          "rawi_id": "umar",
+          "rawi_name": "Omar ibn al-Khattab",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sunan al-Tirmidhi 2344"
+      ],
+      "description": null
+    },
+    "h_tawakkul_c2": {
+      "id": "h_tawakkul_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "ahmad",
+          "rawi_name": "Ahmad ibn Hanbal",
+          "level": 0
+        }
+      ],
+      "path_count": 9,
+      "sources": [
+        "Musnad Ahmad 1/30"
+      ],
+      "description": null
+    },
+    "h_tawakkul_c3": {
+      "id": "h_tawakkul_c3",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "ibn_majah",
+          "rawi_name": "Muhammad ibn Yazid Ibn Majah",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Sunan Ibn Majah 4164"
+      ],
+      "description": null
+    },
+    "h_tawba_c1": {
+      "id": "h_tawba_c1",
+      "nodes": [
+        {
+          "rawi_id": "abu_musa",
+          "rawi_name": "Abu Musa al-Ash'ari",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sahih Muslim 2759"
+      ],
+      "description": null
+    },
+    "h_tawba_c2": {
+      "id": "h_tawba_c2",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 9,
+      "sources": [
+        "Sunan al-Tirmidhi 3534"
+      ],
+      "description": null
+    },
+    "h_tawba_c3": {
+      "id": "h_tawba_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "ahmad",
+          "rawi_name": "Ahmad ibn Hanbal",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Musnad Ahmad 4/399"
+      ],
+      "description": null
+    },
+    "h_istighfar_c1": {
+      "id": "h_istighfar_c1",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 14,
+      "sources": [
+        "Sahih al-Bukhari 6307"
+      ],
+      "description": null
+    },
+    "h_istighfar_c2": {
+      "id": "h_istighfar_c2",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 11,
+      "sources": [
+        "Sahih Muslim 2702"
+      ],
+      "description": null
+    },
+    "h_istighfar_c3": {
+      "id": "h_istighfar_c3",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_umar",
+          "rawi_name": "Abdullah ibn Umar",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan al-Tirmidhi 3255"
+      ],
+      "description": null
+    },
+    "h_qalb_c1": {
+      "id": "h_qalb_c1",
+      "nodes": [
+        {
+          "rawi_id": "numan",
+          "rawi_name": "Al-Nu'man ibn Bashir",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 13,
+      "sources": [
+        "Sahih al-Bukhari 52"
+      ],
+      "description": null
+    },
+    "h_qalb_c2": {
+      "id": "h_qalb_c2",
+      "nodes": [
+        {
+          "rawi_id": "numan",
+          "rawi_name": "Al-Nu'man ibn Bashir",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 11,
+      "sources": [
+        "Sahih Muslim 1599"
+      ],
+      "description": null
+    },
+    "h_qalb_c3": {
+      "id": "h_qalb_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "ibn_majah",
+          "rawi_name": "Muhammad ibn Yazid Ibn Majah",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan Ibn Majah 3984"
+      ],
+      "description": null
+    },
+    "h_lisan_c1": {
+      "id": "h_lisan_c1",
+      "nodes": [
+        {
+          "rawi_id": "sahl",
+          "rawi_name": "Sahl ibn Sa'd al-Sa'idi",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sahih al-Bukhari 6474"
+      ],
+      "description": null
+    },
+    "h_lisan_c2": {
+      "id": "h_lisan_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 10,
+      "sources": [
+        "Sunan al-Tirmidhi 2408"
+      ],
+      "description": null
+    },
+    "h_lisan_c3": {
+      "id": "h_lisan_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "ibn_majah",
+          "rawi_name": "Muhammad ibn Yazid Ibn Majah",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Sunan Ibn Majah 3973"
+      ],
+      "description": null
+    },
+    "h_ghiba_c1": {
+      "id": "h_ghiba_c1",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 14,
+      "sources": [
+        "Sahih Muslim 2589"
+      ],
+      "description": null
+    },
+    "h_ghiba_c2": {
+      "id": "h_ghiba_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_saeed",
+          "rawi_name": "Abu Sa'id al-Khudri",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 9,
+      "sources": [
+        "Sunan Abi Dawud 4874"
+      ],
+      "description": null
+    },
+    "h_ghiba_c3": {
+      "id": "h_ghiba_c3",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Sunan al-Tirmidhi 1934"
+      ],
+      "description": null
+    },
+    "h_hasad_c1": {
+      "id": "h_hasad_c1",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 14,
+      "sources": [
+        "Sahih Muslim 2564"
+      ],
+      "description": null
+    },
+    "h_hasad_c2": {
+      "id": "h_hasad_c2",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_umar",
+          "rawi_name": "Abdullah ibn Umar",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 11,
+      "sources": [
+        "Sahih al-Bukhari 6065"
+      ],
+      "description": null
+    },
+    "h_hasad_c3": {
+      "id": "h_hasad_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan Abi Dawud 4884"
+      ],
+      "description": null
+    },
+    "h_kibr_c1": {
+      "id": "h_kibr_c1",
+      "nodes": [
+        {
+          "rawi_id": "ibn_masud",
+          "rawi_name": "Abdullah ibn Mas'ud",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 13,
+      "sources": [
+        "Sahih Muslim 91"
+      ],
+      "description": null
+    },
+    "h_kibr_c2": {
+      "id": "h_kibr_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 9,
+      "sources": [
+        "Sunan Abi Dawud 4091"
+      ],
+      "description": null
+    },
+    "h_kibr_c3": {
+      "id": "h_kibr_c3",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_umar",
+          "rawi_name": "Abdullah ibn Umar",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Sunan al-Tirmidhi 1999"
+      ],
+      "description": null
+    },
+    "h_dhulm_c1": {
+      "id": "h_dhulm_c1",
+      "nodes": [
+        {
+          "rawi_id": "jabir",
+          "rawi_name": "Jabir ibn Abdullah",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sahih Muslim 2579"
+      ],
+      "description": null
+    },
+    "h_dhulm_c2": {
+      "id": "h_dhulm_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 9,
+      "sources": [
+        "Sunan al-Tirmidhi 2035"
+      ],
+      "description": null
+    },
+    "h_dhulm_c3": {
+      "id": "h_dhulm_c3",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_umar",
+          "rawi_name": "Abdullah ibn Umar",
+          "level": 4
+        },
+        {
+          "rawi_id": "ahmad",
+          "rawi_name": "Ahmad ibn Hanbal",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Musnad Ahmad 3/323"
+      ],
+      "description": null
+    },
+    "h_arba_c1": {
+      "id": "h_arba_c1",
+      "nodes": [
+        {
+          "rawi_id": "ibn_masud",
+          "rawi_name": "Abdullah ibn Mas'ud",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sunan al-Tirmidhi 2417"
+      ],
+      "description": null
+    },
+    "h_arba_c2": {
+      "id": "h_arba_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "darimi",
+          "rawi_name": "Al-Darimi",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan al-Darimi 537"
+      ],
+      "description": null
+    },
+    "h_arba_c3": {
+      "id": "h_arba_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_saeed",
+          "rawi_name": "Abu Sa'id al-Khudri",
+          "level": 4
+        },
+        {
+          "rawi_id": "bayhaqi",
+          "rawi_name": "Al-Bayhaqi",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Sunan al-Bayhaqi (Shu'ab)"
+      ],
+      "description": null
+    },
+    "h_ruyat_c1": {
+      "id": "h_ruyat_c1",
+      "nodes": [
+        {
+          "rawi_id": "jarir",
+          "rawi_name": "Jarir ibn Abdullah al-Bajali",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 13,
+      "sources": [
+        "Sahih al-Bukhari 7434"
+      ],
+      "description": null
+    },
+    "h_ruyat_c2": {
+      "id": "h_ruyat_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 11,
+      "sources": [
+        "Sahih Muslim 633"
+      ],
+      "description": null
+    },
+    "h_ruyat_c3": {
+      "id": "h_ruyat_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_saeed",
+          "rawi_name": "Abu Sa'id al-Khudri",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan al-Tirmidhi 2554"
+      ],
+      "description": null
+    },
+    "h_nuzul_isa_c1": {
+      "id": "h_nuzul_isa_c1",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 15,
+      "sources": [
+        "Sahih al-Bukhari 3448"
+      ],
+      "description": null
+    },
+    "h_nuzul_isa_c2": {
+      "id": "h_nuzul_isa_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 13,
+      "sources": [
+        "Sahih Muslim 155"
+      ],
+      "description": null
+    },
+    "h_nuzul_isa_c3": {
+      "id": "h_nuzul_isa_c3",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan Abi Dawud 4324"
+      ],
+      "description": null
+    },
+    "h_mahdi_c1": {
+      "id": "h_mahdi_c1",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_umar",
+          "rawi_name": "Abdullah ibn Umar",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sunan Abi Dawud 4282"
+      ],
+      "description": null
+    },
+    "h_mahdi_c2": {
+      "id": "h_mahdi_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_saeed",
+          "rawi_name": "Abu Sa'id al-Khudri",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 10,
+      "sources": [
+        "Sunan al-Tirmidhi 2230"
+      ],
+      "description": null
+    },
+    "h_mahdi_c3": {
+      "id": "h_mahdi_c3",
+      "nodes": [
+        {
+          "rawi_id": "ali",
+          "rawi_name": "Ali ibn Abi Talib",
+          "level": 4
+        },
+        {
+          "rawi_id": "ahmad",
+          "rawi_name": "Ahmad ibn Hanbal",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Musnad Ahmad 1/84"
+      ],
+      "description": null
+    },
+    "h_fitna_c1": {
+      "id": "h_fitna_c1",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sahih Muslim 118"
+      ],
+      "description": null
+    },
+    "h_fitna_c2": {
+      "id": "h_fitna_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_saeed",
+          "rawi_name": "Abu Sa'id al-Khudri",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 9,
+      "sources": [
+        "Sunan Abi Dawud 4258"
+      ],
+      "description": null
+    },
+    "h_fitna_c3": {
+      "id": "h_fitna_c3",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Sunan al-Tirmidhi 2196"
+      ],
+      "description": null
+    },
+    "h_ilm_din_c1": {
+      "id": "h_ilm_din_c1",
+      "nodes": [
+        {
+          "rawi_id": "muawiya",
+          "rawi_name": "Mu'awiya ibn Abi Sufyan",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sahih al-Bukhari 71"
+      ],
+      "description": null
+    },
+    "h_ilm_din_c2": {
+      "id": "h_ilm_din_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 10,
+      "sources": [
+        "Sahih Muslim 1037"
+      ],
+      "description": null
+    },
+    "h_ilm_din_c3": {
+      "id": "h_ilm_din_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan al-Tirmidhi 2645"
+      ],
+      "description": null
+    },
+    "h_quran_khayr_c1": {
+      "id": "h_quran_khayr_c1",
+      "nodes": [
+        {
+          "rawi_id": "uthman",
+          "rawi_name": "Uthman ibn Affan",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sahih al-Bukhari 5027"
+      ],
+      "description": null
+    },
+    "h_quran_khayr_c2": {
+      "id": "h_quran_khayr_c2",
+      "nodes": [
+        {
+          "rawi_id": "uthman",
+          "rawi_name": "Uthman ibn Affan",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 9,
+      "sources": [
+        "Sunan Abi Dawud 1452"
+      ],
+      "description": null
+    },
+    "h_quran_khayr_c3": {
+      "id": "h_quran_khayr_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Sunan al-Tirmidhi 2907"
+      ],
+      "description": null
+    },
+    "h_hubb_allah_c1": {
+      "id": "h_hubb_allah_c1",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sahih al-Bukhari 16"
+      ],
+      "description": null
+    },
+    "h_hubb_allah_c2": {
+      "id": "h_hubb_allah_c2",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 10,
+      "sources": [
+        "Sahih Muslim 43"
+      ],
+      "description": null
+    },
+    "h_hubb_allah_c3": {
+      "id": "h_hubb_allah_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan al-Tirmidhi 2624"
+      ],
+      "description": null
+    },
+    "h_tahajjud_c1": {
+      "id": "h_tahajjud_c1",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sahih Muslim 1163"
+      ],
+      "description": null
+    },
+    "h_tahajjud_c2": {
+      "id": "h_tahajjud_c2",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan al-Tirmidhi 438"
+      ],
+      "description": null
+    },
+    "h_tahajjud_c3": {
+      "id": "h_tahajjud_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Sunan Abi Dawud 1430"
+      ],
+      "description": null
+    },
+    "h_dhikr_c1": {
+      "id": "h_dhikr_c1",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sahih Muslim 2676"
+      ],
+      "description": null
+    },
+    "h_dhikr_c2": {
+      "id": "h_dhikr_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_saeed",
+          "rawi_name": "Abu Sa'id al-Khudri",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan al-Tirmidhi 3376"
+      ],
+      "description": null
+    },
+    "h_dhikr_c3": {
+      "id": "h_dhikr_c3",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "ahmad",
+          "rawi_name": "Ahmad ibn Hanbal",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Musnad Ahmad 3/75"
+      ],
+      "description": null
+    },
+    "h_dua_c1": {
+      "id": "h_dua_c1",
+      "nodes": [
+        {
+          "rawi_id": "numan",
+          "rawi_name": "Al-Nu'man ibn Bashir",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 11,
+      "sources": [
+        "Sunan al-Tirmidhi 3247"
+      ],
+      "description": null
+    },
+    "h_dua_c2": {
+      "id": "h_dua_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan Abi Dawud 1479"
+      ],
+      "description": null
+    },
+    "h_dua_c3": {
+      "id": "h_dua_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "ibn_majah",
+          "rawi_name": "Muhammad ibn Yazid Ibn Majah",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Sunan Ibn Majah 3828"
+      ],
+      "description": null
+    },
+    "h_sidq_c1": {
+      "id": "h_sidq_c1",
+      "nodes": [
+        {
+          "rawi_id": "ibn_masud",
+          "rawi_name": "Abdullah ibn Mas'ud",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sahih Muslim 2607"
+      ],
+      "description": null
+    },
+    "h_sidq_c2": {
+      "id": "h_sidq_c2",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_umar",
+          "rawi_name": "Abdullah ibn Umar",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 10,
+      "sources": [
+        "Sahih al-Bukhari 6094"
+      ],
+      "description": null
+    },
+    "h_sidq_c3": {
+      "id": "h_sidq_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan al-Tirmidhi 1971"
+      ],
+      "description": null
+    },
+    "h_amanah_c1": {
+      "id": "h_amanah_c1",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 11,
+      "sources": [
+        "Sunan Abi Dawud 3535"
+      ],
+      "description": null
+    },
+    "h_amanah_c2": {
+      "id": "h_amanah_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan al-Tirmidhi 1264"
+      ],
+      "description": null
+    },
+    "h_amanah_c3": {
+      "id": "h_amanah_c3",
+      "nodes": [
+        {
+          "rawi_id": "anass",
+          "rawi_name": "Anas ibn Malik",
+          "level": 4
+        },
+        {
+          "rawi_id": "ahmad",
+          "rawi_name": "Ahmad ibn Hanbal",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Musnad Ahmad 3/206"
+      ],
+      "description": null
+    },
+    "h_jari_c1": {
+      "id": "h_jari_c1",
+      "nodes": [
+        {
+          "rawi_id": "aisha",
+          "rawi_name": "Aisha bint Abi Bakr",
+          "level": 4
+        },
+        {
+          "rawi_id": "bukhari",
+          "rawi_name": "Muhammad ibn Ismail al-Bukhari",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sahih al-Bukhari 6014"
+      ],
+      "description": null
+    },
+    "h_jari_c2": {
+      "id": "h_jari_c2",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_umar",
+          "rawi_name": "Abdullah ibn Umar",
+          "level": 4
+        },
+        {
+          "rawi_id": "muslim",
+          "rawi_name": "Muslim ibn al-Hajjaj",
+          "level": 0
+        }
+      ],
+      "path_count": 10,
+      "sources": [
+        "Sahih Muslim 2624"
+      ],
+      "description": null
+    },
+    "h_jari_c3": {
+      "id": "h_jari_c3",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan al-Tirmidhi 1943"
+      ],
+      "description": null
+    },
+    "h_walidayn_c1": {
+      "id": "h_walidayn_c1",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_amr",
+          "rawi_name": "Abdullah ibn Amr ibn al-As",
+          "level": 4
+        },
+        {
+          "rawi_id": "tirmidhi",
+          "rawi_name": "Abu Isa al-Tirmidhi",
+          "level": 0
+        }
+      ],
+      "path_count": 11,
+      "sources": [
+        "Sunan al-Tirmidhi 1899"
+      ],
+      "description": null
+    },
+    "h_walidayn_c2": {
+      "id": "h_walidayn_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "ibn_majah",
+          "rawi_name": "Muhammad ibn Yazid Ibn Majah",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Sunan Ibn Majah 3662"
+      ],
+      "description": null
+    },
+    "h_walidayn_c3": {
+      "id": "h_walidayn_c3",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_umar",
+          "rawi_name": "Abdullah ibn Umar",
+          "level": 4
+        },
+        {
+          "rawi_id": "hakim",
+          "rawi_name": "Al-Hakim al-Naysaburi",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Mustadrak al-Hakim 4/151"
+      ],
+      "description": null
+    },
+    "h_husn_khatim_c1": {
+      "id": "h_husn_khatim_c1",
+      "nodes": [
+        {
+          "rawi_id": "muadh",
+          "rawi_name": "Mu'adh ibn Jabal",
+          "level": 4
+        },
+        {
+          "rawi_id": "abu_dawud",
+          "rawi_name": "Abu Dawud al-Sijistani",
+          "level": 0
+        }
+      ],
+      "path_count": 12,
+      "sources": [
+        "Sunan Abi Dawud 3116"
+      ],
+      "description": null
+    },
+    "h_husn_khatim_c2": {
+      "id": "h_husn_khatim_c2",
+      "nodes": [
+        {
+          "rawi_id": "abu_hurayra",
+          "rawi_name": "Abu Hurayra al-Dawsi",
+          "level": 4
+        },
+        {
+          "rawi_id": "ahmad",
+          "rawi_name": "Ahmad ibn Hanbal",
+          "level": 0
+        }
+      ],
+      "path_count": 8,
+      "sources": [
+        "Musnad Ahmad 5/233"
+      ],
+      "description": null
+    },
+    "h_husn_khatim_c3": {
+      "id": "h_husn_khatim_c3",
+      "nodes": [
+        {
+          "rawi_id": "abdullah_umar",
+          "rawi_name": "Abdullah ibn Umar",
+          "level": 4
+        },
+        {
+          "rawi_id": "hakim",
+          "rawi_name": "Al-Hakim al-Naysaburi",
+          "level": 0
+        }
+      ],
+      "path_count": 7,
+      "sources": [
+        "Mustadrak al-Hakim 1/502"
+      ],
+      "description": null
     }
   },
   "hadiths": {
@@ -5678,8 +8718,8 @@
         "wilaya",
         "ali"
       ],
-      "created_at": "2026-10-11 23:05:04.897589",
-      "updated_at": "2026-10-11 23:05:04.897593",
+      "created_at": "2026-10-11 23:28:43.088451",
+      "updated_at": "2026-10-11 23:28:43.088455",
       "notes": null
     },
     "h_kadhib": {
@@ -5741,8 +8781,8 @@
         "mensonge",
         "transmission"
       ],
-      "created_at": "2026-10-11 23:05:04.897681",
-      "updated_at": "2026-10-11 23:05:04.897682",
+      "created_at": "2026-10-11 23:28:43.088548",
+      "updated_at": "2026-10-11 23:28:43.088549",
       "notes": null
     },
     "h_hawd": {
@@ -5816,8 +8856,8 @@
         "bassin",
         "kawthar"
       ],
-      "created_at": "2026-10-11 23:05:04.897740",
-      "updated_at": "2026-10-11 23:05:04.897741",
+      "created_at": "2026-10-11 23:28:43.088614",
+      "updated_at": "2026-10-11 23:28:43.088614",
       "notes": null
     },
     "h_manzila": {
@@ -5879,8 +8919,8 @@
         "harun",
         "ali"
       ],
-      "created_at": "2026-10-11 23:05:04.897783",
-      "updated_at": "2026-10-11 23:05:04.897784",
+      "created_at": "2026-10-11 23:28:43.088661",
+      "updated_at": "2026-10-11 23:28:43.088662",
       "notes": null
     },
     "h_niyyah": {
@@ -5942,8 +8982,8 @@
         "intention",
         "actes"
       ],
-      "created_at": "2026-10-11 23:05:04.897834",
-      "updated_at": "2026-10-11 23:05:04.897834",
+      "created_at": "2026-10-11 23:28:43.088714",
+      "updated_at": "2026-10-11 23:28:43.088714",
       "notes": null
     },
     "h_thaqalayn": {
@@ -6012,8 +9052,8 @@
         "qur'an",
         "ahl al-bayt"
       ],
-      "created_at": "2026-10-11 23:05:04.897946",
-      "updated_at": "2026-10-11 23:05:04.897947",
+      "created_at": "2026-10-11 23:28:43.088766",
+      "updated_at": "2026-10-11 23:28:43.088767",
       "notes": null
     },
     "h_mash": {
@@ -6069,8 +9109,8 @@
         "khuffayn",
         "ablutions"
       ],
-      "created_at": "2026-10-11 23:05:04.897984",
-      "updated_at": "2026-10-11 23:05:04.897985",
+      "created_at": "2026-10-11 23:28:43.088804",
+      "updated_at": "2026-10-11 23:28:43.088804",
       "notes": null
     },
     "h_rafy": {
@@ -6120,8 +9160,8 @@
         "priere",
         "takbir"
       ],
-      "created_at": "2026-10-11 23:05:04.898013",
-      "updated_at": "2026-10-11 23:05:04.898014",
+      "created_at": "2026-10-11 23:28:43.088835",
+      "updated_at": "2026-10-11 23:28:43.088836",
       "notes": null
     },
     "h_shafaa": {
@@ -6176,8 +9216,8 @@
         "shafa'a",
         "intercession"
       ],
-      "created_at": "2026-10-11 23:05:04.898048",
-      "updated_at": "2026-10-11 23:05:04.898049",
+      "created_at": "2026-10-11 23:28:43.088875",
+      "updated_at": "2026-10-11 23:28:43.088876",
       "notes": null
     },
     "h_raya": {
@@ -6227,8 +9267,8 @@
         "khaybar",
         "ali"
       ],
-      "created_at": "2026-10-11 23:05:04.898076",
-      "updated_at": "2026-10-11 23:05:04.898077",
+      "created_at": "2026-10-11 23:28:43.088909",
+      "updated_at": "2026-10-11 23:28:43.088910",
       "notes": null
     },
     "h_isra": {
@@ -6277,8 +9317,8 @@
         "mi'raj",
         "voyage nocturne"
       ],
-      "created_at": "2026-10-11 23:05:04.898107",
-      "updated_at": "2026-10-11 23:05:04.898107",
+      "created_at": "2026-10-11 23:28:43.088938",
+      "updated_at": "2026-10-11 23:28:43.088938",
       "notes": null
     },
     "h_khalifa": {
@@ -6328,8 +9368,8 @@
         "douze",
         "quraysh"
       ],
-      "created_at": "2026-10-11 23:05:04.898139",
-      "updated_at": "2026-10-11 23:05:04.898140",
+      "created_at": "2026-10-11 23:28:43.088969",
+      "updated_at": "2026-10-11 23:28:43.088970",
       "notes": null
     },
     "h_safina": {
@@ -6378,8 +9418,8 @@
         "vaisseau",
         "ahl al-bayt"
       ],
-      "created_at": "2026-10-11 23:05:04.898169",
-      "updated_at": "2026-10-11 23:05:04.898169",
+      "created_at": "2026-10-11 23:28:43.089000",
+      "updated_at": "2026-10-11 23:28:43.089000",
       "notes": null
     },
     "h_tayr": {
@@ -6429,8 +9469,8 @@
         "oiseau",
         "ali"
       ],
-      "created_at": "2026-10-11 23:05:04.898197",
-      "updated_at": "2026-10-11 23:05:04.898198",
+      "created_at": "2026-10-11 23:28:43.089030",
+      "updated_at": "2026-10-11 23:28:43.089031",
       "notes": null
     },
     "h_madina_ilm": {
@@ -6479,8 +9519,8 @@
         "savoir",
         "ali"
       ],
-      "created_at": "2026-10-11 23:05:04.898225",
-      "updated_at": "2026-10-11 23:05:04.898226",
+      "created_at": "2026-10-11 23:28:43.089058",
+      "updated_at": "2026-10-11 23:28:43.089059",
       "notes": null
     },
     "h_dajjal": {
@@ -6530,8 +9570,8 @@
         "antechrist",
         "fitna"
       ],
-      "created_at": "2026-10-11 23:05:04.898254",
-      "updated_at": "2026-10-11 23:05:04.898255",
+      "created_at": "2026-10-11 23:28:43.089095",
+      "updated_at": "2026-10-11 23:28:43.089096",
       "notes": null
     },
     "h_masjid": {
@@ -6581,8 +9621,8 @@
         "mosquee",
         "construction"
       ],
-      "created_at": "2026-10-11 23:05:04.898287",
-      "updated_at": "2026-10-11 23:05:04.898287",
+      "created_at": "2026-10-11 23:28:43.089123",
+      "updated_at": "2026-10-11 23:28:43.089124",
       "notes": null
     },
     "h_ruya": {
@@ -6632,8 +9672,8 @@
         "vision",
         "au-dela"
       ],
-      "created_at": "2026-10-11 23:05:04.898315",
-      "updated_at": "2026-10-11 23:05:04.898315",
+      "created_at": "2026-10-11 23:28:43.089157",
+      "updated_at": "2026-10-11 23:28:43.089158",
       "notes": null
     },
     "h_ansar": {
@@ -6677,8 +9717,8 @@
         "amour",
         "imam"
       ],
-      "created_at": "2026-10-11 23:05:04.898338",
-      "updated_at": "2026-10-11 23:05:04.898338",
+      "created_at": "2026-10-11 23:28:43.089179",
+      "updated_at": "2026-10-11 23:28:43.089180",
       "notes": null
     },
     "h_jamaa": {
@@ -6728,8 +9768,8 @@
         "congregation",
         "priere"
       ],
-      "created_at": "2026-10-11 23:05:04.898363",
-      "updated_at": "2026-10-11 23:05:04.898364",
+      "created_at": "2026-10-11 23:28:43.089210",
+      "updated_at": "2026-10-11 23:28:43.089210",
       "notes": null
     },
     "h_ramadan": {
@@ -6779,8 +9819,8 @@
         "siyam",
         "jeune"
       ],
-      "created_at": "2026-10-11 23:05:04.898390",
-      "updated_at": "2026-10-11 23:05:04.898391",
+      "created_at": "2026-10-11 23:28:43.089238",
+      "updated_at": "2026-10-11 23:28:43.089239",
       "notes": null
     },
     "h_qiyam": {
@@ -6824,8 +9864,8 @@
         "tarawih",
         "ramadan"
       ],
-      "created_at": "2026-10-11 23:05:04.898412",
-      "updated_at": "2026-10-11 23:05:04.898413",
+      "created_at": "2026-10-11 23:28:43.089263",
+      "updated_at": "2026-10-11 23:28:43.089264",
       "notes": null
     },
     "h_laylat_qadr": {
@@ -6868,8 +9908,8 @@
         "laylat al-qadr",
         "ramadan"
       ],
-      "created_at": "2026-10-11 23:05:04.898435",
-      "updated_at": "2026-10-11 23:05:04.898435",
+      "created_at": "2026-10-11 23:28:43.089288",
+      "updated_at": "2026-10-11 23:28:43.089288",
       "notes": null
     },
     "h_fatiha": {
@@ -6919,8 +9959,8 @@
         "coran",
         "priere"
       ],
-      "created_at": "2026-10-11 23:05:04.898461",
-      "updated_at": "2026-10-11 23:05:04.898462",
+      "created_at": "2026-10-11 23:28:43.089318",
+      "updated_at": "2026-10-11 23:28:43.089319",
       "notes": null
     },
     "h_rida": {
@@ -6970,8 +10010,8 @@
         "allaitement",
         "parente"
       ],
-      "created_at": "2026-10-11 23:05:04.898489",
-      "updated_at": "2026-10-11 23:05:04.898490",
+      "created_at": "2026-10-11 23:28:43.089428",
+      "updated_at": "2026-10-11 23:28:43.089429",
       "notes": null
     },
     "h_khamr": {
@@ -7015,8 +10055,8 @@
         "muskir",
         "interdit"
       ],
-      "created_at": "2026-10-11 23:05:04.898511",
-      "updated_at": "2026-10-11 23:05:04.898512",
+      "created_at": "2026-10-11 23:28:43.089449",
+      "updated_at": "2026-10-11 23:28:43.089450",
       "notes": null
     },
     "h_war": {
@@ -7060,8 +10100,8 @@
         "khud'a",
         "ruse"
       ],
-      "created_at": "2026-10-11 23:05:04.898535",
-      "updated_at": "2026-10-11 23:05:04.898536",
+      "created_at": "2026-10-11 23:28:43.089476",
+      "updated_at": "2026-10-11 23:28:43.089477",
       "notes": null
     },
     "h_imams_quraysh": {
@@ -7105,8 +10145,8 @@
         "quraysh",
         "direction"
       ],
-      "created_at": "2026-10-11 23:05:04.898559",
-      "updated_at": "2026-10-11 23:05:04.898559",
+      "created_at": "2026-10-11 23:28:43.089498",
+      "updated_at": "2026-10-11 23:28:43.089499",
       "notes": null
     },
     "h_pillars": {
@@ -7156,8 +10196,8 @@
         "islam",
         "cinq"
       ],
-      "created_at": "2026-10-11 23:05:04.898587",
-      "updated_at": "2026-10-11 23:05:04.898588",
+      "created_at": "2026-10-11 23:28:43.089530",
+      "updated_at": "2026-10-11 23:28:43.089530",
       "notes": null
     },
     "h_ilm_fard": {
@@ -7201,8 +10241,8 @@
         "savoir",
         "fard"
       ],
-      "created_at": "2026-10-11 23:05:04.898616",
-      "updated_at": "2026-10-11 23:05:04.898616",
+      "created_at": "2026-10-11 23:28:43.089553",
+      "updated_at": "2026-10-11 23:28:43.089554",
       "notes": null
     },
     "h_jumua": {
@@ -7245,8 +10285,8 @@
         "jumua",
         "vendredi"
       ],
-      "created_at": "2026-10-11 23:05:04.898641",
-      "updated_at": "2026-10-11 23:05:04.898641",
+      "created_at": "2026-10-11 23:28:43.089579",
+      "updated_at": "2026-10-11 23:28:43.089579",
       "notes": null
     },
     "h_kisa": {
@@ -7296,8 +10336,8 @@
         "tathir",
         "ahl al-bayt"
       ],
-      "created_at": "2026-10-11 23:05:04.898669",
-      "updated_at": "2026-10-11 23:05:04.898670",
+      "created_at": "2026-10-11 23:28:43.089610",
+      "updated_at": "2026-10-11 23:28:43.089611",
       "notes": null
     },
     "h_dar": {
@@ -7347,8 +10387,8 @@
         "inzar",
         "succession"
       ],
-      "created_at": "2026-10-11 23:05:04.898704",
-      "updated_at": "2026-10-11 23:05:04.898704",
+      "created_at": "2026-10-11 23:28:43.089649",
+      "updated_at": "2026-10-11 23:28:43.089649",
       "notes": null
     },
     "h_ali_haqq": {
@@ -7398,8 +10438,8 @@
         "haqq",
         "verite"
       ],
-      "created_at": "2026-10-11 23:05:04.898733",
-      "updated_at": "2026-10-11 23:05:04.898734",
+      "created_at": "2026-10-11 23:28:43.089679",
+      "updated_at": "2026-10-11 23:28:43.089680",
       "notes": null
     },
     "h_imam_zaman": {
@@ -7443,8 +10483,8 @@
         "zaman",
         "jahiliyya"
       ],
-      "created_at": "2026-10-11 23:05:04.898759",
-      "updated_at": "2026-10-11 23:05:04.898760",
+      "created_at": "2026-10-11 23:28:43.089706",
+      "updated_at": "2026-10-11 23:28:43.089707",
       "notes": null
     },
     "h_tahur": {
@@ -7488,8 +10528,8 @@
         "purification",
         "iman"
       ],
-      "created_at": "2026-10-11 23:05:04.898781",
-      "updated_at": "2026-10-11 23:05:04.898781",
+      "created_at": "2026-10-11 23:28:43.089732",
+      "updated_at": "2026-10-11 23:28:43.089732",
       "notes": null
     },
     "h_ma_ruf": {
@@ -7533,8 +10573,8 @@
         "sadaqa",
         "bien"
       ],
-      "created_at": "2026-10-11 23:05:04.898803",
-      "updated_at": "2026-10-11 23:05:04.898804",
+      "created_at": "2026-10-11 23:28:43.089753",
+      "updated_at": "2026-10-11 23:28:43.089754",
       "notes": null
     },
     "h_kabair": {
@@ -7578,8 +10618,8 @@
         "peches",
         "mubiqat"
       ],
-      "created_at": "2026-10-11 23:05:04.898827",
-      "updated_at": "2026-10-11 23:05:04.898827",
+      "created_at": "2026-10-11 23:28:43.089779",
+      "updated_at": "2026-10-11 23:28:43.089779",
       "notes": null
     },
     "h_rahma": {
@@ -7622,8 +10662,8 @@
         "rahma",
         "miséricorde"
       ],
-      "created_at": "2026-10-11 23:05:04.898902",
-      "updated_at": "2026-10-11 23:05:04.898903",
+      "created_at": "2026-10-11 23:28:43.089807",
+      "updated_at": "2026-10-11 23:28:43.089808",
       "notes": null
     },
     "h_akh": {
@@ -7667,8 +10707,8 @@
         "fraternite",
         "amour"
       ],
-      "created_at": "2026-10-11 23:05:04.898925",
-      "updated_at": "2026-10-11 23:05:04.898926",
+      "created_at": "2026-10-11 23:28:43.089832",
+      "updated_at": "2026-10-11 23:28:43.089833",
       "notes": null
     },
     "h_salam": {
@@ -7712,8 +10752,8 @@
         "langue",
         "paix"
       ],
-      "created_at": "2026-10-11 23:05:04.898951",
-      "updated_at": "2026-10-11 23:05:04.898952",
+      "created_at": "2026-10-11 23:28:43.089861",
+      "updated_at": "2026-10-11 23:28:43.089862",
       "notes": null
     },
     "h_haya": {
@@ -7757,8 +10797,8 @@
         "pudeur",
         "iman"
       ],
-      "created_at": "2026-10-11 23:05:04.898974",
-      "updated_at": "2026-10-11 23:05:04.898975",
+      "created_at": "2026-10-11 23:28:43.089896",
+      "updated_at": "2026-10-11 23:28:43.089897",
       "notes": null
     },
     "h_nasiha": {
@@ -7802,8 +10842,8 @@
         "din",
         "conseil"
       ],
-      "created_at": "2026-10-11 23:05:04.898997",
-      "updated_at": "2026-10-11 23:05:04.898998",
+      "created_at": "2026-10-11 23:28:43.089921",
+      "updated_at": "2026-10-11 23:28:43.089922",
       "notes": null
     },
     "h_ghish": {
@@ -7847,8 +10887,8 @@
         "tromperie",
         "commerce"
       ],
-      "created_at": "2026-10-11 23:05:04.899019",
-      "updated_at": "2026-10-11 23:05:04.899020",
+      "created_at": "2026-10-11 23:28:43.089947",
+      "updated_at": "2026-10-11 23:28:43.089948",
       "notes": null
     },
     "h_yad": {
@@ -7892,8 +10932,8 @@
         "generosite",
         "don"
       ],
-      "created_at": "2026-10-11 23:05:04.899041",
-      "updated_at": "2026-10-11 23:05:04.899042",
+      "created_at": "2026-10-11 23:28:43.089970",
+      "updated_at": "2026-10-11 23:28:43.089971",
       "notes": null
     },
     "h_bunyan": {
@@ -7937,8 +10977,8 @@
         "solidarite",
         "bunyan"
       ],
-      "created_at": "2026-10-11 23:05:04.899064",
-      "updated_at": "2026-10-11 23:05:04.899065",
+      "created_at": "2026-10-11 23:28:43.090011",
+      "updated_at": "2026-10-11 23:28:43.090012",
       "notes": null
     },
     "h_tashabbuh": {
@@ -7981,8 +11021,8 @@
         "imitation",
         "identite"
       ],
-      "created_at": "2026-10-11 23:05:04.899088",
-      "updated_at": "2026-10-11 23:05:04.899088",
+      "created_at": "2026-10-11 23:28:43.090035",
+      "updated_at": "2026-10-11 23:28:43.090036",
       "notes": null
     },
     "h_kalima": {
@@ -8026,8 +11066,8 @@
         "kalima",
         "janna"
       ],
-      "created_at": "2026-10-11 23:05:04.899110",
-      "updated_at": "2026-10-11 23:05:04.899111",
+      "created_at": "2026-10-11 23:28:43.090061",
+      "updated_at": "2026-10-11 23:28:43.090061",
       "notes": null
     },
     "h_kabad": {
@@ -8071,8 +11111,8 @@
         "animaux",
         "rahma"
       ],
-      "created_at": "2026-10-11 23:05:04.899133",
-      "updated_at": "2026-10-11 23:05:04.899134",
+      "created_at": "2026-10-11 23:28:43.090088",
+      "updated_at": "2026-10-11 23:28:43.090089",
       "notes": null
     },
     "h_quran": {
@@ -8116,8 +11156,2168 @@
         "enseignement",
         "khayr"
       ],
-      "created_at": "2026-10-11 23:05:04.899156",
-      "updated_at": "2026-10-11 23:05:04.899156",
+      "created_at": "2026-10-11 23:28:43.090112",
+      "updated_at": "2026-10-11 23:28:43.090113",
+      "notes": null
+    },
+    "h_mar": {
+      "id": "h_mar",
+      "matn": "الْمَرْءُ مَعَ مَنْ أَحَبَّ",
+      "matn_translation_fr": "L'homme sera avec celui qu'il aime.",
+      "title_fr": "L'homme est avec celui qu'il aime (Al-Mar' ma'a man ahabb)",
+      "title_ar": "المرء مع من أحب",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par plusieurs Compagnons",
+      "rank": 51,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Anas → Al-Bukhari",
+          "isnad_chain_id": "h_mar_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Anas → Muslim",
+          "isnad_chain_id": "h_mar_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Hurayra → Ahmad",
+          "isnad_chain_id": "h_mar_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 6168",
+        "Sahih Muslim 2640",
+        "Sunan al-Tirmidhi 2634"
+      ],
+      "thematic_category": "Foi & fraternité",
+      "keywords": [
+        "hubb",
+        "amour",
+        "akhira"
+      ],
+      "created_at": "2026-10-11 23:28:43.090136",
+      "updated_at": "2026-10-11 23:28:43.090137",
+      "notes": null
+    },
+    "h_tahabb": {
+      "id": "h_tahabb",
+      "matn": "لَا تَدْخُلُونَ الْجَنَّةَ حَتَّى تُؤْمِنُوا، وَلَا تُؤْمِنُونَ حَتَّى تَحَابُّوا، أَفَلَا أَدُلُّكُمْ عَلَى مَا يُحَبِّبُكُمْ بَيْنَكُمْ؟ أَفْشُوا السَّلَامَ بَيْنَكُمْ",
+      "matn_translation_fr": "Vous n'entrerez pas au Paradis tant que vous ne croirez pas, et vous ne croirez pas tant que vous ne vous aimerez pas. Vous indiquerai-je une chose qui, si vous la faites, vous fera vous aimer ? Répandez le salut entre vous.",
+      "title_fr": "Répandez le salut (Afshu al-Salam)",
+      "title_ar": "لا تدخلون الجنة حتى تؤمنوا وتتحابوا",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par Abu Hurayra et Abu Musa",
+      "rank": 52,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abu Hurayra → Muslim",
+          "isnad_chain_id": "h_tahabb_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Al-Tirmidhi",
+          "isnad_chain_id": "h_tahabb_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Sa'id → Abu Dawud",
+          "isnad_chain_id": "h_tahabb_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih Muslim 54",
+        "Sunan al-Tirmidhi 2685",
+        "Sunan Abi Dawud 5193"
+      ],
+      "thematic_category": "Foi & fraternité",
+      "keywords": [
+        "salam",
+        "paix",
+        "hubb"
+      ],
+      "created_at": "2026-10-11 23:28:43.090160",
+      "updated_at": "2026-10-11 23:28:43.090161",
+      "notes": null
+    },
+    "h_umirtu": {
+      "id": "h_umirtu",
+      "matn": "أُمِرْتُ أَنْ أُقَاتِلَ النَّاسَ حَتَّى يَشْهَدُوا أَنْ لَا إِلَهَ إِلَّا اللَّهُ، وَأَنَّ مُحَمَّدًا رَسُولُ اللَّهِ، وَيُقِيمُوا الصَّلَاةَ، وَيُؤْتُوا الزَّكَاةَ، فَإِذَا فَعَلُوا ذَلِكَ عَصَمُوا مِنِّي دِمَاءَهُمْ وَأَمْوَالَهُمْ إِلَّا بِحَقِّ الْإِسْلَامِ، وَحِسَابُهُمْ عَلَى اللَّهِ",
+      "matn_translation_fr": "J'ai reçu l'ordre de combattre les gens jusqu'à ce qu'ils attestent qu'il n'y a de divinité qu'Allah et que Muhammad est Son Messager, accomplissent la prière et s'acquittent de la zakat. Lorsqu'ils font cela, ils préservent de moi leurs vies et leurs biens, sauf en raison d'un droit de l'Islam, et leur compte revient à Allah.",
+      "title_fr": "Le témoignage de foi (Umirtu an uqatil)",
+      "title_ar": "أمرت أن أقاتل الناس حتى يشهدوا",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par de nombreux Compagnons",
+      "rank": 53,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abdullah ibn Umar → Al-Bukhari",
+          "isnad_chain_id": "h_umirtu_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Muslim",
+          "isnad_chain_id": "h_umirtu_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Anas → Al-Nasa'i",
+          "isnad_chain_id": "h_umirtu_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 25",
+        "Sahih Muslim 21",
+        "Sunan al-Nasa'i 3974"
+      ],
+      "thematic_category": "Dogme (Tawhid)",
+      "keywords": [
+        "tawhid",
+        "shahada",
+        "islam"
+      ],
+      "created_at": "2026-10-11 23:28:43.090186",
+      "updated_at": "2026-10-11 23:28:43.090187",
+      "notes": null
+    },
+    "h_dayf": {
+      "id": "h_dayf",
+      "matn": "مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيُكْرِمْ ضَيْفَهُ",
+      "matn_translation_fr": "Que celui qui croit en Allah et au Jour dernier honore son hôte.",
+      "title_fr": "Honorer son hôte (Ikram al-Dayf)",
+      "title_ar": "من كان يؤمن بالله واليوم الآخر فليكرم ضيفه",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par Abu Shuraih, Abu Hurayra et d'autres",
+      "rank": 54,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abu Shuraih → Al-Bukhari",
+          "isnad_chain_id": "h_dayf_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Shuraih → Muslim",
+          "isnad_chain_id": "h_dayf_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Hurayra → Ahmad",
+          "isnad_chain_id": "h_dayf_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 6018",
+        "Sahih Muslim 47",
+        "Musnad Ahmad 4/31"
+      ],
+      "thematic_category": "Hospitalité",
+      "keywords": [
+        "dayf",
+        "hote",
+        "ikram"
+      ],
+      "created_at": "2026-10-11 23:28:43.090214",
+      "updated_at": "2026-10-11 23:28:43.090216",
+      "notes": null
+    },
+    "h_khayr_samt": {
+      "id": "h_khayr_samt",
+      "matn": "مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ",
+      "matn_translation_fr": "Que celui qui croit en Allah et au Jour dernier dise du bien ou se taise.",
+      "title_fr": "Dire du bien ou se taire (Khayran aw liyasmut)",
+      "title_ar": "فليقل خيرا أو ليصمت",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — une des règles de la parole",
+      "rank": 55,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abu Hurayra → Al-Bukhari",
+          "isnad_chain_id": "h_khayr_samt_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Muslim",
+          "isnad_chain_id": "h_khayr_samt_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Shuraih → Ahmad",
+          "isnad_chain_id": "h_khayr_samt_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 6136",
+        "Sahih Muslim 47",
+        "Musnad Ahmad 4/31"
+      ],
+      "thematic_category": "Éthique de la parole",
+      "keywords": [
+        "samt",
+        "parole",
+        "silence"
+      ],
+      "created_at": "2026-10-11 23:28:43.090244",
+      "updated_at": "2026-10-11 23:28:43.090244",
+      "notes": null
+    },
+    "h_siyam_2": {
+      "id": "h_siyam_2",
+      "matn": "الصِّيَامُ جُنَّةٌ",
+      "matn_translation_fr": "Le jeûne est une protection (pour le croyant).",
+      "title_fr": "Le jeûne est une protection (Al-Siyam Junna)",
+      "title_ar": "الصيام جنة",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — rapporté par Abu Hurayra et Abu Qatada",
+      "rank": 56,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abu Hurayra → Al-Bukhari",
+          "isnad_chain_id": "h_siyam_2_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Muslim",
+          "isnad_chain_id": "h_siyam_2_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Anas → Al-Tirmidhi",
+          "isnad_chain_id": "h_siyam_2_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 1894",
+        "Sahih Muslim 1151",
+        "Sunan al-Tirmidhi 764"
+      ],
+      "thematic_category": "Jeûne",
+      "keywords": [
+        "siyam",
+        "jeune",
+        "junna"
+      ],
+      "created_at": "2026-10-11 23:28:43.090270",
+      "updated_at": "2026-10-11 23:28:43.090271",
+      "notes": null
+    },
+    "h_ayn": {
+      "id": "h_ayn",
+      "matn": "الْعَيْنُ حَقٌّ",
+      "matn_translation_fr": "Le mauvais œil est réel.",
+      "title_fr": "Le mauvais œil existe (Al-'Ayn Haqq)",
+      "title_ar": "العين حق",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — rapporté par de nombreux Compagnons",
+      "rank": 57,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Ibn Abbas → Al-Bukhari",
+          "isnad_chain_id": "h_ayn_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Muslim",
+          "isnad_chain_id": "h_ayn_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Jabir → Al-Tirmidhi",
+          "isnad_chain_id": "h_ayn_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 5740",
+        "Sahih Muslim 2187",
+        "Sunan al-Tirmidhi 2060"
+      ],
+      "thematic_category": "Croyances & remèdes",
+      "keywords": [
+        "ayn",
+        "mauvais oeil",
+        "destination"
+      ],
+      "created_at": "2026-10-11 23:28:43.090295",
+      "updated_at": "2026-10-11 23:28:43.090296",
+      "notes": null
+    },
+    "h_kafala": {
+      "id": "h_kafala",
+      "matn": "مَنْ كَانَ فِي حَاجَةِ أَخِيهِ كَانَ اللَّهُ فِي حَاجَتِهِ",
+      "matn_translation_fr": "Celui qui aide son frère dans son besoin, Allah l'aide dans le sien.",
+      "title_fr": "Le besoin du frère (Hajat al-Akh)",
+      "title_ar": "من كان في حاجة أخيه",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — interdépendance et entraide",
+      "rank": 58,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abdullah ibn Umar → Al-Bukhari",
+          "isnad_chain_id": "h_kafala_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Muslim",
+          "isnad_chain_id": "h_kafala_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Jabir → Al-Tirmidhi",
+          "isnad_chain_id": "h_kafala_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 2442",
+        "Sahih Muslim 2580",
+        "Sunan al-Tirmidhi 1930"
+      ],
+      "thematic_category": "Solidarité",
+      "keywords": [
+        "hajat",
+        "entraide",
+        "akh"
+      ],
+      "created_at": "2026-10-11 23:28:43.090320",
+      "updated_at": "2026-10-11 23:28:43.090321",
+      "notes": null
+    },
+    "h_akh_muslim": {
+      "id": "h_akh_muslim",
+      "matn": "الْمُسْلِمُ أَخُو الْمُسْلِمِ لَا يَظْلِمُهُ وَلَا يَخْذُلُهُ وَلَا يَحْقِرُهُ",
+      "matn_translation_fr": "Le musulman est le frère du musulman : il ne l'opprime pas, ne l'abandonne pas et ne le méprise pas.",
+      "title_fr": "Fraternité musulmane (Al-Akh al-Muslim)",
+      "title_ar": "المسلم أخو المسلم",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — droits du frère musulman",
+      "rank": 59,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abdullah ibn Umar → Al-Bukhari",
+          "isnad_chain_id": "h_akh_muslim_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Muslim",
+          "isnad_chain_id": "h_akh_muslim_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abdullah ibn Amr → Abu Dawud",
+          "isnad_chain_id": "h_akh_muslim_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 2442",
+        "Sahih Muslim 2564",
+        "Sunan Abi Dawud 4880"
+      ],
+      "thematic_category": "Solidarité",
+      "keywords": [
+        "fraternite",
+        "droit du musulman",
+        "zulm"
+      ],
+      "created_at": "2026-10-11 23:28:43.090344",
+      "updated_at": "2026-10-11 23:28:43.090345",
+      "notes": null
+    },
+    "h_darar": {
+      "id": "h_darar",
+      "matn": "لَا ضَرَرَ وَلَا ضِرَارَ",
+      "matn_translation_fr": "Nul préjudice, et nul dommage réciproque.",
+      "title_fr": "Nul préjudice, nul dommage (La Darar wa la Dirar)",
+      "title_ar": "لا ضرر ولا ضرار",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — règle juridique universelle",
+      "rank": 60,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abu Sa'id → Ibn Majah",
+          "isnad_chain_id": "h_darar_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Sa'id → Malik",
+          "isnad_chain_id": "h_darar_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Lubaba → Ahmad",
+          "isnad_chain_id": "h_darar_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sunan Ibn Majah 2341",
+        "Al-Muwatta' (Malik)",
+        "Musnad Ahmad"
+      ],
+      "thematic_category": "Jurisprudence (Fiqh)",
+      "keywords": [
+        "darar",
+        "dommage",
+        "fiqh"
+      ],
+      "created_at": "2026-10-11 23:28:43.090370",
+      "updated_at": "2026-10-11 23:28:43.090371",
+      "notes": null
+    },
+    "h_ihsan": {
+      "id": "h_ihsan",
+      "matn": "إِنَّ اللَّهَ كَتَبَ الْإِحْسَانَ عَلَى كُلِّ شَيْءٍ، فَإِذَا قَتَلْتُمْ فَأَحْسِنُوا الْقِتْلَةَ، وَإِذَا ذَبَحْتُمْ فَأَحْسِنُوا الذِّبْحَةَ، وَلْيُحِدَّ أَحَدُكُمْ شَفْرَتَهُ وَلْيُرِحْ ذَبِيحَتَهُ",
+      "matn_translation_fr": "Allah a prescrit l'excellence en toute chose : si vous tuez, tuez avec excellence ; si vous égorgez, égorgez avec excellence, que l'un de vous aiguise sa lame et épargne à sa bête la souffrance.",
+      "title_fr": "L'excellence en toute chose (Al-Ihsan)",
+      "title_ar": "إن الله كتب الإحسان على كل شيء",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — rapporté par Shaddad ibn Aws et d'autres",
+      "rank": 61,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Shaddad → Muslim",
+          "isnad_chain_id": "h_ihsan_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Shaddad → Abu Dawud",
+          "isnad_chain_id": "h_ihsan_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Hurayra → Al-Tirmidhi",
+          "isnad_chain_id": "h_ihsan_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih Muslim 1955",
+        "Sunan Abi Dawud 2815",
+        "Sunan al-Tirmidhi 1409"
+      ],
+      "thematic_category": "Miséricorde envers les créatures",
+      "keywords": [
+        "ihsan",
+        "excellence",
+        "dhabiha"
+      ],
+      "created_at": "2026-10-11 23:28:43.090396",
+      "updated_at": "2026-10-11 23:28:43.090397",
+      "notes": null
+    },
+    "h_rahimun": {
+      "id": "h_rahimun",
+      "matn": "الرَّاحِمُونَ يَرْحَمُهُمُ الرَّحْمَنُ، ارْحَمُوا أَهْلَ الْأَرْضِ يَرْحَمْكُمْ أَهْلُ السَّمَاءِ",
+      "matn_translation_fr": "Ceux qui font miséricorde recevront la miséricorde du Tout-Miséricordieux. Faites miséricorde à ceux qui sont sur terre, et Celui qui est au Ciel aura miséricorde de vous.",
+      "title_fr": "Ceux qui font miséricorde (Al-Rahimun)",
+      "title_ar": "الراحمون يرحمهم الرحمن",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — extrême importance de la miséricorde",
+      "rank": 62,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abdullah ibn Amr → Al-Tirmidhi",
+          "isnad_chain_id": "h_rahimun_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Abu Dawud",
+          "isnad_chain_id": "h_rahimun_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abdullah ibn Umar → Al-Hakim",
+          "isnad_chain_id": "h_rahimun_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sunan al-Tirmidhi 1924",
+        "Sunan Abi Dawud 4941",
+        "Mustadrak al-Hakim 7351"
+      ],
+      "thematic_category": "Miséricorde",
+      "keywords": [
+        "rahma",
+        "miséricorde",
+        "ahl al-ard"
+      ],
+      "created_at": "2026-10-11 23:28:43.090425",
+      "updated_at": "2026-10-11 23:28:43.090426",
+      "notes": null
+    },
+    "h_siwak": {
+      "id": "h_siwak",
+      "matn": "السِّوَاكُ مَطْهَرَةٌ لِلْفَمِ مَرْضَاةٌ لِلرَّبِّ",
+      "matn_translation_fr": "Le siwak purifie la bouche et est une cause d'agrément du Seigneur.",
+      "title_fr": "Le siwak (Al-Siwak)",
+      "title_ar": "السواك مطهرة للفم مرضاة للرب",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — rapporté par Aisha et Abu Hurayra",
+      "rank": 63,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Aisha → Al-Nasa'i",
+          "isnad_chain_id": "h_siwak_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Aisha → Ibn Majah",
+          "isnad_chain_id": "h_siwak_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Hurayra → Ibn Khuzayma",
+          "isnad_chain_id": "h_siwak_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sunan al-Nasa'i 5",
+        "Sahih Ibn Khuzayma 141",
+        "Sunan Ibn Majah 287"
+      ],
+      "thematic_category": "Purification",
+      "keywords": [
+        "siwak",
+        "hygiene",
+        "tahara"
+      ],
+      "created_at": "2026-10-11 23:28:43.090449",
+      "updated_at": "2026-10-11 23:28:43.090450",
+      "notes": null
+    },
+    "h_qarn": {
+      "id": "h_qarn",
+      "matn": "خَيْرُ أُمَّتِي قَرْنِي، ثُمَّ الَّذِينَ يَلُونَهُمْ، ثُمَّ الَّذِينَ يَلُونَهُمْ",
+      "matn_translation_fr": "La meilleure génération de ma communauté est la mienne, puis celle qui la suit, puis celle qui suit celle-ci.",
+      "title_fr": "La meilleure génération (Khayr Ummati Qarni)",
+      "title_ar": "خير أمتي قرني",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par de nombreux Compagnons",
+      "rank": 64,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abdullah ibn Umar → Al-Bukhari",
+          "isnad_chain_id": "h_qarn_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Imran → Muslim",
+          "isnad_chain_id": "h_qarn_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Anas → Al-Tirmidhi",
+          "isnad_chain_id": "h_qarn_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 2650",
+        "Sahih Muslim 2533",
+        "Sunan al-Tirmidhi 3858"
+      ],
+      "thematic_category": "Éloge des premières générations",
+      "keywords": [
+        "qarn",
+        "generation",
+        "salaf"
+      ],
+      "created_at": "2026-10-11 23:28:43.090475",
+      "updated_at": "2026-10-11 23:28:43.090476",
+      "notes": null
+    },
+    "h_salatu_kama": {
+      "id": "h_salatu_kama",
+      "matn": "صَلُّوا كَمَا رَأَيْتُمُونِي أُصَلِّي",
+      "matn_translation_fr": "Priez comme vous m'avez vu prier.",
+      "title_fr": "La prière du Prophète (Sallu kama ra'aytumuni)",
+      "title_ar": "صلوا كما رأيتموني أصلي",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — source de la description de la prière",
+      "rank": 65,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Malik ibn al-Huwayrith → Al-Bukhari",
+          "isnad_chain_id": "h_salatu_kama_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Malik ibn al-Huwayrith → Abu Dawud",
+          "isnad_chain_id": "h_salatu_kama_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Malik ibn al-Huwayrith → Al-Tirmidhi",
+          "isnad_chain_id": "h_salatu_kama_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari",
+        "Sunan Abi Dawud 403",
+        "Sunan al-Tirmidhi 205"
+      ],
+      "thematic_category": "Prière",
+      "keywords": [
+        "salat",
+        "priere",
+        "imitation du Prophete"
+      ],
+      "created_at": "2026-10-11 23:28:43.093449",
+      "updated_at": "2026-10-11 23:28:43.093452",
+      "notes": null
+    },
+    "h_mawt_jahil": {
+      "id": "h_mawt_jahil",
+      "matn": "مَنْ مَاتَ وَلَيْسَ فِي عُنُقِهِ بَيْعَةٌ مَاتَ مِيتَةً جَاهِلِيَّةً",
+      "matn_translation_fr": "Quiconque meurt sans avoir fait acte d'allégeance meurt de la mort de l'ignorance.",
+      "title_fr": "L'allégeance (Bay'a)",
+      "title_ar": "من مات وليس في عنقه بيعة",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par Abdullah ibn Umar et Mu'awiya",
+      "rank": 66,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abdullah ibn Umar → Muslim",
+          "isnad_chain_id": "h_mawt_jahil_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Mu'awiya → Abu Dawud",
+          "isnad_chain_id": "h_mawt_jahil_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abdullah ibn Amr → Ahmad",
+          "isnad_chain_id": "h_mawt_jahil_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih Muslim 1851",
+        "Sunan Abi Dawud 4756",
+        "Musnad Ahmad"
+      ],
+      "thematic_category": "Politique & communauté",
+      "keywords": [
+        "bay'a",
+        "allegeance",
+        "jama'a"
+      ],
+      "created_at": "2026-10-11 23:28:43.093491",
+      "updated_at": "2026-10-11 23:28:43.093492",
+      "notes": null
+    },
+    "h_bayna": {
+      "id": "h_bayna",
+      "matn": "بَيْنَ الرَّجُلِ وَبَيْنَ الشِّرْكِ وَالْكُفْرِ تَرْكُ الصَّلَاةِ",
+      "matn_translation_fr": "Entre l'homme et le polythéisme et la mécréance, il y a l'abandon de la prière.",
+      "title_fr": "L'abandon de la prière (Tark al-Salat)",
+      "title_ar": "بين الرجل وبين الشرك والكفر ترك الصلاة",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — rapporté par plusieurs Compagnons",
+      "rank": 67,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Jabir → Muslim",
+          "isnad_chain_id": "h_bayna_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Anas → Ibn Majah",
+          "isnad_chain_id": "h_bayna_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abdullah ibn Amr → Ahmad",
+          "isnad_chain_id": "h_bayna_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih Muslim 82",
+        "Sunan Ibn Majah 1078",
+        "Musnad Ahmad"
+      ],
+      "thematic_category": "Prière",
+      "keywords": [
+        "salat",
+        "kufr",
+        "shirk"
+      ],
+      "created_at": "2026-10-11 23:28:43.093519",
+      "updated_at": "2026-10-11 23:28:43.093519",
+      "notes": null
+    },
+    "h_rihal": {
+      "id": "h_rihal",
+      "matn": "لَا تُشَدُّ الرِّحَالُ إِلَّا إِلَى ثَلَاثَةِ مَسَاجِدَ: الْمَسْجِدِ الْحَرَامِ، وَمَسْجِدِ الرَّسُولِ، وَالْمَسْجِدِ الْأَقْصَى",
+      "matn_translation_fr": "On ne se déplace avec motivation que vers trois mosquées : la Mosquée sacrée, la mosquée du Messager et la mosquée al-Aqsa.",
+      "title_fr": "Les trois mosquées (La tushadd al-Rihal)",
+      "title_ar": "لا تشد الرحال إلا إلى ثلاثة مساجد",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — rapporté par plusieurs Compagnons",
+      "rank": 68,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abu Sa'id → Al-Bukhari",
+          "isnad_chain_id": "h_rihal_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Muslim",
+          "isnad_chain_id": "h_rihal_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Jabir → Abu Dawud",
+          "isnad_chain_id": "h_rihal_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 1189",
+        "Sahih Muslim 1397",
+        "Sunan Abi Dawud 2028"
+      ],
+      "thematic_category": "Lieux saints",
+      "keywords": [
+        "masjids",
+        "rihal",
+        "voyage"
+      ],
+      "created_at": "2026-10-11 23:28:43.093548",
+      "updated_at": "2026-10-11 23:28:43.093549",
+      "notes": null
+    },
+    "h_ilm_tariq": {
+      "id": "h_ilm_tariq",
+      "matn": "مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا سَهَّلَ اللَّهُ لَهُ بِهِ طَرِيقًا إِلَى الْجَنَّةِ",
+      "matn_translation_fr": "Quiconque emprunte un chemin en quête de science, Allah lui facilite par cela un chemin vers le Paradis.",
+      "title_fr": "La quête de la science (Salak tariqan)",
+      "title_ar": "من سلك طريقا يلتمس فيه علما",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — mérites de la quête du savoir",
+      "rank": 69,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abu Hurayra → Muslim",
+          "isnad_chain_id": "h_ilm_tariq_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Anas → Al-Tirmidhi",
+          "isnad_chain_id": "h_ilm_tariq_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Ayyub → Abu Dawud",
+          "isnad_chain_id": "h_ilm_tariq_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih Muslim 2699",
+        "Sunan Abi Dawud 3641",
+        "Sunan al-Tirmidhi 2646"
+      ],
+      "thematic_category": "Science",
+      "keywords": [
+        "ilm",
+        "science",
+        "janna"
+      ],
+      "created_at": "2026-10-11 23:28:43.093575",
+      "updated_at": "2026-10-11 23:28:43.093576",
+      "notes": null
+    },
+    "h_dhikr_jama": {
+      "id": "h_dhikr_jama",
+      "matn": "وَمَا اجْتَمَعَ قَوْمٌ فِي بَيْتٍ مِنْ بُيُوتِ اللَّهِ يَتْلُونَ كِتَابَ اللَّهِ وَيَتَدَارَسُونَهُ بَيْنَهُمْ إِلَّا نَزَلَتْ عَلَيْهِمُ السَّكِينَةُ، وَغَشِيَتْهُمُ الرَّحْمَةُ، وَحَفَّتْهُمُ الْمَلَائِكَةُ، وَذَكَرَهُمُ اللَّهُ فِيمَنْ عِنْدَهُ",
+      "matn_translation_fr": "Aucune assemblée ne se réunit dans une maison d'Allah, récitant le Livre d'Allah et l'étudiant entre eux, sans que la sérénité ne descende sur eux, que la miséricorde ne les enveloppe, que les anges ne les entourent et qu'Allah ne les mentionne auprès de ceux qui sont auprès de Lui.",
+      "title_fr": "La sérénité des assembleurs du Coran (Al-Sakina)",
+      "title_ar": "ما اجتمع قوم في بيت من بيوت الله...",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — mérites des cercles de savoir",
+      "rank": 70,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abu Hurayra → Muslim",
+          "isnad_chain_id": "h_dhikr_jama_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Sa'id → Abu Dawud",
+          "isnad_chain_id": "h_dhikr_jama_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Hurayra → Al-Tirmidhi",
+          "isnad_chain_id": "h_dhikr_jama_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih Muslim 2699",
+        "Sunan Abi Dawud 1455",
+        "Sunan al-Tirmidhi 2945"
+      ],
+      "thematic_category": "Science & invocation",
+      "keywords": [
+        "dhikr",
+        "sakina",
+        "cercles de savoir"
+      ],
+      "created_at": "2026-10-11 23:28:43.093599",
+      "updated_at": "2026-10-11 23:28:43.093599",
+      "notes": null
+    },
+    "h_sabr": {
+      "id": "h_sabr",
+      "matn": "وَمَنْ يَصْبِرْ يُصْبِرْهُ اللَّهُ، وَمَا أُعْطِيَ أَحَدٌ عَطَاءً خَيْرًا وَأَوْسَعَ مِنَ الصَّبْرِ",
+      "matn_translation_fr": "Quiconque patiente, Allah lui accorde la patience ; et nul n'a reçu de don meilleur et plus vaste que la patience.",
+      "title_fr": "La patience (Al-Sabr)",
+      "title_ar": "الصبر",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — vertu cardinale rapportée par de nombreux Compagnons",
+      "rank": 71,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abu Hurayra → Al-Bukhari",
+          "isnad_chain_id": "h_sabr_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Sa'id → Muslim",
+          "isnad_chain_id": "h_sabr_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Anas → Al-Tirmidhi",
+          "isnad_chain_id": "h_sabr_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 1469",
+        "Sahih Muslim 1053",
+        "Sunan al-Tirmidhi 2024"
+      ],
+      "thematic_category": "Éthique & caractère",
+      "keywords": [
+        "sabr",
+        "patience",
+        "vertu"
+      ],
+      "created_at": "2026-10-11 23:28:43.093625",
+      "updated_at": "2026-10-11 23:28:43.093625",
+      "notes": null
+    },
+    "h_shukr": {
+      "id": "h_shukr",
+      "matn": "مَنْ لَا يَشْكُرُ النَّاسَ لَا يَشْكُرُ اللَّهَ",
+      "matn_translation_fr": "Celui qui ne remercie pas les gens ne remercie pas Allah.",
+      "title_fr": "La reconnaissance (Al-Shukr)",
+      "title_ar": "من لا يشكر الناس لا يشكر الله",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par plusieurs Compagnons",
+      "rank": 72,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abu Hurayra → Abu Dawud",
+          "isnad_chain_id": "h_shukr_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Al-Tirmidhi",
+          "isnad_chain_id": "h_shukr_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Anas → Ahmad",
+          "isnad_chain_id": "h_shukr_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sunan Abi Dawud 4811",
+        "Sunan al-Tirmidhi 1954",
+        "Musnad Ahmad 2/258"
+      ],
+      "thematic_category": "Éthique & caractère",
+      "keywords": [
+        "shukr",
+        "reconnaissance",
+        "gratitude"
+      ],
+      "created_at": "2026-10-11 23:28:43.093650",
+      "updated_at": "2026-10-11 23:28:43.093651",
+      "notes": null
+    },
+    "h_qanaa": {
+      "id": "h_qanaa",
+      "matn": "قَدْ أَفْلَحَ مَنْ أَسْلَمَ، وَرُزِقَ كَفَافًا، وَقَنَّعَهُ اللَّهُ بِمَا آتَاهُ",
+      "matn_translation_fr": "A réussi celui qui embrasse l'Islam, reçoit une subsistance suffisante et que Allah rend content de ce qu'Il lui a donné.",
+      "title_fr": "Le contentement (Al-Qana'a)",
+      "title_ar": "قد أفلح من أسلم ورزق كفافا",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par plusieurs Compagnons",
+      "rank": 73,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abdullah ibn Amr → Muslim",
+          "isnad_chain_id": "h_qanaa_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Al-Tirmidhi",
+          "isnad_chain_id": "h_qanaa_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Anas → Ibn Majah",
+          "isnad_chain_id": "h_qanaa_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih Muslim 1054",
+        "Sunan al-Tirmidhi 2348",
+        "Sunan Ibn Majah 4138"
+      ],
+      "thematic_category": "Éthique & caractère",
+      "keywords": [
+        "qanaa",
+        "contentement",
+        "kafaf"
+      ],
+      "created_at": "2026-10-11 23:28:43.093673",
+      "updated_at": "2026-10-11 23:28:43.093673",
+      "notes": null
+    },
+    "h_tawakkul": {
+      "id": "h_tawakkul",
+      "matn": "لَوْ أَنَّكُمْ تَوَكَّلْتُمْ عَلَى اللَّهِ حَقَّ تَوَكُّلِهِ لَرَزَقَكُمْ كَمَا يَرْزُقُ الطَّيْرَ، تَغْدُو خِمَاصًا وَتَرُوحُ بِطَانًا",
+      "matn_translation_fr": "Si vous placiez votre confiance en Allah comme il se doit, Il vous pourvoirait comme Il pourvoit aux oiseaux, qui partent le matin le ventre vide et reviennent le soir le ventre plein.",
+      "title_fr": "La confiance en Allah (Al-Tawakkul)",
+      "title_ar": "لو أنكم توكلتم على الله حق توكله",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par plusieurs Compagnons",
+      "rank": 74,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Omar → Al-Tirmidhi",
+          "isnad_chain_id": "h_tawakkul_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Ahmad",
+          "isnad_chain_id": "h_tawakkul_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Anas → Ibn Majah",
+          "isnad_chain_id": "h_tawakkul_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sunan al-Tirmidhi 2344",
+        "Sunan Ibn Majah 4164",
+        "Musnad Ahmad 1/30"
+      ],
+      "thematic_category": "Dogme (Tawhid)",
+      "keywords": [
+        "tawakkul",
+        "confiance",
+        "rizq"
+      ],
+      "created_at": "2026-10-11 23:28:43.093697",
+      "updated_at": "2026-10-11 23:28:43.093698",
+      "notes": null
+    },
+    "h_tawba": {
+      "id": "h_tawba",
+      "matn": "إِنَّ اللَّهَ يَبْسُطُ يَدَهُ بِاللَّيْلِ لِيَتُوبَ مُسِيءُ النَّهَارِ، وَيَبْسُطُ يَدَهُ بِالنَّهَارِ لِيَتُوبَ مُسِيءُ اللَّيْلِ",
+      "matn_translation_fr": "Allah étend Sa main la nuit afin que le fautif du jour se repente, et Il étend Sa main le jour afin que le fautif de la nuit se repente.",
+      "title_fr": "La porte de la repentance (Al-Tawba)",
+      "title_ar": "التوبة",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — large acceptation de la repentance",
+      "rank": 75,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abu Musa → Muslim",
+          "isnad_chain_id": "h_tawba_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Anas → Al-Tirmidhi",
+          "isnad_chain_id": "h_tawba_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Hurayra → Ahmad",
+          "isnad_chain_id": "h_tawba_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih Muslim 2759",
+        "Sunan al-Tirmidhi 3534",
+        "Musnad Ahmad 4/399"
+      ],
+      "thematic_category": "Repentance & pardon",
+      "keywords": [
+        "tawba",
+        "repentance",
+        "pardon"
+      ],
+      "created_at": "2026-10-11 23:28:43.093722",
+      "updated_at": "2026-10-11 23:28:43.093723",
+      "notes": null
+    },
+    "h_istighfar": {
+      "id": "h_istighfar",
+      "matn": "إِنِّي لَأَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ فِي الْيَوْمِ أَكْثَرَ مِنْ سَبْعِينَ مَرَّةً",
+      "matn_translation_fr": "Je demande pardon à Allah et reviens à Lui plus de soixante-dix fois par jour.",
+      "title_fr": "L'invocation de pardon (Al-Istighfar)",
+      "title_ar": "إني لأستغفر الله وأتوب إليه",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par plusieurs Compagnons avec des nombres variables",
+      "rank": 76,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abu Hurayra → Al-Bukhari",
+          "isnad_chain_id": "h_istighfar_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Anas → Muslim",
+          "isnad_chain_id": "h_istighfar_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abdullah ibn Umar → Al-Tirmidhi",
+          "isnad_chain_id": "h_istighfar_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 6307",
+        "Sahih Muslim 2702",
+        "Sunan al-Tirmidhi 3255"
+      ],
+      "thematic_category": "Repentance & pardon",
+      "keywords": [
+        "istighfar",
+        "pardon",
+        "dhikr"
+      ],
+      "created_at": "2026-10-11 23:28:43.093749",
+      "updated_at": "2026-10-11 23:28:43.093749",
+      "notes": null
+    },
+    "h_qalb": {
+      "id": "h_qalb",
+      "matn": "أَلَا وَإِنَّ فِي الْجَسَدِ مُضْغَةً، إِذَا صَلَحَتْ صَلَحَ الْجَسَدُ كُلُّهُ، وَإِذَا فَسَدَتْ فَسَدَ الْجَسَدُ كُلُّهُ، أَلَا وَهِيَ الْقَلْبُ",
+      "matn_translation_fr": "Il y a dans le corps un morceau de chair : s'il est sain, tout le corps est sain ; s'il est corrompu, tout le corps est corrompu. C'est le cœur.",
+      "title_fr": "Le cœur (Al-Qalb)",
+      "title_ar": "ألا وإن في الجسد مضغة",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par al-Nu'man ibn Bashir et d'autres",
+      "rank": 77,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Al-Nu'man ibn Bashir → Al-Bukhari",
+          "isnad_chain_id": "h_qalb_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Al-Nu'man ibn Bashir → Muslim",
+          "isnad_chain_id": "h_qalb_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Hurayra → Ibn Majah",
+          "isnad_chain_id": "h_qalb_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 52",
+        "Sahih Muslim 1599",
+        "Sunan Ibn Majah 3984"
+      ],
+      "thematic_category": "Éthique & caractère",
+      "keywords": [
+        "qalb",
+        "coeur",
+        "sincerite"
+      ],
+      "created_at": "2026-10-11 23:28:43.093774",
+      "updated_at": "2026-10-11 23:28:43.093774",
+      "notes": null
+    },
+    "h_lisan": {
+      "id": "h_lisan",
+      "matn": "مَنْ يَضْمَنْ لِي مَا بَيْنَ لَحْيَيْهِ وَمَا بَيْنَ رِجْلَيْهِ أَضْمَنْ لَهُ الْجَنَّةَ",
+      "matn_translation_fr": "Celui qui me garantit ce qui est entre ses deux mâchoires et ce qui est entre ses deux jambes, je lui garantis le Paradis.",
+      "title_fr": "La langue et la chasteté (Man yadman li)",
+      "title_ar": "من يضمن لي ما بين لحييه",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par Sahl ibn Sa'd et Abu Hurayra",
+      "rank": 78,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Sahl ibn Sa'd → Al-Bukhari",
+          "isnad_chain_id": "h_lisan_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Al-Tirmidhi",
+          "isnad_chain_id": "h_lisan_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Hurayra → Ibn Majah",
+          "isnad_chain_id": "h_lisan_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 6474",
+        "Sunan al-Tirmidhi 2408",
+        "Sunan Ibn Majah 3973"
+      ],
+      "thematic_category": "Éthique de la parole",
+      "keywords": [
+        "lisan",
+        "langue",
+        "chastete"
+      ],
+      "created_at": "2026-10-11 23:28:43.093803",
+      "updated_at": "2026-10-11 23:28:43.093804",
+      "notes": null
+    },
+    "h_ghiba": {
+      "id": "h_ghiba",
+      "matn": "أَتَدْرُونَ مَا الْغِيبَةُ؟ قَالُوا: اللَّهُ وَرَسُولُهُ أَعْلَمُ. قَالَ: ذِكْرُكَ أَخَاكَ بِمَا يَكْرَهُ",
+      "matn_translation_fr": "Savez-vous ce qu'est la médisance ? Ils dirent : Allah et Son Messager le savent mieux. Il dit : c'est que tu évoques ton frère par ce qui lui déplaît.",
+      "title_fr": "La médisance (Al-Ghiba)",
+      "title_ar": "الغيبة",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par Abu Hurayra et d'autres",
+      "rank": 79,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abu Hurayra → Muslim",
+          "isnad_chain_id": "h_ghiba_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Sa'id → Abu Dawud",
+          "isnad_chain_id": "h_ghiba_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Anas → Al-Tirmidhi",
+          "isnad_chain_id": "h_ghiba_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih Muslim 2589",
+        "Sunan Abi Dawud 4874",
+        "Sunan al-Tirmidhi 1934"
+      ],
+      "thematic_category": "Éthique de la parole",
+      "keywords": [
+        "ghiba",
+        "medisance",
+        "frere"
+      ],
+      "created_at": "2026-10-11 23:28:43.093829",
+      "updated_at": "2026-10-11 23:28:43.093830",
+      "notes": null
+    },
+    "h_hasad": {
+      "id": "h_hasad",
+      "matn": "لَا تَحَاسَدُوا، وَلَا تَنَاجَشُوا، وَلَا تَبَاغَضُوا، وَلَا تَدَابَرُوا، وَلَا يَبِعْ بَعْضُكُمْ عَلَى بَيْعِ بَعْضٍ، وَكُونُوا عِبَادَ اللَّهِ إِخْوَانًا",
+      "matn_translation_fr": "Ne vous enviez pas, ne vous dupez pas, ne vous haïssez pas, ne vous tournez pas le dos ; que l'un ne vende pas sur la vente de l'autre ; soyez frères, serviteurs d'Allah.",
+      "title_fr": "L'interdiction de l'envie (La Tahasadu)",
+      "title_ar": "لا تحاسدوا ولا تناجشوا",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par Abu Hurayra et Ibn Umar",
+      "rank": 80,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abu Hurayra → Muslim",
+          "isnad_chain_id": "h_hasad_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abdullah ibn Umar → Al-Bukhari",
+          "isnad_chain_id": "h_hasad_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Hurayra → Abu Dawud",
+          "isnad_chain_id": "h_hasad_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 6065",
+        "Sahih Muslim 2564",
+        "Sunan Abi Dawud 4884"
+      ],
+      "thematic_category": "Solidarité",
+      "keywords": [
+        "hasad",
+        "envie",
+        "fraternite"
+      ],
+      "created_at": "2026-10-11 23:28:43.093852",
+      "updated_at": "2026-10-11 23:28:43.093852",
+      "notes": null
+    },
+    "h_kibr": {
+      "id": "h_kibr",
+      "matn": "لَا يَدْخُلُ الْجَنَّةَ مَنْ كَانَ فِي قَلْبِهِ مِثْقَالُ ذَرَّةٍ مِنْ كِبْرٍ",
+      "matn_translation_fr": "N'entrera pas au Paradis celui qui a dans son cœur le poids d'un atome d'orgueil.",
+      "title_fr": "L'orgueil (Al-Kibr)",
+      "title_ar": "لا يدخل الجنة من كان في قلبه مثقال ذرة من كبر",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par plusieurs Compagnons",
+      "rank": 81,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abdullah ibn Mas'ud → Muslim",
+          "isnad_chain_id": "h_kibr_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Abu Dawud",
+          "isnad_chain_id": "h_kibr_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abdullah ibn Umar → Al-Tirmidhi",
+          "isnad_chain_id": "h_kibr_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih Muslim 91",
+        "Sunan Abi Dawud 4091",
+        "Sunan al-Tirmidhi 1999"
+      ],
+      "thematic_category": "Éthique & caractère",
+      "keywords": [
+        "kibr",
+        "orgueil",
+        "jannah"
+      ],
+      "created_at": "2026-10-11 23:28:43.093878",
+      "updated_at": "2026-10-11 23:28:43.093879",
+      "notes": null
+    },
+    "h_dhulm": {
+      "id": "h_dhulm",
+      "matn": "اتَّقُوا الظُّلْمَ، فَإِنَّ الظُّلْمَ ظُلُمَاتٌ يَوْمَ الْقِيَامَةِ",
+      "matn_translation_fr": "Craignez l'oppression, car l'oppression sera ténèbres le Jour de la Résurrection.",
+      "title_fr": "L'oppression (Al-Zulm)",
+      "title_ar": "اتقوا الظلم فإن الظلم ظلمات",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — rapporté par Jabir et d'autres",
+      "rank": 82,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Jabir → Muslim",
+          "isnad_chain_id": "h_dhulm_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Al-Tirmidhi",
+          "isnad_chain_id": "h_dhulm_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abdullah ibn Umar → Ahmad",
+          "isnad_chain_id": "h_dhulm_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih Muslim 2579",
+        "Sunan al-Tirmidhi 2035",
+        "Musnad Ahmad 3/323"
+      ],
+      "thematic_category": "Éthique & caractère",
+      "keywords": [
+        "dhulm",
+        "zulm",
+        "oppression"
+      ],
+      "created_at": "2026-10-11 23:28:43.093901",
+      "updated_at": "2026-10-11 23:28:43.093901",
+      "notes": null
+    },
+    "h_arba": {
+      "id": "h_arba",
+      "matn": "لَا تَزُولُ قَدَمَا عَبْدٍ يَوْمَ الْقِيَامَةِ حَتَّى يُسْأَلَ عَنْ أَرْبَعٍ: عَنْ عُمْرِهِ فِيمَ أَفْنَاهُ، وَعَنْ عِلْمِهِ فِيمَ فَعَلَ، وَعَنْ مَالِهِ مِنْ أَيْنَ اكْتَسَبَهُ وَفِيمَ أَنْفَقَهُ، وَعَنْ جِسْمِهِ فِيمَ أَبْلَاهُ",
+      "matn_translation_fr": "Les deux pieds d'un serviteur ne bougeront pas le Jour de la Résurrection avant qu'il ne soit interrogé sur quatre choses : sa vie, en quoi il l'a passée ; sa science, ce qu'il en a fait ; sa richesse, d'où il l'a acquise et où il l'a dépensée ; et son corps, comment il l'a usé.",
+      "title_fr": "Les quatre questions (La tazulu qadama)",
+      "title_ar": "لا تزول قدما عبد يوم القيامة حتى يسأل عن أربع",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — rapporté par plusieurs Compagnons",
+      "rank": 83,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Ibn Mas'ud → Al-Tirmidhi",
+          "isnad_chain_id": "h_arba_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Al-Darimi",
+          "isnad_chain_id": "h_arba_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Sa'id → Al-Bayhaqi",
+          "isnad_chain_id": "h_arba_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sunan al-Tirmidhi 2417",
+        "Sunan al-Darimi 537",
+        "Sunan al-Bayhaqi (Shu'ab)"
+      ],
+      "thematic_category": "Eschatologie",
+      "keywords": [
+        "hisab",
+        "compte",
+        "qiyamah"
+      ],
+      "created_at": "2026-10-11 23:28:43.093925",
+      "updated_at": "2026-10-11 23:28:43.093925",
+      "notes": null
+    },
+    "h_ruyat": {
+      "id": "h_ruyat",
+      "matn": "إِنَّكُمْ سَتَرَوْنَ رَبَّكُمْ عَزَّ وَجَلَّ يَوْمَ الْقِيَامَةِ كَمَا تَرَوْنَ الْقَمَرَ لَيْلَةَ الْبَدْرِ، لَا تُضَامُّونَ فِي رُؤْيَتِهِ",
+      "matn_translation_fr": "Vous verrez votre Seigneur le Jour de la Résurrection comme vous voyez la lune la nuit de la pleine lune, sans être lésés dans cette vision.",
+      "title_fr": "La vision d'Allah (Al-Ru'ya)",
+      "title_ar": "إنكم سترون ربكم",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par Jarir, Abu Hurayra et d'autres",
+      "rank": 84,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Jarir ibn Abdullah → Al-Bukhari",
+          "isnad_chain_id": "h_ruyat_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Muslim",
+          "isnad_chain_id": "h_ruyat_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Sa'id → Al-Tirmidhi",
+          "isnad_chain_id": "h_ruyat_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 7434",
+        "Sahih Muslim 633",
+        "Sunan al-Tirmidhi 2554"
+      ],
+      "thematic_category": "Dogme (Tawhid)",
+      "keywords": [
+        "ruya",
+        "vision",
+        "jannah"
+      ],
+      "created_at": "2026-10-11 23:28:43.093949",
+      "updated_at": "2026-10-11 23:28:43.093950",
+      "notes": null
+    },
+    "h_nuzul_isa": {
+      "id": "h_nuzul_isa",
+      "matn": "وَالَّذِي نَفْسِي بِيَدِهِ، لَيُوشِكَنَّ أَنْ يَنْزِلَ فِيكُمُ ابْنُ مَرْيَمَ حَكَمًا مُقْسِطًا، فَيَكْسِرُ الصَّلِيبَ، وَيَقْتُلُ الْخِنْزِيرَ، وَيَضَعُ الْجِزْيَةَ",
+      "matn_translation_fr": "Par Celui qui tient mon âme dans Sa main, le fils de Marie ne tardera pas à descendre parmi vous comme juge équitable : il brisera la croix, tuera le porc et abolira la capitation.",
+      "title_fr": "La descente de Jésus (Nuzul Isa)",
+      "title_ar": "نزول عيسى ابن مريم",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par Abu Hurayra et de nombreux Compagnons",
+      "rank": 85,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abu Hurayra → Al-Bukhari",
+          "isnad_chain_id": "h_nuzul_isa_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Muslim",
+          "isnad_chain_id": "h_nuzul_isa_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Anas → Abu Dawud",
+          "isnad_chain_id": "h_nuzul_isa_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 3448",
+        "Sahih Muslim 155",
+        "Sunan Abi Dawud 4324"
+      ],
+      "thematic_category": "Eschatologie",
+      "keywords": [
+        "isa",
+        "nuzul",
+        "eschatologie"
+      ],
+      "created_at": "2026-10-11 23:28:43.093975",
+      "updated_at": "2026-10-11 23:28:43.093975",
+      "notes": null
+    },
+    "h_mahdi": {
+      "id": "h_mahdi",
+      "matn": "لَا تَذْهَبُ الدُّنْيَا حَتَّى يَمْلِكُ الْعَرَبَ رَجُلٌ مِنْ أَهْلِ بَيْتِي، اسْمُهُ يُوَاطِئُ اسْمِي",
+      "matn_translation_fr": "Le monde ne s'achèvera pas avant qu'un homme de ma famille, dont le nom est identique au mien, ne règne sur les Arabes.",
+      "title_fr": "Le Mahdi",
+      "title_ar": "المهدي",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — rapporté par de nombreux Compagnons",
+      "rank": 86,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abdullah ibn Umar → Abu Dawud",
+          "isnad_chain_id": "h_mahdi_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Sa'id → Al-Tirmidhi",
+          "isnad_chain_id": "h_mahdi_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Ali → Ahmad",
+          "isnad_chain_id": "h_mahdi_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sunan Abi Dawud 4282",
+        "Sunan al-Tirmidhi 2230",
+        "Musnad Ahmad 1/84"
+      ],
+      "thematic_category": "Eschatologie",
+      "keywords": [
+        "mahdi",
+        "ahl al-bayt",
+        "eschatologie"
+      ],
+      "created_at": "2026-10-11 23:28:43.094001",
+      "updated_at": "2026-10-11 23:28:43.094002",
+      "notes": null
+    },
+    "h_fitna": {
+      "id": "h_fitna",
+      "matn": "بَادِرُوا بِالْأَعْمَالِ فِتَنًا كَقِطَعِ اللَّيْلِ الْمُظْلِمِ، يُصْبِحُ الرَّجُلُ مُؤْمِنًا وَيُمْسِي كَافِرًا، وَيُمْسِي مُؤْمِنًا وَيُصْبِحُ كَافِرًا",
+      "matn_translation_fr": "Hâtez-vous d'accomplir les bonnes œuvres avant des épreuves comme les fragments d'une nuit obscure : l'homme devient croyant au matin et mécréant au soir, croyant au soir et mécréant au matin.",
+      "title_fr": "Se hâter avant les épreuves (Badiru bi al-A'mal)",
+      "title_ar": "بادروا بالأعمال فتنا",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par Abu Hurayra et d'autres",
+      "rank": 87,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abu Hurayra → Muslim",
+          "isnad_chain_id": "h_fitna_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Sa'id → Abu Dawud",
+          "isnad_chain_id": "h_fitna_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Anas → Al-Tirmidhi",
+          "isnad_chain_id": "h_fitna_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih Muslim 118",
+        "Sunan Abi Dawud 4258",
+        "Sunan al-Tirmidhi 2196"
+      ],
+      "thematic_category": "Épreuves & fin des temps",
+      "keywords": [
+        "fitna",
+        "epreuves",
+        "fin des temps"
+      ],
+      "created_at": "2026-10-11 23:28:43.094027",
+      "updated_at": "2026-10-11 23:28:43.094028",
+      "notes": null
+    },
+    "h_ilm_din": {
+      "id": "h_ilm_din",
+      "matn": "مَنْ يُرِدِ اللَّهُ بِهِ خَيْرًا يُفَقِّهْهُ فِي الدِّينِ",
+      "matn_translation_fr": "À qui Allah veut du bien, Il accorde la compréhension profonde de la religion.",
+      "title_fr": "La compréhension de la religion (Yufaqqihhu fi al-Din)",
+      "title_ar": "من يرد الله به خيرا يفقهه في الدين",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par Mu'awiya et Abu Hurayra",
+      "rank": 88,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Mu'awiya → Al-Bukhari",
+          "isnad_chain_id": "h_ilm_din_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Muslim",
+          "isnad_chain_id": "h_ilm_din_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Hurayra → Al-Tirmidhi",
+          "isnad_chain_id": "h_ilm_din_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 71",
+        "Sahih Muslim 1037",
+        "Sunan al-Tirmidhi 2645"
+      ],
+      "thematic_category": "Science",
+      "keywords": [
+        "fiqh",
+        "science",
+        "religion"
+      ],
+      "created_at": "2026-10-11 23:28:43.094050",
+      "updated_at": "2026-10-11 23:28:43.094051",
+      "notes": null
+    },
+    "h_quran_khayr": {
+      "id": "h_quran_khayr",
+      "matn": "خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ",
+      "matn_translation_fr": "Le meilleur d'entre vous est celui qui apprend le Coran et l'enseigne.",
+      "title_fr": "Le meilleur apprenti du Coran (Khayrukum man ta'allama)",
+      "title_ar": "خيركم من تعلم القرآن وعلمه",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par Uthman et Abu Hurayra",
+      "rank": 89,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Uthman → Al-Bukhari",
+          "isnad_chain_id": "h_quran_khayr_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Uthman → Abu Dawud",
+          "isnad_chain_id": "h_quran_khayr_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Hurayra → Al-Tirmidhi",
+          "isnad_chain_id": "h_quran_khayr_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 5027",
+        "Sunan Abi Dawud 1452",
+        "Sunan al-Tirmidhi 2907"
+      ],
+      "thematic_category": "Coran",
+      "keywords": [
+        "quran",
+        "apprentissage",
+        "enseignement"
+      ],
+      "created_at": "2026-10-11 23:28:43.094075",
+      "updated_at": "2026-10-11 23:28:43.094076",
+      "notes": null
+    },
+    "h_hubb_allah": {
+      "id": "h_hubb_allah",
+      "matn": "ثَلَاثٌ مَنْ كُنَّ فِيهِ وَجَدَ بِهِنَّ حَلَاوَةَ الْإِيمَانِ: أَنْ يَكُونَ اللَّهُ وَرَسُولُهُ أَحَبَّ إِلَيْهِ مِمَّا سِوَاهُمَا، وَأَنْ يُحِبَّ الْمَرْءَ لَا يُحِبُّهُ إِلَّا لِلَّهِ، وَأَنْ يَكْرَهَ أَنْ يَعُودَ فِي الْكُفْرِ كَمَا يَكْرَهُ أَنْ يُقْذَفَ فِي النَّارِ",
+      "matn_translation_fr": "Trois qualités : celui qui les possède goûte par elles la douceur de la foi — qu'Allah et Son Messager lui soient plus chers que tout autre, qu'il n'aime une personne que pour Allah, et qu'il répugne à retourner à la mécréance comme il répugne à être jeté dans le feu.",
+      "title_fr": "La douceur de la foi (Halawat al-Iman)",
+      "title_ar": "ثلاث من كن فيه وجد حلاوة الإيمان",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par Anas et Abu Hurayra",
+      "rank": 90,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Anas → Al-Bukhari",
+          "isnad_chain_id": "h_hubb_allah_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Anas → Muslim",
+          "isnad_chain_id": "h_hubb_allah_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Hurayra → Al-Tirmidhi",
+          "isnad_chain_id": "h_hubb_allah_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 16",
+        "Sahih Muslim 43",
+        "Sunan al-Tirmidhi 2624"
+      ],
+      "thematic_category": "Dogme (Tawhid)",
+      "keywords": [
+        "iman",
+        "hubb",
+        "foi"
+      ],
+      "created_at": "2026-10-11 23:28:43.094097",
+      "updated_at": "2026-10-11 23:28:43.094098",
+      "notes": null
+    },
+    "h_tahajjud": {
+      "id": "h_tahajjud",
+      "matn": "أَفْضَلُ الصَّلَاةِ بَعْدَ الْفَرِيضَةِ صَلَاةُ اللَّيْلِ",
+      "matn_translation_fr": "La meilleure prière après la prière prescrite est la prière de la nuit.",
+      "title_fr": "La prière de la nuit (Salat al-Layl)",
+      "title_ar": "أفضل الصلاة بعد الفريضة صلاة الليل",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — rapporté par Abu Hurayra et d'autres",
+      "rank": 91,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abu Hurayra → Muslim",
+          "isnad_chain_id": "h_tahajjud_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Anas → Al-Tirmidhi",
+          "isnad_chain_id": "h_tahajjud_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Hurayra → Abu Dawud",
+          "isnad_chain_id": "h_tahajjud_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih Muslim 1163",
+        "Sunan al-Tirmidhi 438",
+        "Sunan Abi Dawud 1430"
+      ],
+      "thematic_category": "Prière",
+      "keywords": [
+        "tahajjud",
+        "nuit",
+        "priere"
+      ],
+      "created_at": "2026-10-11 23:28:43.094122",
+      "updated_at": "2026-10-11 23:28:43.094122",
+      "notes": null
+    },
+    "h_dhikr": {
+      "id": "h_dhikr",
+      "matn": "سَبَقَ الْمُفَرِّدُونَ، الذَّاكِرُونَ اللَّهَ كَثِيرًا وَالذَّاكِرَاتُ",
+      "matn_translation_fr": "Les solitaires ont pris les devants : ceux qui évoquent Allah abondamment, hommes et femmes.",
+      "title_fr": "L'évocation d'Allah (Al-Dhikr)",
+      "title_ar": "سبق المفردون",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — rapporté par Abu Hurayra et Abu Sa'id",
+      "rank": 92,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abu Hurayra → Muslim",
+          "isnad_chain_id": "h_dhikr_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Sa'id → Al-Tirmidhi",
+          "isnad_chain_id": "h_dhikr_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Anas → Ahmad",
+          "isnad_chain_id": "h_dhikr_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih Muslim 2676",
+        "Sunan al-Tirmidhi 3376",
+        "Musnad Ahmad 3/75"
+      ],
+      "thematic_category": "Invocation & dhikr",
+      "keywords": [
+        "dhikr",
+        "evocation",
+        "mufarridun"
+      ],
+      "created_at": "2026-10-11 23:28:43.094147",
+      "updated_at": "2026-10-11 23:28:43.094147",
+      "notes": null
+    },
+    "h_dua": {
+      "id": "h_dua",
+      "matn": "إِنَّ الدُّعَاءَ هُوَ الْعِبَادَةُ",
+      "matn_translation_fr": "L'invocation, c'est l'adoration même.",
+      "title_fr": "L'invocation est adoration (Al-Du'a huwa al-'Ibada)",
+      "title_ar": "إن الدعاء هو العبادة",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — rapporté par al-Nu'man ibn Bashir et Abu Hurayra",
+      "rank": 93,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Al-Nu'man ibn Bashir → Al-Tirmidhi",
+          "isnad_chain_id": "h_dua_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Abu Dawud",
+          "isnad_chain_id": "h_dua_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Hurayra → Ibn Majah",
+          "isnad_chain_id": "h_dua_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sunan al-Tirmidhi 3247",
+        "Sunan Abi Dawud 1479",
+        "Sunan Ibn Majah 3828"
+      ],
+      "thematic_category": "Invocation & dhikr",
+      "keywords": [
+        "dua",
+        "invocation",
+        "ibada"
+      ],
+      "created_at": "2026-10-11 23:28:43.094169",
+      "updated_at": "2026-10-11 23:28:43.094170",
+      "notes": null
+    },
+    "h_sidq": {
+      "id": "h_sidq",
+      "matn": "عَلَيْكُمْ بِالصِّدْقِ، فَإِنَّ الصِّدْقَ يَهْدِي إِلَى الْبِرِّ، وَإِنَّ الْبِرَّ يَهْدِي إِلَى الْجَنَّةِ",
+      "matn_translation_fr": "Tenez-vous à la véracité, car la véracité conduit à la piété, et la piété conduit au Paradis.",
+      "title_fr": "La véracité (Al-Sidq)",
+      "title_ar": "عليكم بالصدق",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — rapporté par Ibn Mas'ud, Ibn Umar et Abu Hurayra",
+      "rank": 94,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abdullah ibn Mas'ud → Muslim",
+          "isnad_chain_id": "h_sidq_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abdullah ibn Umar → Al-Bukhari",
+          "isnad_chain_id": "h_sidq_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Hurayra → Al-Tirmidhi",
+          "isnad_chain_id": "h_sidq_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih Muslim 2607",
+        "Sahih al-Bukhari 6094",
+        "Sunan al-Tirmidhi 1971"
+      ],
+      "thematic_category": "Éthique & caractère",
+      "keywords": [
+        "sidq",
+        "verite",
+        "birr"
+      ],
+      "created_at": "2026-10-11 23:28:43.094195",
+      "updated_at": "2026-10-11 23:28:43.094196",
+      "notes": null
+    },
+    "h_amanah": {
+      "id": "h_amanah",
+      "matn": "أَدِّ الْأَمَانَةَ إِلَى مَنِ ائْتَمَنَكَ، وَلَا تَخُنْ مَنْ خَانَكَ",
+      "matn_translation_fr": "Rends le dépôt à celui qui t'a fait confiance, et ne trahis pas celui qui t'a trahi.",
+      "title_fr": "Le dépôt (Al-Amana)",
+      "title_ar": "أد الأمانة إلى من ائتمنك",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — rapporté par Abu Hurayra et Anas",
+      "rank": 95,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abu Hurayra → Abu Dawud",
+          "isnad_chain_id": "h_amanah_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Al-Tirmidhi",
+          "isnad_chain_id": "h_amanah_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Anas → Ahmad",
+          "isnad_chain_id": "h_amanah_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sunan Abi Dawud 3535",
+        "Sunan al-Tirmidhi 1264",
+        "Musnad Ahmad 3/206"
+      ],
+      "thematic_category": "Éthique & caractère",
+      "keywords": [
+        "amanah",
+        "depot",
+        "confiance"
+      ],
+      "created_at": "2026-10-11 23:28:43.094220",
+      "updated_at": "2026-10-11 23:28:43.094220",
+      "notes": null
+    },
+    "h_jari": {
+      "id": "h_jari",
+      "matn": "مَا زَالَ جِبْرِيلُ يُوصِينِي بِالْجَارِ حَتَّى ظَنَنْتُ أَنَّهُ سَيُوَرِّثُهُ",
+      "matn_translation_fr": "Gabriel n'a cessé de me recommander le voisin, au point que j'ai cru qu'il allait lui donner droit d'héritage.",
+      "title_fr": "Le droit du voisin (Al-Jar)",
+      "title_ar": "ما زال جبريل يوصيني بالجار",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par Aisha, Ibn Umar et Abu Hurayra",
+      "rank": 96,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Aisha → Al-Bukhari",
+          "isnad_chain_id": "h_jari_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abdullah ibn Umar → Muslim",
+          "isnad_chain_id": "h_jari_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abu Hurayra → Al-Tirmidhi",
+          "isnad_chain_id": "h_jari_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sahih al-Bukhari 6014",
+        "Sahih Muslim 2624",
+        "Sunan al-Tirmidhi 1943"
+      ],
+      "thematic_category": "Solidarité",
+      "keywords": [
+        "jar",
+        "voisin",
+        "voisinage"
+      ],
+      "created_at": "2026-10-11 23:28:43.094242",
+      "updated_at": "2026-10-11 23:28:43.094243",
+      "notes": null
+    },
+    "h_walidayn": {
+      "id": "h_walidayn",
+      "matn": "رِضَا الرَّبِّ مِنْ رِضَا الْوَالِدِ، وَسَخَطُ الرَّبِّ مِنْ سَخَطِ الْوَالِدِ",
+      "matn_translation_fr": "La satisfaction du Seigneur découle de la satisfaction du père, et Sa colère de la colère du père.",
+      "title_fr": "La piété filiale (Birr al-Walidayn)",
+      "title_ar": "رضا الرب من رضا الوالد",
+      "tawatur_type": "ma'nawi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Ma'nawi — rapporté par plusieurs Compagnons",
+      "rank": 97,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Abdullah ibn Amr → Al-Tirmidhi",
+          "isnad_chain_id": "h_walidayn_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Ibn Majah",
+          "isnad_chain_id": "h_walidayn_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abdullah ibn Umar → Al-Hakim",
+          "isnad_chain_id": "h_walidayn_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sunan al-Tirmidhi 1899",
+        "Sunan Ibn Majah 3662",
+        "Mustadrak al-Hakim 4/151"
+      ],
+      "thematic_category": "Famille",
+      "keywords": [
+        "walidayn",
+        "parents",
+        "birr"
+      ],
+      "created_at": "2026-10-11 23:28:43.094266",
+      "updated_at": "2026-10-11 23:28:43.094267",
+      "notes": null
+    },
+    "h_husn_khatim": {
+      "id": "h_husn_khatim",
+      "matn": "مَنْ كَانَ آخِرُ كَلَامِهِ لَا إِلَهَ إِلَّا اللَّهُ دَخَلَ الْجَنَّةَ",
+      "matn_translation_fr": "Celui dont la dernière parole est « il n'y a de divinité qu'Allah » entrera au Paradis.",
+      "title_fr": "La bonne fin (Husn al-Khatima)",
+      "title_ar": "من كان آخر كلامه لا إله إلا الله",
+      "tawatur_type": "lafzi",
+      "obedience": "commun",
+      "degree_fr": "Mutawatir Lafzi — rapporté par plusieurs Compagnons",
+      "rank": 98,
+      "turuq": [
+        {
+          "id": "t1",
+          "label": "Mu'adh ibn Jabal → Abu Dawud",
+          "isnad_chain_id": "h_husn_khatim_c1",
+          "description": null
+        },
+        {
+          "id": "t2",
+          "label": "Abu Hurayra → Ahmad",
+          "isnad_chain_id": "h_husn_khatim_c2",
+          "description": null
+        },
+        {
+          "id": "t3",
+          "label": "Abdullah ibn Umar → Al-Hakim",
+          "isnad_chain_id": "h_husn_khatim_c3",
+          "description": null
+        }
+      ],
+      "validation_sources": [
+        "Sunan Abi Dawud 3116",
+        "Musnad Ahmad 5/233",
+        "Mustadrak al-Hakim 1/502"
+      ],
+      "thematic_category": "Eschatologie",
+      "keywords": [
+        "khatima",
+        "tawhid",
+        "jannah"
+      ],
+      "created_at": "2026-10-11 23:28:43.094294",
+      "updated_at": "2026-10-11 23:28:43.094295",
       "notes": null
     }
   }

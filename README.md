@@ -14,13 +14,14 @@ tawatur-hadith/
 │   ├── models/        # Modèles Pydantic/SQL
 │   └── utils/         # Utilitaires backend
 ├── database/
-│   ├── schema.sql     # Schéma de base de données (à venir)
-│   └── seed_data.py   # Données d'exemple (hadiths mutawatir)
+│   ├── data/          # Registres (rawis_data) et catalogue (hadiths_data)
+│   ├── seed_data.py   # Assembleur des données (hadiths + narrateurs)
+│   └── save_seed.py   # Export vers data/seed_hadiths.json
 ├── frontend/
-│   ├── app.py         # Interface Streamlit (à venir)
+│   ├── app.py         # Interface Streamlit (thèmes Clair / Sépia / Sombre)
 │   └── components/    # Composants UI
 ├── data/
-│   ├── seed_hadiths.json      # Données d'exemple au format JSON
+│   ├── seed_hadiths.json      # Données au format JSON
 │   └── example_isnad_tree.json # Exemple d'arbre d'Isnad
 └── README.md
 ```
@@ -46,32 +47,35 @@ tawatur-hadith/
    - Nombre de chemins de transmission (path_count)
    - Sources documentaires
 
-## Données d'exemple
+## Données
 
-Le projet inclut 3 hadiths mutawatir majeurs incontestés :
+Le catalogue regroupe **98 hadiths mutawatir** (rangs 1–98) répartis en
+plusieurs vagues :
 
-1. **Hadith 001** - *Innamā al-a'mālu bin-niyyāt* (Actions sont jugées par les intentions)
-   - Type : Mutawatir Ma'nawi
-   - Obédience : Commun (Sunnite + Chiite)
-   - Source : Al-Bukhari, Muslim
+- `database/data/hadiths_data.py` : catalogue principal (rangs 1-50) ;
+- `database/data/hadiths_data_mw1.py` / `hadiths_data_mw2.py` : vagues
+  d'extension (rangs 51-70 et 71-98) ;
+- `database/data/rawis_data.py` + `rawis_data_extra.py` : registre des
+  narrateurs (Rijal), 105 profils (Sahaba, Tabi'un, Imams, compilateurs).
 
-2. **Hadith 002** - *Hadith al-Thaqalayn* (Les deux choses lourdes)
-   - Type : Mutawatir Lafzi
-   - Obédience : Commun
-   - Source : Al-Kafi, Sunan al-Tirmidhi, Musnad Ahmad
-
-3. **Hadith 003** - *Hadith al-Ghadir* (Jour de Ghadir Khumm)
-   - Type : Mutawatir Lafzi
-   - Obédience : Commun
-   - Source : Musnad Ahmad, al-Tirmidhi, al-Hakim
+Chaque hadith porte ses voies (Turuq) avec une chaîne d'Isnad complète
+(Compagnon → Tabi'i/Imam → compilateur). Le catalogue couvre les traditions
+sunnite et chiite (obédiences « commun », « sunnite », « chiite »).
 
 ## Utilisation
 
-### Générer les données d'exemple
+### Générer/valider les données
 
 ```bash
 cd C:\Users\decen\tawatur-hadith
-python database/seed_data.py
+python -m database.seed_data        # résumé de l'intégrité
+python database/save_seed.py        # export data/seed_hadiths.json
+```
+
+### Lancer l'interface
+
+```bash
+streamlit run frontend/app.py
 ```
 
 ### Tester l'affichage des arbres d'Isnad

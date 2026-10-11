@@ -7,9 +7,12 @@ Les données brutes sont séparées (package ``database.data``) pour rester
 maintenables et extensibles :
 
 - ``rawis_data.RAWIS``    : registre des narrateurs (Rijal) ;
+- ``rawis_data_extra.RAWIS_EXTRA`` : narrateurs additionnels (fusionnés) ;
 - ``hadiths_data.HADITHS``: catalogue des hadiths mutawatir, chacun portant
   ses voies (Turuq) avec la chaîne COMPLÈTE inline (Compagnon → Tabi'i/Imam
-  → compilateur).
+  → compilateur) ;
+- ``hadiths_data_mw1.HADITHS_MW1`` / ``hadiths_data_mw2.HADITHS_MW2`` :
+  vagues d'extension du catalogue.
 
 L'assembleur :
 1. construit les modèles Pydantic (Rawiy, IsnadChain, Hadith) ;
@@ -17,7 +20,7 @@ L'assembleur :
 3. valide l'intégrité référentielle (narrateurs et turuq non vides) ;
 4. trie les hadiths par ``rank`` (1 = plus haut degré d'authenticité).
 
-Performance : l'ensemble (~40 hadiths, ~150 chaînes) se construit en quelques
+Performance : l'ensemble (~98 hadiths, ~390 chaînes) se construit en quelques
 dizaines de millisecondes et est mis en cache côté application Streamlit.
 """
 
@@ -31,7 +34,13 @@ from backend.models.hadith_models import (
     Rawiy,
 )
 from database.data.hadiths_data import HADITHS
+from database.data.hadiths_data_mw1 import HADITHS_MW1
+from database.data.hadiths_data_mw2 import HADITHS_MW2
 from database.data.rawis_data import RAWIS
+from database.data.rawis_data_extra import RAWIS_EXTRA
+
+ALL_HADITHS = HADITHS + HADITHS_MW1 + HADITHS_MW2
+ALL_RAWIS = {**RAWIS, **RAWIS_EXTRA}
 
 
 class SeedDataError(ValueError):
@@ -39,7 +48,7 @@ class SeedDataError(ValueError):
 
 
 def _build_rawis() -> Dict[str, Rawiy]:
-    return {key: Rawiy(**value) for key, value in RAWIS.items()}
+    return {key: Rawiy(**value) for key, value in ALL_RAWIS.items()}
 
 
 def _build_hadith(rawis: Dict[str, Rawiy], spec: Dict, chains: Dict[str, IsnadChain]) -> Hadith:
@@ -96,7 +105,7 @@ def create_seed_data() -> Dict:
     chains: Dict[str, IsnadChain] = {}
     hadiths: Dict[str, Hadith] = {}
 
-    specs = sorted(HADITHS, key=lambda s: (s.get("rank", 1_000_000), s["id"]))
+    specs = sorted(ALL_HADITHS, key=lambda s: (s.get("rank", 1_000_000), s["id"]))
     seen = set()
     for spec in specs:
         if spec["id"] in seen:

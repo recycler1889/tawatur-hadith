@@ -14,11 +14,11 @@ import sys
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
+import streamlit.components.v1 as components
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from backend.graph.isnad_utils import (
-    build_isnad_tree,
     build_turuq_network,
     format_isnad_text,
     obedience_fr,
@@ -149,11 +149,33 @@ div[data-baseweb="input"], div[data-baseweb="base-input"],
 }
 [data-baseweb="select"] [data-baseweb="tag"] span { color: var(--ui-tag-text) !important; }
 [data-baseweb="select"] svg { fill: var(--ui-text) !important; }
-div[data-baseweb="popover"], ul[data-baseweb="menu"], div[role="listbox"] {
-  background-color: var(--ui-surface) !important; border: 1px solid var(--ui-border) !important;
+/* ===== Menus déroulants (selectbox / multiselect) : fond feutré, texte lisible ===== */
+div[data-baseweb="popover"],
+div[data-baseweb="popover"] > div,
+div[data-baseweb="popover"] div[role="listbox"],
+ul[data-baseweb="menu"] {
+  background-color: var(--ui-menu-bg) !important;
+  border: 1px solid var(--ui-menu-border) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.30) !important;
+  color: var(--ui-menu-text) !important;
 }
-div[role="option"], ul[data-baseweb="menu"] li { color: var(--ui-text) !important; }
-div[role="option"]:hover, li[role="option"][aria-selected="true"] { background-color: var(--ui-surface-2) !important; }
+div[data-baseweb="popover"] svg { fill: var(--ui-menu-text) !important; }
+ul[data-baseweb="menu"] li,
+li[role="option"],
+div[role="option"] {
+  background-color: var(--ui-menu-bg) !important;
+  color: var(--ui-menu-text) !important;
+}
+ul[data-baseweb="menu"] li:hover,
+li[role="option"]:hover,
+li[role="option"][aria-selected="true"],
+div[role="option"]:hover,
+div[role="option"][aria-selected="true"] {
+  background-color: var(--ui-menu-hover) !important;
+  color: var(--ui-menu-text) !important;
+}
+li[role="option"][data-highlighted="true"] { background-color: var(--ui-menu-hover) !important; }
 
 /* Labels & textes */
 [data-testid="stWidgetLabel"] p, [data-testid="stWidgetLabel"] label { color: var(--ui-text) !important; }
@@ -231,6 +253,7 @@ body, .stApp { background: radial-gradient(ellipse at top, #0b1a17 0%, #050d0b 1
   --ui-tag-bg:rgba(16,185,129,0.16); --ui-tag-text:#a7f3d0;
   --ui-btn-bg:linear-gradient(180deg,#1f9d63,#0f7a4d); --ui-btn-bg-strong:linear-gradient(180deg,#18a06b,#0f7d54);
   --ui-btn-text:#ffffff;
+  --ui-menu-bg:#0a1c17; --ui-menu-text:#e6f4ec; --ui-menu-hover:#143a2c; --ui-menu-border:rgba(52,211,153,0.30);
 }
 h1, h2, h3, h4 { color: #eafaf1; letter-spacing: -0.02em; }
 
@@ -310,6 +333,7 @@ body, .stApp { background: linear-gradient(180deg, #f6fbf8 0%, #eaf4ee 100%); co
   --ui-tag-bg:#e9f6ee; --ui-tag-text:#0f7a4d;
   --ui-btn-bg:linear-gradient(180deg,#1f9d63,#178052); --ui-btn-bg-strong:linear-gradient(180deg,#12b76a,#0e8a52);
   --ui-btn-text:#ffffff;
+  --ui-menu-bg:#e8f1ec; --ui-menu-text:#12261c; --ui-menu-hover:#d7e9df; --ui-menu-border:#c9e0d4;
 }
 h1, h2, h3, h4 { color: #0f2419; letter-spacing: -0.01em; }
 
@@ -388,6 +412,7 @@ body, .stApp { background: radial-gradient(ellipse at top, #f8f3e3 0%, #efe6d0 1
   --ui-tag-bg:rgba(249,240,214,0.9); --ui-tag-text:#6d5226;
   --ui-btn-bg:linear-gradient(180deg,#e2c184,#cba269); --ui-btn-bg-strong:linear-gradient(180deg,#d8b876,#b98a44);
   --ui-btn-text:#33271a;
+  --ui-menu-bg:#f1ead6; --ui-menu-text:#33291a; --ui-menu-hover:#e6dcc2; --ui-menu-border:rgba(139,115,85,0.45);
 }
 h1, h2, h3, h4 { color: #3a2f1e; font-family: 'Lora', serif; letter-spacing: -0.01em; }
 
@@ -658,6 +683,20 @@ def build_legend_html(plot, color_mode, highlight_madar):
 # ---------------------------------------------------------------------------
 # 3. En-tête + sélecteur de thème (boutons à icônes)
 # ---------------------------------------------------------------------------
+# Défilement fluide vers la section de lecture/détails au clic sur « Consulter ».
+SCROLL_TO_DETAIL_JS = """
+<script>
+(function () {
+  function go() {
+    var el = window.parent.document.getElementById('detail-section');
+    if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  }
+  setTimeout(go, 120);
+  setTimeout(go, 450);
+})();
+</script>
+"""
+
 THEME_ICONS = [("Sombre", "🌙"), ("Clair", "☀️"), ("Sépia", "📜")]
 if st.session_state.get("theme") not in ("Sombre", "Clair", "Sépia"):
     st.session_state.theme = "Sombre"
@@ -757,6 +796,7 @@ else:
             )
             if st.button("Consulter", key=f"sel_{h.id}", width="stretch"):
                 st.session_state.sel_id = h.id
+                st.session_state.scroll_detail = True
 
 
 # ---------------------------------------------------------------------------
@@ -766,6 +806,9 @@ sel_id = st.session_state.get("sel_id")
 sel = next((h for h in hadiths if h.id == sel_id), None)
 
 if sel:
+    st.markdown('<div id="detail-section"></div>', unsafe_allow_html=True)
+    if st.session_state.pop("scroll_detail", False):
+        components.html(SCROLL_TO_DETAIL_JS, height=0, width=0)
     st.markdown("---")
     try:
         st.header(sel.title_fr)

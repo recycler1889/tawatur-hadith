@@ -1,27 +1,53 @@
 {
-  "nodes": [
-    {
-      "id": "rawi_004",
-      "label": "Imam Ali ibn Abi Talib",
-      "level": 5,
-      "reliability": "thiqa",
-      "kunya": "Abu al-Hasan",
-      "tabaqa": "Sahaba"
-    },
-    {
-      "id": "rawi_003",
-      "label": "Muslim",
-      "level": 0,
-      "reliability": "thiqa",
-      "kunya": "Abu al-Husayn",
-      "tabaqa": "Compiler"
-    }
-  ],
-  "edges": [
-    {
-      "source": "rawi_004",
-      "target": "rawi_003",
-      "type": "transmission"
-    }
-  ]
+  "hadith": "Hadith al-Ghadir (Ghadir Khumm)",
+  "network_stats": {
+    "n_chains": 11,
+    "total_paths": 620,
+    "n_nodes": 16,
+    "n_edges": 14,
+    "n_madar": 1
+  },
+  "example_chain": {
+    "nodes": [
+      {
+        "id": "ali",
+        "label": "Ali ibn Abi Talib",
+        "level": 4,
+        "reliability": "thiqa",
+        "reliability_fr": "Fiable (Thiqa)",
+        "kunya": "Abu al-Hasan",
+        "tabaqa": "Sahaba"
+      },
+      {
+        "id": "ibn_abbas",
+        "label": "Abdullah ibn Abbas",
+        "level": 3,
+        "reliability": "thiqa",
+        "reliability_fr": "Fiable (Thiqa)",
+        "kunya": "Abu al-Abbas",
+        "tabaqa": "Sahaba"
+      },
+      {
+        "id": "ahmad",
+        "label": "Ahmad ibn Hanbal",
+        "level": 0,
+        "reliability": "thiqa",
+        "reliability_fr": "Fiable (Thiqa)",
+        "kunya": "Abu Abdullah",
+        "tabaqa": "Imam"
+      }
+    ],
+    "edges": [
+      {
+        "source": "ali",
+        "target": "ibn_abbas",
+        "type": "transmission"
+      },
+      {
+        "source": "ibn_abbas",
+        "target": "ahmad",
+        "type": "transmission"
+      }
+    ]
+  }
 }
