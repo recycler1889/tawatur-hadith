@@ -1,0 +1,27 @@
+{
+  "nodes": [
+    {
+      "id": "rawi_004",
+      "label": "Imam Ali ibn Abi Talib",
+      "level": 5,
+      "reliability": "thiqa",
+      "kunya": "Abu al-Hasan",
+      "tabaqa": "Sahaba"
+    },
+    {
+      "id": "rawi_003",
+      "label": "Muslim",
+      "level": 0,
+      "reliability": "thiqa",
+      "kunya": "Abu al-Husayn",
+      "tabaqa": "Compiler"
+    }
+  ],
+  "edges": [
+    {
+      "source": "rawi_004",
+      "target": "rawi_003",
+      "type": "transmission"
+    }
+  ]
+}
