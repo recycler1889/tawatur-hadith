@@ -1,180 +1,121 @@
-import json
-import os
-from typing import Dict
+# -*- coding: utf-8 -*-
+"""Assemblage des données initiales du projet Tawatur Hadith.
+
+Point d'entrée unique : ``create_seed_data()``.
+
+Les données brutes sont séparées (package ``database.data``) pour rester
+maintenables et extensibles :
+
+- ``rawis_data.RAWIS``    : registre des narrateurs (Rijal) ;
+- ``hadiths_data.HADITHS``: catalogue des hadiths mutawatir, chacun portant
+  ses voies (Turuq) avec la chaîne COMPLÈTE inline (Compagnon → Tabi'i/Imam
+  → compilateur).
+
+L'assembleur :
+1. construit les modèles Pydantic (Rawiy, IsnadChain, Hadith) ;
+2. transforme chaque voie inline en ``IsnadChain`` référencée ;
+3. valide l'intégrité référentielle (narrateurs et turuq non vides) ;
+4. trie les hadiths par ``rank`` (1 = plus haut degré d'authenticité).
+
+Performance : l'ensemble (~40 hadiths, ~150 chaînes) se construit en quelques
+dizaines de millisecondes et est mis en cache côté application Streamlit.
+"""
+
+from typing import Dict, List
 
 from backend.models.hadith_models import (
     Hadith,
     IsnadChain,
     IsnadNode,
-    Obedience,
+    IsnadTuruq,
     Rawiy,
-    Reliability,
-    TawaturType
 )
+from database.data.hadiths_data import HADITHS
+from database.data.rawis_data import RAWIS
+
+
+class SeedDataError(ValueError):
+    """Erreur d'intégrité des données de départ."""
+
+
+def _build_rawis() -> Dict[str, Rawiy]:
+    return {key: Rawiy(**value) for key, value in RAWIS.items()}
+
+
+def _build_hadith(rawis: Dict[str, Rawiy], spec: Dict, chains: Dict[str, IsnadChain]) -> Hadith:
+    hid = spec["id"]
+    turuq: List[IsnadTuruq] = []
+
+    for index, voie in enumerate(spec.get("turuq", []), start=1):
+        cid = f"{hid}_c{index}"
+        nodes: List[IsnadNode] = []
+        for entry in voie["nodes"]:
+            rawi_id, level = entry
+            rawi = rawis.get(rawi_id)
+            if rawi is None:
+                raise SeedDataError(
+                    f"Hadith '{hid}', voie {index} : narrateur inconnu '{rawi_id}'."
+                )
+            nodes.append(IsnadNode(rawi_id=rawi_id, rawi_name=rawi.name, level=level))
+        if not nodes:
+            raise SeedDataError(f"Hadith '{hid}', voie {index} : chaîne vide.")
+
+        chains[cid] = IsnadChain(
+            id=cid,
+            nodes=nodes,
+            path_count=voie.get("path_count"),
+            sources=list(voie.get("sources", [])),
+        )
+        turuq.append(IsnadTuruq(
+            id=f"t{index}",
+            label=voie["label"],
+            isnad_chain_id=cid,
+            description=voie.get("description"),
+        ))
+
+    return Hadith(
+        id=hid,
+        matn=spec["matn"],
+        matn_translation_fr=spec.get("matn_translation_fr"),
+        title_fr=spec["title_fr"],
+        title_ar=spec.get("title_ar"),
+        tawatur_type=spec["tawatur_type"],
+        obedience=spec["obedience"],
+        degree_fr=spec["degree_fr"],
+        turuq=turuq,
+        validation_sources=list(spec.get("validation_sources", [])),
+        thematic_category=spec.get("thematic_category"),
+        keywords=list(spec.get("keywords", [])),
+        rank=spec.get("rank"),
+    )
 
 
 def create_seed_data() -> Dict:
-    """Create seed data with 2-3 major mutawatir hadiths."""
-    
-    rawis = {
-        # Common narrators for major hadiths
-        "rawi_001": Rawiy(
-            id="rawi_001",
-            name="Umar ibn al-Khattab",
-            kunya="Abu Hafs",
-            nisba="Al-Qurashi",
-            tabaqa="Sahaba",
-            reliability=Reliability.THIQA,
-            death_date=23
-        ),
-        "rawi_002": Rawiy(
-            id="rawi_002",
-            name="Al-Hafiz al-Bukhari",
-            kunya="Abu Abdullah",
-            nisba="Al-Bukhari",
-            tabaqa="Compiler",
-            reliability=Reliability.THIQA,
-            birth_date=194,
-            death_date=256
-        ),
-        "rawi_003": Rawiy(
-            id="rawi_003",
-            name="Al-Hafiz Muslim",
-            kunya="Abu al-Husayn",
-            nisba="Al-Naysaburi",
-            tabaqa="Compiler",
-            reliability=Reliability.THIQA,
-            birth_date=204,
-            death_date=261
-        ),
-        "rawi_004": Rawiy(
-            id="rawi_004",
-            name="Imam Ali ibn Abi Talib",
-            kunya="Abu al-Hasan",
-            nisba="Al-Hayawi",
-            tabaqa="Sahaba",
-            reliability=Reliability.THIQA,
-            death_date=40
-        ),
-        "rawi_005": Rawiy(
-            id="rawi_005",
-            name="Al-Shaykh al-Kulayni",
-            kunya="Abu Ja'far",
-            nisba="Al-Kulayni",
-            tabaqa="Compiler",
-            reliability=Reliability.THIQA,
-            birth_date=864,
-            death_date=941
-        ),
-        "rawi_006": Rawiy(
-            id="rawi_006",
-            name="Muhammad ibn Ya'qub al-Kulayni",
-            kunya=None,
-            tabaqa="Shi'i Hadith Scholar",
-            reliability=Reliability.THIQA
-        )
-    }
-    
-    # 1. Hadith: Innamā al-a'mālu bin-niyyāt (Actions are by intentions)
-    isnad_1 = IsnadChain(
-        id="isnad_001",
-        nodes=[
-            IsnadNode(rawi_id="rawi_001", rawi_name="Umar ibn al-Khattab", level=5),
-            IsnadNode(rawi_id="rawi_002", rawi_name="Al-Bukhari", level=0),  # simplified chain
-        ],
-        path_count=40,  # widely transmitted
-        sources=["Sahih al-Bukhari", "Sahih Muslim"]
-    )
-    
-    hadith_1 = Hadith(
-        id="hadith_001",
-        title="Actions are Judged by Intentions",
-        matn="إنما الأعمال بالنيات، وإنما لكل امرئ ما نوى",
-        matn_translation="Verily, actions are only by intentions, and every person will only have that which they intended.",
-        tawatur_type=TawaturType.MA_NAWI,
-        obedience=Obedience.COMMUN,
-        degree="Mutawatir Ma'nawi - Widely transmitted",
-        isnad_chain_id="isnad_001",
-        validation_sources=["Al-Bukhari (1)", "Muslim (1907)", "Ibn Hibban", "Al-Daraqutni"],
-        thematic_category="Aqida",
-        keywords=["intentions", "niyyah", "actions"]
-    )
-    
-    # 2. Hadith al-Thaqalayn (The Two Weighty Things)
-    isnad_2 = IsnadChain(
-        id="isnad_002",
-        nodes=[
-            IsnadNode(rawi_id="rawi_004", rawi_name="Imam Ali ibn Abi Talib", level=5),
-            IsnadNode(rawi_id="rawi_005", rawi_name="Al-Kulayni", level=0),
-        ],
-        path_count=30,
-        sources=["Al-Kafi", "Sunan al-Tirmidhi", "Musnad Ahmad"]
-    )
-    
-    hadith_2 = Hadith(
-        id="hadith_002",
-        title="Hadith al-Thaqalayn",
-        matn="إني تارك فيكم الثقلين: كتاب الله وعترتي، ما إن تمسكتم بهما لن تضلوا بعدي أبدا",
-        matn_translation="I am leaving among you two weighty things: the Book of Allah and my Ahl al-Bayt. If you hold fast to them, you will never go astray after me.",
-        tawatur_type=TawaturType.LAFZI,
-        obedience=Obedience.COMMUN,
-        degree="Mutawatir Lafzi",
-        isnad_chain_id="isnad_002",
-        alternative_chains=["isnad_003"],
-        validation_sources=["Sunan al-Tirmidhi", "Musnad Ahmad", "Al-Kafi"],
-        thematic_category="Imamah/Ahl al-Bayt",
-        keywords=["thaqalayn", "ahli bayt", "quran"]
-    )
-    
-    # 3. Hadith al-Ghadir (The Day of Ghadir Khumm)
-    isnad_3 = IsnadChain(
-        id="isnad_003",
-        nodes=[
-            IsnadNode(rawi_id="rawi_004", rawi_name="Imam Ali ibn Abi Talib", level=5),
-            IsnadNode(rawi_id="rawi_003", rawi_name="Muslim", level=0),
-        ],
-        path_count=110,  # very widely transmitted
-        sources=["Musnad Ahmad", "Sunan al-Tirmidhi", "Mustadrak al-Hakim"]
-    )
-    
-    hadith_3 = Hadith(
-        id="hadith_003",
-        title="Hadith al-Ghadir",
-        matn="من كنت مولاه فهذا علي مولاه، اللهم وال من والاه وعاد من عاداه",
-        matn_translation="Whomsoever I am his master, Ali is his master. O Allah, befriend whoever befriends him and be hostile to whoever is hostile to him.",
-        tawatur_type=TawaturType.LAFZI,
-        obedience=Obedience.COMMUN,
-        degree="Mutawatir Lafzi by majority",
-        isnad_chain_id="isnad_003",
-        validation_sources=["Musnad Ahmad", "Tirmidhi", "Nasai", "Ibn Majah", "Al-Hakim"],
-        thematic_category="Wilayah/Imamah",
-        keywords=["ghadir", "wilayah", "mawla"]
-    )
-    
+    """Retourne ``{rawis, isnad_chains, hadiths}`` prêt pour l'application."""
+    rawis = _build_rawis()
+    chains: Dict[str, IsnadChain] = {}
+    hadiths: Dict[str, Hadith] = {}
+
+    specs = sorted(HADITHS, key=lambda s: (s.get("rank", 1_000_000), s["id"]))
+    seen = set()
+    for spec in specs:
+        if spec["id"] in seen:
+            raise SeedDataError(f"Identifiant de hadith dupliqué : '{spec['id']}'.")
+        seen.add(spec["id"])
+        hadith = _build_hadith(rawis, spec, chains)
+        hadiths[hadith.id] = hadith
+
     return {
-        "rawis": {k: v.model_dump() for k, v in rawis.items()},
-        "isnad_chains": {
-            "isnad_001": isnad_1.model_dump(),
-            "isnad_002": isnad_2.model_dump(),
-            "isnad_003": isnad_3.model_dump()
-        },
-        "hadiths": {
-            "hadith_001": hadith_1.model_dump(),
-            "hadith_002": hadith_2.model_dump(),
-            "hadith_003": hadith_3.model_dump()
-        }
+        "rawis": {key: value.model_dump() for key, value in rawis.items()},
+        "isnad_chains": {key: value.model_dump() for key, value in chains.items()},
+        "hadiths": {key: value.model_dump() for key, value in hadiths.items()},
     }
-
-
-def save_seed_data(filepath: str):
-    """Save seed data to JSON file."""
-    data = create_seed_data()
-    os.makedirs(os.path.dirname(filepath), exist_ok=True)
-    with open(filepath, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=2, default=str)
-    print(f"Seed data saved to {filepath}")
 
 
 if __name__ == "__main__":
-    save_seed_data("C:\\Users\\decen\\tawatur-hadith\\data\\seed_hadiths.json")
-    print("Seed data generation complete.")
+    data = create_seed_data()
+    print(
+        f"OK — {len(data['hadiths'])} hadiths, "
+        f"{len(data['isnad_chains'])} chaînes, "
+        f"{len(data['rawis'])} narrateurs."
+    )
