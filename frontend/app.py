@@ -501,62 +501,53 @@ html, body, section.main, [data-testid="stAppViewContainer"],
   box-shadow: 0 0 0 3px var(--ui-tag-bg, rgba(120,120,120,0.10)) !important;
 }
 
-/* ===== Champs de saisie & filtres : habillage unifié, SANS cadres blancs =====
-   Le champ de recherche (stTextInput) et TOUS les menus déroulants partagent
-   EXACTEMENT le même habillage : fond harmonisé au thème via --ui-field-bg
-   (jamais de blanc/clair agressif), bordure d'un fin trait sobre
-   --ui-field-border, coins arrondis 8px. On neutralise tout fond ou cadre
-   parasite du conteneur Streamlit et des couches internes de BaseWeb. */
+/* ===== Champs de saisie & filtres : habillage unifié, SANS bordure blanche =====
+   Ciblage GLOBAL de tous les sélecteurs : barre de recherche, obédiences, types
+   de tawatur, catégories thématiques et classification des rapporteurs.
+   Un seul fin trait sobre les habille : fond sombre assorti au thème
+   (--ui-field-bg), bordure 1px --ui-field-border, coins 4px. Toute couche
+   interne de BaseWeb (div imbriqués / base-input) est forcée transparente et
+   sans bordure, et l'effet de focus blanc par défaut de Streamlit est annulé. */
 div[data-baseweb="input"],
+div[data-baseweb="select"],
 [data-testid="stMultiSelect"] [data-baseweb="select"],
 [data-testid="stSelectbox"] [data-baseweb="select"] {
-  background-color: var(--ui-field-bg, var(--ui-surface)) !important;
-  border: 1px solid var(--ui-field-border, var(--ui-border)) !important;
-  border-radius: 8px !important;
+  background-color: var(--ui-field-bg, #0b1f1a) !important;
+  border: 1px solid var(--ui-field-border, rgba(0,255,128,0.25)) !important;
+  border-radius: 4px !important;
   box-shadow: none !important;
   color: var(--ui-text) !important;
-  transition: border-color .15s ease, box-shadow .15s ease;
+  transition: border-color .15s ease;
 }
-/* Survol / focus : discret, dans l'esprit du champ de recherche. */
+/* Survol / focus : un vert un peu plus franc, jamais de blanc, aucun anneau. */
 div[data-baseweb="input"]:hover,
-[data-testid="stMultiSelect"] [data-baseweb="select"]:hover,
-[data-testid="stSelectbox"] [data-baseweb="select"]:hover {
-  border-color: color-mix(in srgb, var(--ui-accent) 55%, var(--ui-field-border, var(--ui-border))) !important;
-}
 div[data-baseweb="input"]:focus-within,
-[data-testid="stMultiSelect"] [data-baseweb="select"]:focus-within,
-[data-testid="stSelectbox"] [data-baseweb="select"]:focus-within {
-  border-color: var(--ui-accent) !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--ui-accent) 22%, transparent) !important;
-}
-/* Contrôle interne : transparent, sans bordure (sinon double trait). */
-[data-testid="stMultiSelect"] [data-baseweb="select"] > div,
-[data-testid="stSelectbox"] [data-baseweb="select"] > div {
-  background-color: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
+div[data-baseweb="select"]:hover,
+div[data-baseweb="select"]:focus-within {
+  border-color: color-mix(in srgb, var(--ui-accent) 62%, var(--ui-field-border, rgba(0,255,128,0.25))) !important;
   box-shadow: none !important;
 }
-/* Conteneurs de widgets : aucun fond blanc/clair ni cadre rigide (on ne
-   touche pas au RootElement du champ texte, qui porte la bordure visible). */
+/* Éradication FORCÉE des bordures/fonds blancs sur TOUTES les couches internes
+   des sélecteurs et du champ texte (div imbriqués, base-input, inputs). */
+div[data-baseweb="select"] > div,
+div[data-testid="stMultiSelect"] div[data-baseweb="select"] > div,
+div[data-testid="stSelectbox"] div[data-baseweb="select"] > div,
+div[data-baseweb="input"] > div,
+div[data-baseweb="base-input"],
+div[data-testid="stMultiSelect"] div[data-baseweb="select"] > div > div:not([data-baseweb="tag"]),
+div[data-testid="stSelectbox"] div[data-baseweb="select"] > div > div:not([data-baseweb="tag"]),
+div[data-testid="stMultiSelect"] div[data-baseweb="select"] input,
+div[data-testid="stSelectbox"] div[data-baseweb="select"] input {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+/* Conteneurs de widgets : aucun fond blanc/clair ni cadre rigide. */
 [data-testid="stMultiSelect"],
 [data-testid="stSelectbox"],
 [data-testid="stMultiSelect"] > div,
 [data-testid="stSelectbox"] > div {
   background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-/* Neutralisation des fonds parasites internes de BaseWeb (div imbriqués et
-   couche base-input) : on cible les conteneurs sans toucher aux « tags ». */
-[data-baseweb="base-input"],
-[data-testid="stMultiSelect"] [data-baseweb="select"] > div:not([data-baseweb="tag"]),
-[data-testid="stSelectbox"] [data-baseweb="select"] > div:not([data-baseweb="tag"]),
-[data-testid="stMultiSelect"] [data-baseweb="select"] > div > div:not([data-baseweb="tag"]),
-[data-testid="stSelectbox"] [data-baseweb="select"] > div > div:not([data-baseweb="tag"]),
-[data-testid="stMultiSelect"] [data-baseweb="select"] input,
-[data-testid="stSelectbox"] [data-baseweb="select"] input {
-  background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
@@ -605,7 +596,7 @@ body, .stApp { background: radial-gradient(ellipse at top, #0b1a17 0%, #050d0b 1
   --ui-btn-bg:linear-gradient(180deg,#1f9d63,#0f7a4d); --ui-btn-bg-strong:linear-gradient(180deg,#18a06b,#0f7d54);
   --ui-btn-text:#ffffff;
   --ui-menu-bg:#0a1c17; --ui-menu-text:#e6f4ec; --ui-menu-hover:#143a2c; --ui-menu-border:rgba(52,211,153,0.30);
-  --ui-field-bg:#0f251e; --ui-field-border:rgba(52,211,153,0.28);
+  --ui-field-bg:#0b1f1a; --ui-field-border:rgba(0,255,128,0.25);
 }
 h1, h2, h3, h4 { color: #eafaf1; letter-spacing: -0.02em; }
 
