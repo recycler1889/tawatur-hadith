@@ -259,13 +259,13 @@ hr { border-color: var(--ui-border) !important; }
 html, body, section.main, [data-testid="stAppViewContainer"],
 [data-testid="stMain"] { scroll-behavior: smooth; }
 .back-to-top {
-  position: fixed; right: 1.2rem; bottom: 1.2rem; z-index: 9999;
+  position: fixed; right: 30px; bottom: 40px; z-index: 99999;
   display: inline-flex; align-items: center; justify-content: center;
-  width: 2.7rem; height: 2.7rem; border-radius: 50%;
+  width: 3rem; height: 3rem; border-radius: 50%;
   background: var(--ui-btn-bg-strong); color: var(--ui-btn-text) !important;
   border: 1px solid var(--ui-border); text-decoration: none !important;
-  font-weight: 700; font-size: 1.1rem; line-height: 1;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.30);
+  font-weight: 700; font-size: 1.25rem; line-height: 1;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.38);
   opacity: 0; visibility: hidden; transform: translateY(10px) scale(0.92);
   transition: opacity .25s ease, transform .25s ease, visibility .25s ease,
               filter .15s ease;
@@ -296,28 +296,41 @@ html, body, section.main, [data-testid="stAppViewContainer"],
   border:1px solid rgba(160,120,20,0.5); box-shadow:0 1px 6px rgba(200,160,40,0.45);
 }
 
-/* ===== Cartes entièrement cliquables : bouton natif plein-cadre, 100% invisible =====
-   Le conteneur du bouton (st-key-sel_*) recouvre toute la carte. On rend le
-   CONTENEUR entièrement transparent (opacité 0) : aucun pavé blanc/gris parasite,
-   quelle que soit la structure interne du bouton. La surface reste cliquable car
-   l'opacité n'affecte pas le hit-testing. */
-[class*="st-key-card_"] { position: relative; cursor: pointer; }
-[class*="st-key-card_"] [class*="st-key-sel_"] {
+/* ===== Cartes entièrement cliquables — overlay natif 100% invisible =====
+   Robustesse maximale : l'overlay est ciblé par clé de composant
+   (st-key-card_ / st-key-sel_) ET par structure DOM (:has), sans dépendre
+   d'une version précise de Streamlit. Tout le conteneur du bouton est rendu
+   totalement transparent (opacité 0) : aucun pavé blanc parasite, quelle que
+   soit la structure interne. L'opacité n'affecte pas le hit-testing : la
+   surface de la carte reste entièrement cliquable. */
+[class*="st-key-card_"],
+[data-testid="stVerticalBlock"]:has(> [data-testid="stElementContainer"] .theme-card) {
+  position: relative;
+  cursor: pointer;
+}
+[class*="st-key-card_"] [class*="st-key-sel_"],
+[data-testid="stElementContainer"]:has(.theme-card) ~ [data-testid="stElementContainer"] {
   position: absolute !important;
   top: 0 !important; right: 0 !important; bottom: 0 !important; left: 0 !important;
   z-index: 5 !important; margin: 0 !important; padding: 0 !important;
   width: auto !important; height: auto !important;
   opacity: 0 !important;
+  pointer-events: auto !important;
 }
 [class*="st-key-card_"] [class*="st-key-sel_"] [data-testid="stButton"],
 [class*="st-key-card_"] [class*="st-key-sel_"] [data-testid="stButton"] > div,
 [class*="st-key-card_"] [class*="st-key-sel_"] .stButton,
-[class*="st-key-card_"] [class*="st-key-sel_"] .stButton > div {
+[class*="st-key-card_"] [class*="st-key-sel_"] .stButton > div,
+[data-testid="stElementContainer"]:has(.theme-card) ~ [data-testid="stElementContainer"] [data-testid="stButton"],
+[data-testid="stElementContainer"]:has(.theme-card) ~ [data-testid="stElementContainer"] [data-testid="stButton"] > div,
+[data-testid="stElementContainer"]:has(.theme-card) ~ [data-testid="stElementContainer"] .stButton,
+[data-testid="stElementContainer"]:has(.theme-card) ~ [data-testid="stElementContainer"] .stButton > div {
   width: 100% !important; height: 100% !important; margin: 0 !important;
   background: transparent !important; border: none !important;
   box-shadow: none !important;
 }
-[class*="st-key-card_"] [class*="st-key-sel_"] button {
+[class*="st-key-card_"] [class*="st-key-sel_"] button,
+[data-testid="stElementContainer"]:has(.theme-card) ~ [data-testid="stElementContainer"] button {
   position: absolute !important;
   top: 0 !important; right: 0 !important; bottom: 0 !important; left: 0 !important;
   width: 100% !important; height: 100% !important;
@@ -325,14 +338,27 @@ html, body, section.main, [data-testid="stAppViewContainer"],
   background: transparent !important; color: transparent !important;
   border: none !important; box-shadow: none !important; cursor: pointer !important;
 }
-/* Accessibilité : le focus clavier (Tab) met la carte en évidence malgré l'opacité. */
-[class*="st-key-card_"]:focus-within .theme-card {
+/* Focus clavier : met la carte en évidence malgré l'opacité de l'overlay. */
+[class*="st-key-card_"]:focus-within .theme-card,
+[data-testid="stVerticalBlock"]:has(> [data-testid="stElementContainer"] .theme-card):focus-within .theme-card {
   outline: 3px solid var(--ui-accent); outline-offset: 2px;
 }
-[class*="st-key-card_"]:hover .theme-card:not(.golden) {
-  transform: translateY(-3px); box-shadow: 0 10px 26px rgba(16,185,129,0.28);
+/* Animation de lévitation : l'overlay cliquable étant posé par-dessus la carte,
+   le survol de la carte déclenche le :hover du conteneur, qui anime .theme-card. */
+[class*="st-key-card_"] .theme-card,
+[data-testid="stVerticalBlock"]:has(> [data-testid="stElementContainer"] .theme-card) .theme-card {
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+  will-change: transform;
 }
-[class*="st-key-card_"]:hover .theme-card.golden {
+[class*="st-key-card_"]:hover .theme-card:not(.golden),
+[data-testid="stVerticalBlock"]:has(> [data-testid="stElementContainer"] .theme-card):hover .theme-card:not(.golden) {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 30px rgba(16,185,129,0.30);
+  filter: brightness(1.03);
+}
+[class*="st-key-card_"]:hover .theme-card.golden,
+[data-testid="stVerticalBlock"]:has(> [data-testid="stElementContainer"] .theme-card):hover .theme-card.golden {
+  transform: translateY(-5px);
   box-shadow: 0 0 0 1px rgba(240,205,110,0.65),
               0 0 30px rgba(224,182,70,0.55),
               0 14px 34px rgba(150,110,20,0.32) !important;
@@ -367,19 +393,20 @@ html, body, section.main, [data-testid="stAppViewContainer"],
   opacity: 1;
 }
 
-/* ===== Filtres (Obédience / Type de Tawatur) : épurés, simple filet fin =====
-   Retire l'encadré et le fond des sélecteurs ; ne conserve qu'un trait fin
-   sous le champ (soulignement discret), accentué au survol / focus. */
+/* ===== Filtres (Obédience / Type de Tawatur) : minimalistes =====
+   Aucun encadré ni fond : uniquement un filet inférieur très fin et discret
+   (mix du texte à ~20%), légèrement accentué au survol / focus. */
+[data-testid="stMultiSelect"] [data-baseweb="select"],
 [data-testid="stMultiSelect"] [data-baseweb="select"] > div {
   background: transparent !important;
   border: none !important;
-  border-bottom: 1px solid color-mix(in srgb, var(--ui-text) 45%, transparent) !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--ui-text) 20%, transparent) !important;
   border-radius: 0 !important;
   box-shadow: none !important;
 }
 [data-testid="stMultiSelect"] [data-baseweb="select"] > div:hover,
 [data-testid="stMultiSelect"] [data-baseweb="select"] > div:focus-within {
-  border-bottom-color: var(--ui-accent) !important;
+  border-bottom-color: color-mix(in srgb, var(--ui-accent) 70%, transparent) !important;
 }
 """
 
@@ -856,8 +883,12 @@ def build_legend_html(plot, color_mode, highlight_madar):
 # 3. En-tête + sélecteur de thème (boutons à icônes)
 # ---------------------------------------------------------------------------
 # Défilement fluide vers la section de lecture/détails au clic sur « Consulter ».
+# __NONCE__ est remplacé à chaque sélection : le contenu du composant change, ce
+# qui force Streamlit à recharger l'iframe et donc à ré-exécuter le script à
+# CHAQUE clic (sinon le défilement ne se produirait qu'à la première sélection).
 SCROLL_TO_DETAIL_JS = """
 <script>
+/* __NONCE__ */
 (function () {
   function go() {
     var doc = window.parent.document;
@@ -1051,11 +1082,11 @@ else:
                 opened = st.button(
                     f"Consulter : {h.title_fr}",
                     key=f"sel_{h.id}",
-                    help="Cliquer pour afficher le détail, les explications et les chaînes de transmission",
                 )
             if opened:
                 st.session_state.selected_hadith_id = h.id
                 st.session_state.scroll_detail = True
+                st.session_state.scroll_nonce = st.session_state.get("scroll_nonce", 0) + 1
                 st.rerun()
 
 
@@ -1068,7 +1099,12 @@ sel = next((h for h in hadiths if h.id == sel_id), None)
 if sel:
     st.markdown('<div id="detail-section"></div>', unsafe_allow_html=True)
     if st.session_state.pop("scroll_detail", False):
-        components.html(SCROLL_TO_DETAIL_JS, height=0, width=0)
+        _nonce = st.session_state.get("scroll_nonce", 0)
+        components.html(
+            SCROLL_TO_DETAIL_JS.replace("__NONCE__", str(_nonce)),
+            height=0, width=0,
+        )
+    st.markdown("---")
     st.markdown("---")
 
     # Recherche rapide : changer de hadith sans remonter au catalogue.
@@ -1094,6 +1130,7 @@ if sel:
                     if st.button(_h.title_fr, key=f"dq_{_h.id}", width="stretch"):
                         st.session_state.selected_hadith_id = _h.id
                         st.session_state.scroll_detail = True
+                        st.session_state.scroll_nonce = st.session_state.get("scroll_nonce", 0) + 1
                         st.rerun()
 
     try:
