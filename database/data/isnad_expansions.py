@@ -182,21 +182,6 @@ ISNAD_EXPANSIONS = {
     ],
 
     # ==================================================================
-    # Al-Shafa'a — isnad d'al-Bukhari (7474)
-    # ==================================================================
-    "h_shafaa": [
-        {
-            "label": "Abu Hurayra → Abu Salama → Al-Zuhri → Shu'ayb ibn Abi Hamza → Abu al-Yaman → Al-Bukhari",
-            "path_count": 1,
-            "sources": ["Sahih al-Bukhari 7474"],
-            "nodes": [
-                ("abu_hurayra", 4), ("abu_salama", 2), ("al_zuhri", 2),
-                ("shuayb_zuhri", 1), ("abu_yaman", 1), ("bukhari", 0),
-            ],
-        },
-    ],
-
-    # ==================================================================
     # Ru'yat Allah — asanid d'al-Bukhari (7434), via Jarir
     # ==================================================================
     "h_ruyat": [
@@ -210,12 +195,118 @@ ISNAD_EXPANSIONS = {
             ],
         },
         {
-            "label": "Jarir → Qays ibn Abi Hazim → Ismail ibn Abi Khalid → Khalid al-Tahhan → Amr ibn Awn → Al-Bukhari",
+            "label": "Jarir → Qais ibn Abi Hazim → Ismail ibn Abi Khalid → Khalid al-Tahhan → Amr ibn Awn → Al-Bukhari",
             "path_count": 1,
             "sources": ["Sahih al-Bukhari 7434"],
             "nodes": [
                 ("jarir", 4), ("qais", 2), ("ismail_abi_khalid", 2),
                 ("khalid_tahhan", 1), ("amr_awn", 1), ("bukhari", 0),
+            ],
+        },
+    ],
+
+    # ==================================================================
+    # Ru'yat Allah — isnad d'al-Bukhari (7435), via Jarir
+    # ==================================================================
+    "h_ruya": [
+        {
+            "label": "Jarir → Qays ibn Abi Hazim → Ismail ibn Abi Khalid → Abu Shihab → Asim ibn Yusuf → Yusuf ibn Musa → Al-Bukhari",
+            "path_count": 1,
+            "sources": ["Sahih al-Bukhari 7435"],
+            "nodes": [
+                ("jarir", 4), ("qais", 2), ("ismail_abi_khalid", 2),
+                ("abu_shihab", 1), ("asim_yusuf", 1), ("yusuf_musa", 1), ("bukhari", 0),
+            ],
+        },
+    ],
+
+    # ==================================================================
+    # Nuzul Isa — isnad d'al-Bukhari (3448)
+    # ==================================================================
+    "h_nuzul_isa": [
+        {
+            "label": "Abu Hurayra → Sa'id ibn al-Musayyib → Al-Zuhri → Salih ibn Kaysan → Ibrahim ibn Sa'd → Ya'qub ibn Ibrahim → Ishaq ibn Rahawayh → Al-Bukhari",
+            "path_count": 1,
+            "sources": ["Sahih al-Bukhari 3448"],
+            "nodes": [
+                ("abu_hurayra", 4), ("said_musayyib", 2), ("al_zuhri", 2),
+                ("salih_kaysan", 1), ("ibrahim_saad", 1), ("yaqub_ibrahim", 1),
+                ("ishaq_rahawayh", 1), ("bukhari", 0),
+            ],
+        },
+    ],
+
+    # ==================================================================
+    # Al-Mahdi — asanid d'Abu Dawud (4282), tous par Asim → Zirr → Ibn Mas'ud
+    # ==================================================================
+    "h_mahdi": [
+        {
+            "label": "Ibn Mas'ud → Zirr ibn Hubaysh → Asim ibn Abi al-Nujud → Umar ibn Ubayd → Musaddad → Abu Dawud",
+            "path_count": 1,
+            "sources": ["Sunan Abi Dawud 4282"],
+            "nodes": [
+                ("ibn_masud", 4), ("zirr", 2), ("asim_nujud", 2),
+                ("umar_ubayd", 1), ("musaddad", 1), ("abu_dawud", 0),
+            ],
+        },
+        {
+            "label": "Ibn Mas'ud → Zirr → Asim → Abu Bakr ibn Ayyash → Abu Kuraib → Abu Dawud",
+            "path_count": 1,
+            "sources": ["Sunan Abi Dawud 4282"],
+            "nodes": [
+                ("ibn_masud", 4), ("zirr", 2), ("asim_nujud", 2),
+                ("abu_bakr_ayyash", 1), ("abu_kuraib", 1), ("abu_dawud", 0),
+            ],
+        },
+        {
+            "label": "Ibn Mas'ud → Zirr → Asim → Sufyan al-Thawri → Yahya al-Qattan → Musaddad → Abu Dawud",
+            "path_count": 1,
+            "sources": ["Sunan Abi Dawud 4282"],
+            "nodes": [
+                ("ibn_masud", 4), ("zirr", 2), ("asim_nujud", 2),
+                ("sufyan_thawri", 1), ("yahya_qattan", 1), ("musaddad", 1), ("abu_dawud", 0),
+            ],
+        },
+        {
+            "label": "Ibn Mas'ud → Zirr → Asim → Za'ida → Ubaydullah ibn Musa → Ahmad ibn Ibrahim → Abu Dawud",
+            "path_count": 1,
+            "sources": ["Sunan Abi Dawud 4282"],
+            "nodes": [
+                ("ibn_masud", 4), ("zirr", 2), ("asim_nujud", 2),
+                ("zaida", 1), ("ubaydullah_musa", 1), ("ahmad_dawraqi", 1), ("abu_dawud", 0),
+            ],
+        },
+        {
+            "label": "Ibn Mas'ud → Zirr → Asim → Fitr ibn Khalifa → Ubaydullah ibn Musa → Ahmad ibn Ibrahim → Abu Dawud",
+            "path_count": 1,
+            "sources": ["Sunan Abi Dawud 4282"],
+            "nodes": [
+                ("ibn_masud", 4), ("zirr", 2), ("asim_nujud", 2),
+                ("fitr_khalifa", 1), ("ubaydullah_musa", 1), ("ahmad_dawraqi", 1), ("abu_dawud", 0),
+            ],
+        },
+    ],
+
+    # ==================================================================
+    # Al-Shafa'a — asanid d'al-Bukhari (99) et (7474)
+    # ==================================================================
+    "h_shafaa": [
+        {
+            "label": "Abu Hurayra → Sa'id al-Maqburi → Amr ibn Abi Amr → Sulayman ibn Bilal → Abd al-Aziz al-Uwaysi → Al-Bukhari",
+            "path_count": 1,
+            "sources": ["Sahih al-Bukhari 99"],
+            "nodes": [
+                ("abu_hurayra", 4), ("said_maqburi", 2), ("amr_abi_amr", 1),
+                ("sulayman_bilal", 1), ("abdulaziz_uwaysi", 1), ("bukhari", 0),
+            ],
+        },
+        {
+            "label": "Abu Hurayra → Abu Salama → Al-Zuhri → Shu'ayb ibn Abi Hamza → Abu al-Yaman → Al-Bukhari",
+            "path_count": 1,
+            "sources": ["Sahih al-Bukhari 7474"],
+            "nodes": [
+                ("abu_hurayra", 4), ("abu_salama", 2), ("al_zuhri", 2),
+                ("shuayb_zuhri", 1), ("abu_yaman", 1), ("bukhari", 0),
             ],
         },
     ],
