@@ -33,6 +33,40 @@ def test_filtres_disponibles():
     assert {"Obédience", "Type de Tawatur", "Catégorie thématique"} <= labels
 
 
+def test_filtres_classification_chaines():
+    at = _run()
+    labels = {m.label for m in at.multiselect}
+    assert {"Qualité de la chaîne", "Grandeur de la transmission",
+            "Génération présente (Tabaqa)"} <= labels
+    assert "Trier par pertinence" in {s.label for s in at.selectbox}
+
+
+def test_filtre_qualite_chaine():
+    at = _run()
+    total = len(_cards(at))
+    q = next(m for m in at.multiselect if m.label == "Qualité de la chaîne")
+    q.set_value(["Chaîne détaillée (≥5 maillons)"]).run()
+    assert not at.exception, [e.message for e in at.exception]
+    assert 0 < len(_cards(at)) < total
+
+
+def test_filtre_grandeur_transmission():
+    at = _run()
+    total = len(_cards(at))
+    g = next(m for m in at.multiselect if m.label == "Grandeur de la transmission")
+    g.set_value(["Grandeur élevée (3+ Compagnons)"]).run()
+    assert not at.exception, [e.message for e in at.exception]
+    assert 0 < len(_cards(at)) < total
+
+
+def test_tri_par_pertinence():
+    at = _run()
+    s = next(x for x in at.selectbox if x.label == "Trier par pertinence")
+    s.set_value("Nombre de voies (décroissant)").run()
+    assert not at.exception, [e.message for e in at.exception]
+    assert len(_cards(at)) > 0
+
+
 def test_filtre_categorie():
     at = _run()
     total = len(_cards(at))

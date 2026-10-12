@@ -131,6 +131,109 @@ def year_fr(value):
 
 
 # ---------------------------------------------------------------------------
+# Classification des rapporteurs et de la chaîne de transmission
+# ---------------------------------------------------------------------------
+def chain_stats(hadith):
+    """Agrège les métriques de qualité des rapporteurs et de la chaîne (Turuq).
+
+    - ``turuq``      : nombre de voies de transmission ;
+    - ``rawis``      : nombre de narrateurs distincts (qualité/richesse du réseau) ;
+    - ``companions`` : nombre de Compagnons distincts (grandeur de la transmission) ;
+    - ``max_len``    : longueur de la chaîne la plus détaillée (maillons) ;
+    - ``paths``      : total des chemins cumulés déclarés.
+    """
+    turuq = hadith.turuq or []
+    node_ids, companions = set(), set()
+    max_len, total = 0, 0
+    for voie in turuq:
+        c = chains.get(voie.isnad_chain_id)
+        if not c or not c.nodes:
+            continue
+        max_len = max(max_len, len(c.nodes))
+        total += c.path_count or 0
+        for n in c.nodes:
+            node_ids.add(n.rawi_id)
+            if n.level >= 4:
+                companions.add(n.rawi_id)
+    return {
+        "turuq": len(turuq),
+        "rawis": len(node_ids),
+        "companions": len(companions),
+        "max_len": max_len,
+        "paths": total,
+    }
+
+
+CHAIN_QUALITY_OPTIONS = [
+    "Chaîne détaillée (≥5 maillons)",
+    "Chaîne établie (3–4 maillons)",
+    "Chaîne concise (≤2 maillons)",
+]
+CHAIN_GRANDEUR_OPTIONS = [
+    "Grandeur élevée (3+ Compagnons)",
+    "Grandeur moyenne (2 Compagnons)",
+    "Transmission simple (1 Compagnon)",
+]
+RELEVANCE_SORT_OPTIONS = [
+    "Rang d'authenticité (recommandé)",
+    "Nombre de voies (décroissant)",
+    "Narrateurs distincts (décroissant)",
+    "Compagnons distincts (décroissant)",
+    "Longueur de chaîne (décroissant)",
+    "Chemins cumulés (décroissant)",
+]
+
+
+def chain_quality_tier(hadith):
+    """Palier de qualité de la chaîne, selon la profondeur (nombre de maillons)."""
+    ml = chain_stats(hadith)["max_len"]
+    if ml >= 5:
+        return CHAIN_QUALITY_OPTIONS[0]
+    if ml >= 3:
+        return CHAIN_QUALITY_OPTIONS[1]
+    return CHAIN_QUALITY_OPTIONS[2]
+
+
+def chain_grandeur_tier(hadith):
+    """Grandeur de la transmission selon le nombre de Compagnons distincts."""
+    n = chain_stats(hadith)["companions"]
+    if n >= 3:
+        return CHAIN_GRANDEUR_OPTIONS[0]
+    if n == 2:
+        return CHAIN_GRANDEUR_OPTIONS[1]
+    return CHAIN_GRANDEUR_OPTIONS[2]
+
+
+def chain_generations(hadith):
+    """Ensemble des générations (Tabaqa) de rapporteurs présentes dans les voies."""
+    gens = set()
+    for voie in (hadith.turuq or []):
+        c = chains.get(voie.isnad_chain_id)
+        if not c:
+            continue
+        for n in c.nodes:
+            r = rawis.get(n.rawi_id)
+            if r and r.tabaqa:
+                gens.add(r.tabaqa)
+    return gens
+
+
+def relevance_sort_key(criterion):
+    """Renvoie la clé de tri (décroissante) correspondant au critère choisi."""
+    if criterion == "Nombre de voies (décroissant)":
+        return lambda h: len(h.turuq or [])
+    if criterion == "Narrateurs distincts (décroissant)":
+        return lambda h: chain_stats(h)["rawis"]
+    if criterion == "Compagnons distincts (décroissant)":
+        return lambda h: chain_stats(h)["companions"]
+    if criterion == "Longueur de chaîne (décroissant)":
+        return lambda h: chain_stats(h)["max_len"]
+    if criterion == "Chemins cumulés (décroissant)":
+        return lambda h: chain_stats(h)["paths"]
+    return None
+
+
+# ---------------------------------------------------------------------------
 # 2. Thèmes CSS (+ garde-fou anti écran blanc)
 # ---------------------------------------------------------------------------
 FONTS = (
@@ -439,6 +542,30 @@ html, body, section.main, [data-testid="stAppViewContainer"],
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
+}
+/* Neutralisation des fonds parasites internes de BaseWeb (div imbriqués) :
+   on cible les conteneurs de sélection sans toucher aux « tags » ni au texte. */
+[data-testid="stMultiSelect"] [data-baseweb="select"] > div:not([data-baseweb="tag"]),
+[data-testid="stSelectbox"] [data-baseweb="select"] > div:not([data-baseweb="tag"]),
+[data-testid="stMultiSelect"] [data-baseweb="select"] > div > div:not([data-baseweb="tag"]),
+[data-testid="stSelectbox"] [data-baseweb="select"] > div > div:not([data-baseweb="tag"]),
+[data-testid="stMultiSelect"] [data-baseweb="select"] input,
+[data-testid="stSelectbox"] [data-baseweb="select"] input {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+/* Étiquette de section (Classification des rapporteurs & de la chaîne). */
+.filter-section-label {
+  font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ui-muted) !important; font-weight: 600;
+  margin: 0.55rem 0 0.15rem;
+}
+/* Métadonnées (Détails du Hadith) : aucune troncature, retour à la ligne garanti. */
+[data-testid="stMetric"] { min-width: 0 !important; }
+[data-testid="stMetricLabel"], [data-testid="stMetricValue"],
+[data-testid="stMetricValue"] > div {
+  white-space: normal !important; overflow: visible !important;
+  text-overflow: clip !important; overflow-wrap: anywhere; word-break: break-word;
 }
 """
 
@@ -1069,6 +1196,32 @@ with st.container():
     with c4:
         category_filter = st.multiselect("Catégorie thématique", _categories, default=[])
 
+# --- Section : classification des rapporteurs & de la chaîne de transmission ---
+_generations = sorted({r.tabaqa for r in rawis.values() if r.tabaqa})
+st.markdown(
+    '<div class="filter-section-label">Classification des rapporteurs '
+    '&amp; de la chaîne de transmission</div>',
+    unsafe_allow_html=True,
+)
+with st.container():
+    q1, q2, q3, q4 = st.columns([1.35, 1.35, 1.35, 1.45])
+    with q1:
+        chain_quality_filter = st.multiselect(
+            "Qualité de la chaîne", CHAIN_QUALITY_OPTIONS, default=[]
+        )
+    with q2:
+        grandeur_filter = st.multiselect(
+            "Grandeur de la transmission", CHAIN_GRANDEUR_OPTIONS, default=[]
+        )
+    with q3:
+        generation_filter = st.multiselect(
+            "Génération présente (Tabaqa)", _generations, default=[]
+        )
+    with q4:
+        relevance_sort = st.selectbox(
+            "Trier par pertinence", RELEVANCE_SORT_OPTIONS, index=0
+        )
+
 filtered = list(hadiths)
 if search:
     s = search.lower()
@@ -1087,6 +1240,20 @@ if tawatur_filter:
 if category_filter:
     cf = set(category_filter)
     filtered = [h for h in filtered if (h.thematic_category or "") in cf]
+if chain_quality_filter:
+    cqf = set(chain_quality_filter)
+    filtered = [h for h in filtered if chain_quality_tier(h) in cqf]
+if grandeur_filter:
+    gf = set(grandeur_filter)
+    filtered = [h for h in filtered if chain_grandeur_tier(h) in gf]
+if generation_filter:
+    genf = set(generation_filter)
+    filtered = [h for h in filtered if chain_generations(h) & genf]
+
+# Tri par pertinence (tri stable : les ex æquo conservent l'ordre d'authenticité).
+_sort_key = relevance_sort_key(relevance_sort)
+if _sort_key is not None:
+    filtered.sort(key=_sort_key, reverse=True)
 
 
 # ---------------------------------------------------------------------------
@@ -1178,7 +1345,7 @@ if sel:
         if sel.title_ar:
             st.caption(sel.title_ar)
 
-        m1, m2, m3, m4 = st.columns(4)
+        m1, m2, m3, m4 = st.columns([1.2, 1.25, 2.4, 0.75])
         m1.metric("Obédience", obedience_fr(sel.obedience.value))
         m2.metric("Type de Tawatur", tawatur_fr(sel.tawatur_type.value))
         m3.metric("Degré", sel.degree_fr or "—")
