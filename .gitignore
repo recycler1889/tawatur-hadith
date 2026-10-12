@@ -7,3 +7,7 @@ env/
 *.db
 *.sqlite3
 .DS_Store
+
+# Artefacts de données générés (voir database/save_seed.py et test_isnad.py)
+data/seed_hadiths.json
+data/example_isnad_tree.json

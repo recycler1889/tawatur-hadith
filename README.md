@@ -9,20 +9,19 @@ Le projet suit une architecture propre et orientée données :
 ```
 tawatur-hadith/
 ├── backend/
-│   ├── api/           # API REST (future)
 │   ├── graph/         # Outils de visualisation et traitement des graphes d'Isnad
-│   ├── models/        # Modèles Pydantic/SQL
-│   └── utils/         # Utilitaires backend
+│   └── models/        # Modèles Pydantic (Hadith, Rawiy, IsnadChain…)
 ├── database/
 │   ├── data/          # Registres (rawis_data) et catalogue (hadiths_data)
-│   ├── seed_data.py   # Assembleur des données (hadiths + narrateurs)
-│   └── save_seed.py   # Export vers data/seed_hadiths.json
+│   ├── seed_data.py   # Assembleur + validation d'intégrité des données
+│   └── save_seed.py   # Export des données vers data/seed_hadiths.json
 ├── frontend/
 │   ├── app.py         # Interface Streamlit (thèmes Clair / Sépia / Sombre)
-│   └── components/    # Composants UI
-├── data/
-│   ├── seed_hadiths.json      # Données au format JSON
-│   └── example_isnad_tree.json # Exemple d'arbre d'Isnad
+│   └── assets/        # favicon.png
+├── data/              # Artefacts générés (non versionnés)
+│   ├── seed_hadiths.json       # Export JSON (save_seed.py)
+│   └── example_isnad_tree.json # Exemple d'arbre (test_isnad.py)
+├── test_isnad.py      # Aperçu des chaînes d'Isnad (script, pas un test)
 └── README.md
 ```
 

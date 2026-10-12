@@ -14,7 +14,6 @@ import sys
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
-import streamlit.components.v1 as components
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -364,49 +363,82 @@ html, body, section.main, [data-testid="stAppViewContainer"],
               0 14px 34px rgba(150,110,20,0.32) !important;
 }
 
-/* ===== Sélecteur d'ambiance : rangée compacte d'icônes cliquables =====
-   Icônes sans cadre vert : couleur neutre au repos, mise en valeur de
-   l'icône active (cercle fin + léger halo) via la classe .active. */
-.theme-switch {
-  display: flex; justify-content: flex-end; align-items: center;
-  gap: 0.22rem; padding: 0.1rem 0;
+/* ===== Sélecteur d'ambiance : boutons-icônes compacts =====
+   Rendu avec st.button (aucun rechargement de page → sélection et défilement
+   préservés). Icônes sans cadre au repos ; l'icône active (type=primary) est
+   mise en valeur par un cercle fin + léger halo. */
+.st-key-theme_switch {
+  flex-direction: row !important; justify-content: flex-end; align-items: center;
+  gap: 0.35rem; padding: 0.05rem 0;
 }
-.theme-icon {
-  width: 1.7rem; height: 1.7rem; border-radius: 50%;
-  display: inline-flex; align-items: center; justify-content: center;
-  font-size: 0.92rem; line-height: 1; text-decoration: none !important;
-  color: var(--ui-muted, #9aada4);
-  background: transparent; border: 1px solid transparent;
-  opacity: 0.7;
+.st-key-theme_switch [data-testid="stElementContainer"] {
+  width: auto !important; flex: 0 0 auto !important;
+}
+.st-key-theme_switch .stButton,
+.st-key-theme_switch [data-testid="stButton"] { width: auto !important; }
+.st-key-theme_switch [data-testid="stButton"] button {
+  width: 1.9rem !important; height: 1.9rem !important;
+  min-height: 1.9rem !important; max-width: 1.9rem !important;
+  padding: 0 !important; border-radius: 50% !important;
+  font-size: 0.95rem !important; line-height: 1 !important;
+  color: var(--ui-muted, #9aada4) !important;
+  background: transparent !important; border: 1px solid transparent !important;
+  box-shadow: none !important; opacity: 0.72;
   transition: transform .15s ease, background .15s ease,
-              box-shadow .15s ease, border-color .15s ease, opacity .15s ease;
+              border-color .15s ease, box-shadow .15s ease, opacity .15s ease;
 }
-.theme-icon:hover {
-  transform: translateY(-1px);
-  background: var(--ui-tag-bg, rgba(120,120,120,0.14));
-  opacity: 1;
+.st-key-theme_switch [data-testid="stButton"] button:hover {
+  transform: translateY(-1px); opacity: 1;
+  background: var(--ui-tag-bg, rgba(120,120,120,0.14)) !important;
 }
-.theme-icon.active {
-  border-color: var(--ui-accent);
-  background: var(--ui-tag-bg, rgba(120,120,120,0.14));
-  box-shadow: 0 0 0 3px var(--ui-tag-bg, rgba(120,120,120,0.10));
-  opacity: 1;
+.st-key-theme_switch [data-testid="stButton"] button[kind="primary"] {
+  opacity: 1; color: var(--ui-accent) !important;
+  background: var(--ui-tag-bg, rgba(120,120,120,0.14)) !important;
+  border-color: var(--ui-accent) !important;
+  box-shadow: 0 0 0 3px var(--ui-tag-bg, rgba(120,120,120,0.10)) !important;
 }
 
-/* ===== Filtres (Obédience / Type de Tawatur) : minimalistes =====
-   Aucun encadré ni fond : uniquement un filet inférieur très fin et discret
-   (mix du texte à ~20%), légèrement accentué au survol / focus. */
+/* ===== Champs de saisie & filtres : habillage unifié =====
+   Le champ de recherche (stTextInput) est la RÉFÉRENCE ABSOLUE :
+   fond --ui-surface, bordure très fine --ui-border, coins arrondis 8px.
+   On applique EXACTEMENT le même habillage aux menus déroulants
+   (Obédience / Type de Tawatur / Sélecteur de voie) et on neutralise tout
+   fond ou cadre parasite du conteneur Streamlit. */
 [data-testid="stMultiSelect"] [data-baseweb="select"],
-[data-testid="stMultiSelect"] [data-baseweb="select"] > div {
-  background: transparent !important;
+[data-testid="stSelectbox"] [data-baseweb="select"] {
+  background-color: var(--ui-surface) !important;
+  border: 1px solid var(--ui-border) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  color: var(--ui-text) !important;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+/* Survol / focus : discret, dans l'esprit du champ de recherche. */
+[data-testid="stMultiSelect"] [data-baseweb="select"]:hover,
+[data-testid="stSelectbox"] [data-baseweb="select"]:hover {
+  border-color: color-mix(in srgb, var(--ui-accent) 60%, var(--ui-border)) !important;
+}
+[data-testid="stMultiSelect"] [data-baseweb="select"]:focus-within,
+[data-testid="stSelectbox"] [data-baseweb="select"]:focus-within {
+  border-color: var(--ui-accent) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--ui-accent) 28%, transparent) !important;
+}
+/* Contrôle interne : transparent, sans bordure (sinon double trait). */
+[data-testid="stMultiSelect"] [data-baseweb="select"] > div,
+[data-testid="stSelectbox"] [data-baseweb="select"] > div {
+  background-color: transparent !important;
   border: none !important;
-  border-bottom: 1px solid color-mix(in srgb, var(--ui-text) 20%, transparent) !important;
   border-radius: 0 !important;
   box-shadow: none !important;
 }
-[data-testid="stMultiSelect"] [data-baseweb="select"] > div:hover,
-[data-testid="stMultiSelect"] [data-baseweb="select"] > div:focus-within {
-  border-bottom-color: color-mix(in srgb, var(--ui-accent) 70%, transparent) !important;
+/* Conteneurs de widgets : aucun fond blanc/clair ni cadre rigide. */
+[data-testid="stMultiSelect"],
+[data-testid="stSelectbox"],
+[data-testid="stMultiSelect"] > div,
+[data-testid="stSelectbox"] > div {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 """
 
@@ -983,19 +1015,22 @@ st.markdown(
 st.iframe(BACK_TO_TOP_JS, height=1)
 plot = THEME_PLOT[theme]
 
-# Sélecteur d'ambiance : rangée compacte d'icônes, alignée à droite.
-# Chaque icône porte une infobulle native (attribut title) ; l'icône active est
-# mise en valeur sans cadre vert. Le clic change le thème via un paramètre
-# d'URL relu en tête de script (st.query_params).
-_tl, _tr = st.columns([5, 3])
+# Sélecteur d'ambiance : rangée compacte de boutons-icônes, alignée à droite.
+# Un st.button déclenche un simple rerun (aucun rechargement de page) : le
+# hadith sélectionné et le défilement sont donc préservés au changement de
+# thème. Le paramètre d'URL ?theme=… reste supporté pour les liens directs.
+_tl, _tr = st.columns([6, 2])
 with _tr:
-    _theme_items = "".join(
-        f'<a class="theme-icon{" active" if _name == st.session_state.theme else ""}" '
-        f'href="?theme={_name}" title="Thème {_name}" '
-        f'aria-label="Thème {_name}">{_icon}</a>'
-        for _name, _icon in THEME_ICONS
-    )
-    st.markdown(f'<div class="theme-switch">{_theme_items}</div>', unsafe_allow_html=True)
+    with st.container(key="theme_switch"):
+        for _name, _icon in THEME_ICONS:
+            if st.button(
+                _icon,
+                key=f"theme_{_name}",
+                help=f"Thème {_name}",
+                type="primary" if _name == st.session_state.theme else "secondary",
+            ):
+                st.session_state.theme = _name
+                st.rerun()
 
 # En-tête principal ornementé (motifs géométriques islamiques).
 st.markdown(
@@ -1018,8 +1053,9 @@ st.markdown(
 # ---------------------------------------------------------------------------
 # 4. Filtres
 # ---------------------------------------------------------------------------
+_categories = sorted({h.thematic_category for h in hadiths if h.thematic_category})
 with st.container():
-    c1, c2, c3 = st.columns(3)
+    c1, c2, c3, c4 = st.columns([1.7, 1.2, 1.2, 1.3])
     with c1:
         search = st.text_input("Rechercher un hadith", placeholder="Mot-clé dans titre/traduction…")
     with c2:
@@ -1030,6 +1066,8 @@ with st.container():
             ["Mutawatir Lafzi (mot à mot)", "Mutawatir Ma'nawi (par le sens)"],
             default=[],
         )
+    with c4:
+        category_filter = st.multiselect("Catégorie thématique", _categories, default=[])
 
 filtered = list(hadiths)
 if search:
@@ -1046,6 +1084,9 @@ if obedience_filter:
 if tawatur_filter:
     tf = set(tawatur_filter)
     filtered = [h for h in filtered if tawatur_fr(h.tawatur_type.value) in tf]
+if category_filter:
+    cf = set(category_filter)
+    filtered = [h for h in filtered if (h.thematic_category or "") in cf]
 
 
 # ---------------------------------------------------------------------------
