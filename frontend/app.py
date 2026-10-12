@@ -980,7 +980,7 @@ st.markdown(
     'aria-label="Retour en haut">↑</a>',
     unsafe_allow_html=True,
 )
-components.html(BACK_TO_TOP_JS, height=0, width=0)
+st.iframe(BACK_TO_TOP_JS, height=1)
 plot = THEME_PLOT[theme]
 
 # Sélecteur d'ambiance : rangée compacte d'icônes, alignée à droite.
@@ -1100,11 +1100,10 @@ if sel:
     st.markdown('<div id="detail-section"></div>', unsafe_allow_html=True)
     if st.session_state.pop("scroll_detail", False):
         _nonce = st.session_state.get("scroll_nonce", 0)
-        components.html(
+        st.iframe(
             SCROLL_TO_DETAIL_JS.replace("__NONCE__", str(_nonce)),
-            height=0, width=0,
+            height=1,
         )
-    st.markdown("---")
     st.markdown("---")
 
     # Recherche rapide : changer de hadith sans remonter au catalogue.
