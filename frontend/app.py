@@ -296,28 +296,38 @@ html, body, section.main, [data-testid="stAppViewContainer"],
   border:1px solid rgba(160,120,20,0.5); box-shadow:0 1px 6px rgba(200,160,40,0.45);
 }
 
-/* ===== Cartes entièrement cliquables : bouton natif plein-cadre invisible ===== */
+/* ===== Cartes entièrement cliquables : bouton natif plein-cadre, 100% invisible =====
+   Le conteneur du bouton (st-key-sel_*) recouvre toute la carte. On rend le
+   CONTENEUR entièrement transparent (opacité 0) : aucun pavé blanc/gris parasite,
+   quelle que soit la structure interne du bouton. La surface reste cliquable car
+   l'opacité n'affecte pas le hit-testing. */
 [class*="st-key-card_"] { position: relative; cursor: pointer; }
 [class*="st-key-card_"] [class*="st-key-sel_"] {
   position: absolute !important;
   top: 0 !important; right: 0 !important; bottom: 0 !important; left: 0 !important;
   z-index: 5 !important; margin: 0 !important; padding: 0 !important;
   width: auto !important; height: auto !important;
+  opacity: 0 !important;
 }
 [class*="st-key-card_"] [class*="st-key-sel_"] [data-testid="stButton"],
-[class*="st-key-card_"] [class*="st-key-sel_"] [data-testid="stButton"] > div {
+[class*="st-key-card_"] [class*="st-key-sel_"] [data-testid="stButton"] > div,
+[class*="st-key-card_"] [class*="st-key-sel_"] .stButton,
+[class*="st-key-card_"] [class*="st-key-sel_"] .stButton > div {
   width: 100% !important; height: 100% !important; margin: 0 !important;
+  background: transparent !important; border: none !important;
+  box-shadow: none !important;
 }
 [class*="st-key-card_"] [class*="st-key-sel_"] button {
   position: absolute !important;
   top: 0 !important; right: 0 !important; bottom: 0 !important; left: 0 !important;
   width: 100% !important; height: 100% !important;
-  min-height: 0 !important; padding: 0 !important;
-  opacity: 0 !important; background: transparent !important;
+  min-height: 0 !important; margin: 0 !important; padding: 0 !important;
+  background: transparent !important; color: transparent !important;
   border: none !important; box-shadow: none !important; cursor: pointer !important;
 }
-[class*="st-key-card_"] [class*="st-key-sel_"] button:focus-visible {
-  opacity: 0 !important; outline: 2px solid var(--ui-accent) !important; outline-offset: 2px;
+/* Accessibilité : le focus clavier (Tab) met la carte en évidence malgré l'opacité. */
+[class*="st-key-card_"]:focus-within .theme-card {
+  outline: 3px solid var(--ui-accent); outline-offset: 2px;
 }
 [class*="st-key-card_"]:hover .theme-card:not(.golden) {
   transform: translateY(-3px); box-shadow: 0 10px 26px rgba(16,185,129,0.28);
@@ -850,11 +860,25 @@ SCROLL_TO_DETAIL_JS = """
 <script>
 (function () {
   function go() {
-    var el = window.parent.document.getElementById('detail-section');
-    if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    var doc = window.parent.document;
+    var el = doc.getElementById('detail-section');
+    if (!el) { return false; }
+    var sc = doc.querySelector('[data-testid="stMain"]') ||
+             doc.querySelector('[data-testid="stAppViewContainer"]') ||
+             doc.scrollingElement;
+    if (sc && sc.scrollTo) {
+      var top = el.getBoundingClientRect().top +
+                (sc.scrollTop || 0) - 12;
+      sc.scrollTo({ top: top, behavior: 'smooth' });
+    } else {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    return true;
   }
-  setTimeout(go, 120);
-  setTimeout(go, 450);
+  var tries = 0;
+  var t = setInterval(function () {
+    if (go() || ++tries > 12) { clearInterval(t); }
+  }, 120);
 })();
 </script>
 """
