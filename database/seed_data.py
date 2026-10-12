@@ -8,11 +8,16 @@ maintenables et extensibles :
 
 - ``rawis_data.RAWIS``    : registre des narrateurs (Rijal) ;
 - ``rawis_data_extra.RAWIS_EXTRA`` : narrateurs additionnels (fusionnés) ;
+- ``rawis_rijal.RAWIS_RIJAL`` : narrateurs intermédiaires (Tabi'un, atba'
+  al-tabi'in, shuyukh des compilateurs) issus du dépouillement des asanid ;
 - ``hadiths_data.HADITHS``: catalogue des hadiths mutawatir, chacun portant
   ses voies (Turuq) avec la chaîne COMPLÈTE inline (Compagnon → Tabi'i/Imam
   → compilateur) ;
 - ``hadiths_data_mw1.HADITHS_MW1`` / ``hadiths_data_mw2.HADITHS_MW2`` :
-  vagues d'extension du catalogue.
+  vagues d'extension du catalogue ;
+- ``hadiths_data_mw3.HADITHS_MW3`` : mutawatir supplémentaires sourcés ;
+- ``isnad_expansions.ISNAD_EXPANSIONS`` : chaînes détaillées (narrateur par
+  narrateur) ajoutées aux hadiths existants, d'après les asanid des recueils.
 
 L'assembleur :
 1. construit les modèles Pydantic (Rawiy, IsnadChain, Hadith) ;
@@ -36,11 +41,14 @@ from backend.models.hadith_models import (
 from database.data.hadiths_data import HADITHS
 from database.data.hadiths_data_mw1 import HADITHS_MW1
 from database.data.hadiths_data_mw2 import HADITHS_MW2
+from database.data.hadiths_data_mw3 import HADITHS_MW3
+from database.data.isnad_expansions import ISNAD_EXPANSIONS
 from database.data.rawis_data import RAWIS
 from database.data.rawis_data_extra import RAWIS_EXTRA
+from database.data.rawis_rijal import RAWIS_RIJAL
 
-ALL_HADITHS = HADITHS + HADITHS_MW1 + HADITHS_MW2
-ALL_RAWIS = {**RAWIS, **RAWIS_EXTRA}
+ALL_HADITHS = HADITHS + HADITHS_MW1 + HADITHS_MW2 + HADITHS_MW3
+ALL_RAWIS = {**RAWIS, **RAWIS_EXTRA, **RAWIS_RIJAL}
 
 
 class SeedDataError(ValueError):
@@ -55,7 +63,8 @@ def _build_hadith(rawis: Dict[str, Rawiy], spec: Dict, chains: Dict[str, IsnadCh
     hid = spec["id"]
     turuq: List[IsnadTuruq] = []
 
-    for index, voie in enumerate(spec.get("turuq", []), start=1):
+    voies = list(spec.get("turuq", [])) + list(ISNAD_EXPANSIONS.get(hid, []))
+    for index, voie in enumerate(voies, start=1):
         cid = f"{hid}_c{index}"
         nodes: List[IsnadNode] = []
         for entry in voie["nodes"]:
