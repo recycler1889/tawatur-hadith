@@ -28,9 +28,13 @@ from backend.graph.isnad_utils import (
 from backend.models.hadith_models import Hadith, IsnadChain, Rawiy
 from database.seed_data import create_seed_data
 
+_FAVICON = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "assets", "favicon.png"
+)
+
 st.set_page_config(
     page_title="Tawatur Hadith | Visualisation des Hadiths Mutawatir",
-    page_icon="📚",
+    page_icon=_FAVICON if os.path.exists(_FAVICON) else "۞",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -100,6 +104,25 @@ def primary_chain(hadith):
         if voie.isnad_chain_id in chains:
             return chains[voie.isnad_chain_id]
     return None
+
+
+# Seuil (chemins cumulés) au-delà duquel un hadith est « au sommet du Tawatur ».
+SUMMIT_MIN_PATHS = 150
+
+
+def total_paths(hadith):
+    """Somme des chemins (path_count) déclarés sur toutes les voies d'un hadith."""
+    total = 0
+    for voie in (hadith.turuq or []):
+        c = chains.get(voie.isnad_chain_id)
+        if c and c.path_count:
+            total += c.path_count
+    return total
+
+
+def is_summit(hadith):
+    """Hadith au plus haut degré d'unanimité : au moins SUMMIT_MIN_PATHS chemins cumulés."""
+    return total_paths(hadith) >= SUMMIT_MIN_PATHS
 
 
 def year_fr(value):
@@ -194,9 +217,18 @@ li[role="option"][data-highlighted="true"] { background-color: var(--ui-menu-hov
 /* Métriques */
 [data-testid="stMetric"] {
   background-color: var(--ui-surface) !important; border: 1px solid var(--ui-border) !important;
-  border-radius: 12px !important; padding: 0.6rem 0.8rem !important;
+  border-radius: 12px !important; padding: 0.7rem 0.85rem !important;
 }
-[data-testid="stMetricLabel"] p, [data-testid="stMetricValue"] { color: var(--ui-text) !important; }
+[data-testid="stMetricLabel"], [data-testid="stMetricLabel"] p {
+  color: var(--ui-text) !important; font-size: 0.8rem !important; line-height: 1.25 !important;
+  white-space: normal !important; overflow: visible !important; text-overflow: clip !important;
+}
+[data-testid="stMetricValue"], [data-testid="stMetricValue"] > div {
+  color: var(--ui-text) !important; font-size: 1.08rem !important; line-height: 1.3 !important;
+  font-weight: 600 !important;
+  white-space: normal !important; overflow: visible !important; text-overflow: clip !important;
+  overflow-wrap: anywhere; word-break: break-word;
+}
 
 /* Sliders */
 [data-testid="stSlider"] [data-baseweb="slider"] [role="slider"] { background-color: var(--ui-accent) !important; }
@@ -221,6 +253,123 @@ hr { border-color: var(--ui-border) !important; }
 }
 .stButton > button[kind="primary"], [data-testid="stButton"] button[kind="primary"] {
   background: var(--ui-btn-bg-strong) !important;
+}
+
+/* ===== Défilement fluide + bouton « Retour en haut » flottant ===== */
+html, body, section.main, [data-testid="stAppViewContainer"],
+[data-testid="stMain"] { scroll-behavior: smooth; }
+.back-to-top {
+  position: fixed; right: 1.2rem; bottom: 1.2rem; z-index: 9999;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2.7rem; height: 2.7rem; border-radius: 50%;
+  background: var(--ui-btn-bg-strong); color: var(--ui-btn-text) !important;
+  border: 1px solid var(--ui-border); text-decoration: none !important;
+  font-weight: 700; font-size: 1.1rem; line-height: 1;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.30);
+  opacity: 0; visibility: hidden; transform: translateY(10px) scale(0.92);
+  transition: opacity .25s ease, transform .25s ease, visibility .25s ease,
+              filter .15s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; transform: none; }
+.back-to-top:hover { filter: brightness(1.08); transform: translateY(-2px); }
+
+/* ===== Sommet du Tawatur : lueur dorée (Golden Glow) ===== */
+.theme-card.golden {
+  border: 1.5px solid #d9b24c !important;
+  box-shadow: 0 0 0 1px rgba(233,196,106,0.45),
+              0 0 22px rgba(214,171,66,0.42),
+              0 10px 30px rgba(150,110,20,0.28) !important;
+}
+.theme-card.golden:hover {
+  box-shadow: 0 0 0 1px rgba(240,205,110,0.65),
+              0 0 30px rgba(224,182,70,0.55),
+              0 14px 34px rgba(150,110,20,0.32) !important;
+}
+.theme-card.golden::before {
+  height: 5px; opacity: 1;
+  background: linear-gradient(90deg, transparent, #f7dd93 20%, #d4af37 50%, #f7dd93 80%, transparent) !important;
+}
+.golden-flag {
+  display:inline-block; margin-top:0.6rem; padding:0.18rem 0.65rem; border-radius:999px;
+  font-family:'Lora',serif; font-size:0.72rem; font-weight:600; letter-spacing:0.06em;
+  color:#3a2c08; background:linear-gradient(180deg,#f7dd93,#dcb64e);
+  border:1px solid rgba(160,120,20,0.5); box-shadow:0 1px 6px rgba(200,160,40,0.45);
+}
+
+/* ===== Cartes entièrement cliquables : bouton natif plein-cadre invisible ===== */
+[class*="st-key-card_"] { position: relative; cursor: pointer; }
+[class*="st-key-card_"] [class*="st-key-sel_"] {
+  position: absolute !important;
+  top: 0 !important; right: 0 !important; bottom: 0 !important; left: 0 !important;
+  z-index: 5 !important; margin: 0 !important; padding: 0 !important;
+  width: auto !important; height: auto !important;
+}
+[class*="st-key-card_"] [class*="st-key-sel_"] [data-testid="stButton"],
+[class*="st-key-card_"] [class*="st-key-sel_"] [data-testid="stButton"] > div {
+  width: 100% !important; height: 100% !important; margin: 0 !important;
+}
+[class*="st-key-card_"] [class*="st-key-sel_"] button {
+  position: absolute !important;
+  top: 0 !important; right: 0 !important; bottom: 0 !important; left: 0 !important;
+  width: 100% !important; height: 100% !important;
+  min-height: 0 !important; padding: 0 !important;
+  opacity: 0 !important; background: transparent !important;
+  border: none !important; box-shadow: none !important; cursor: pointer !important;
+}
+[class*="st-key-card_"] [class*="st-key-sel_"] button:focus-visible {
+  opacity: 0 !important; outline: 2px solid var(--ui-accent) !important; outline-offset: 2px;
+}
+[class*="st-key-card_"]:hover .theme-card:not(.golden) {
+  transform: translateY(-3px); box-shadow: 0 10px 26px rgba(16,185,129,0.28);
+}
+[class*="st-key-card_"]:hover .theme-card.golden {
+  box-shadow: 0 0 0 1px rgba(240,205,110,0.65),
+              0 0 30px rgba(224,182,70,0.55),
+              0 14px 34px rgba(150,110,20,0.32) !important;
+}
+
+/* ===== Sélecteur d'ambiance : rangée compacte d'icônes cliquables =====
+   Icônes sans cadre vert : couleur neutre au repos, mise en valeur de
+   l'icône active (cercle fin + léger halo) via la classe .active. */
+.theme-switch {
+  display: flex; justify-content: flex-end; align-items: center;
+  gap: 0.22rem; padding: 0.1rem 0;
+}
+.theme-icon {
+  width: 1.7rem; height: 1.7rem; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 0.92rem; line-height: 1; text-decoration: none !important;
+  color: var(--ui-muted, #9aada4);
+  background: transparent; border: 1px solid transparent;
+  opacity: 0.7;
+  transition: transform .15s ease, background .15s ease,
+              box-shadow .15s ease, border-color .15s ease, opacity .15s ease;
+}
+.theme-icon:hover {
+  transform: translateY(-1px);
+  background: var(--ui-tag-bg, rgba(120,120,120,0.14));
+  opacity: 1;
+}
+.theme-icon.active {
+  border-color: var(--ui-accent);
+  background: var(--ui-tag-bg, rgba(120,120,120,0.14));
+  box-shadow: 0 0 0 3px var(--ui-tag-bg, rgba(120,120,120,0.10));
+  opacity: 1;
+}
+
+/* ===== Filtres (Obédience / Type de Tawatur) : épurés, simple filet fin =====
+   Retire l'encadré et le fond des sélecteurs ; ne conserve qu'un trait fin
+   sous le champ (soulignement discret), accentué au survol / focus. */
+[data-testid="stMultiSelect"] [data-baseweb="select"] > div {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--ui-text) 45%, transparent) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+[data-testid="stMultiSelect"] [data-baseweb="select"] > div:hover,
+[data-testid="stMultiSelect"] [data-baseweb="select"] > div:focus-within {
+  border-bottom-color: var(--ui-accent) !important;
 }
 """
 
@@ -291,14 +440,18 @@ h1, h2, h3, h4 { color: #eafaf1; letter-spacing: -0.02em; }
 .badge { display:inline-block; padding:0.22rem 0.62rem; border-radius:8px; font-size:0.8rem; font-weight:500;
   border:1px solid rgba(52,211,153,0.3); background:rgba(16,185,129,0.12); color:#a7f3d0; margin:0 0.35rem 0.35rem 0; }
 
-/* ---- Textes du hadith ---- */
-.arabic-matn { font-family: 'Amiri','Noto Sans Arabic',serif; font-size: 1.7rem; line-height: 2.5rem;
-  text-align: right; direction: rtl; unicode-bidi: isolate; padding: 1.4rem 1.75rem;
-  background: linear-gradient(180deg, rgba(6,30,24,0.92) 0%, rgba(3,15,12,0.92) 100%);
-  border: 1px solid rgba(52,211,153,0.22); border-left: 4px solid __ACCENT__; border-radius: 12px;
-  color: #f1f5f9; box-shadow: inset 0 2px 8px rgba(0,0,0,0.4); }
-.translation-fr { font-size: 1.02rem; line-height: 1.8rem; color: #cbd5e1; background: rgba(6,30,24,0.7);
-  border-left: 3px solid __ACCENT__; padding: 1rem 1.25rem; border-radius: 10px; margin-top: 0.75rem; }
+/* ---- Textes du hadith : traduction française en vedette ---- */
+.matn-label { font-family:'Lora',serif; font-size:0.78rem; font-weight:600; letter-spacing:0.16em;
+  text-transform:uppercase; color:__ACCENT__; margin:0 0 0.4rem 0.15rem; opacity:0.95; }
+.translation-fr { font-family:'Lora',serif; font-size:1.22rem; line-height:2.1; color:#eefaf3;
+  background:linear-gradient(180deg, #0c231c 0%, #081913 100%);
+  border:1px solid rgba(52,211,153,0.30); border-left:4px solid __ACCENT__;
+  border-radius:14px; padding:1.35rem 1.6rem; margin:0 0 1.1rem 0;
+  box-shadow:0 8px 24px rgba(0,0,0,0.28); }
+.arabic-matn { font-family:'Amiri','Noto Sans Arabic',serif; font-size:1.7rem; line-height:2.6rem;
+  text-align:right; direction:rtl; unicode-bidi:isolate; padding:1.35rem 1.7rem;
+  background:rgba(6,30,24,0.5); border:1px solid rgba(52,211,153,0.18); border-left:4px solid __ACCENT__;
+  border-radius:14px; color:#eaf3ec; }
 
 /* ---- Boutons (verts profonds, jamais noirs) ---- */
 .stButton, [data-testid="stButton"] { width: 100%; }
@@ -371,13 +524,18 @@ h1, h2, h3, h4 { color: #0f2419; letter-spacing: -0.01em; }
 .badge { display:inline-block; padding:0.22rem 0.62rem; border-radius:8px; font-size:0.8rem; font-weight:500;
   border:1px solid #a7d7bb; background:#e9f6ee; color:#0f7a4d; margin:0 0.35rem 0.35rem 0; }
 
-/* ---- Textes du hadith ---- */
-.arabic-matn { font-family: 'Amiri','Noto Sans Arabic',serif; font-size: 1.7rem; line-height: 2.5rem;
-  text-align: right; direction: rtl; unicode-bidi: isolate; padding: 1.4rem 1.75rem;
-  background: #ffffff; border: 1px solid #d5e8dd; border-left: 4px solid __ACCENT__; border-radius: 12px;
-  color: #14261d; box-shadow: 0 1px 3px rgba(15,60,40,0.06); }
-.translation-fr { font-size: 1.02rem; line-height: 1.8rem; color: #2c4238; background: #eff7f2;
-  border-left: 3px solid __ACCENT__; padding: 1rem 1.25rem; border-radius: 10px; margin-top: 0.75rem; }
+/* ---- Textes du hadith : traduction française en vedette ---- */
+.matn-label { font-family:'Lora',serif; font-size:0.78rem; font-weight:600; letter-spacing:0.16em;
+  text-transform:uppercase; color:__ACCENT__; margin:0 0 0.4rem 0.15rem; opacity:0.95; }
+.translation-fr { font-family:'Lora',serif; font-size:1.22rem; line-height:2.1; color:#152a20;
+  background:linear-gradient(180deg, #ffffff 0%, #f1f9f4 100%);
+  border:1px solid #cfe6da; border-left:4px solid __ACCENT__;
+  border-radius:14px; padding:1.35rem 1.6rem; margin:0 0 1.1rem 0;
+  box-shadow:0 4px 14px rgba(15,60,40,0.08); }
+.arabic-matn { font-family:'Amiri','Noto Sans Arabic',serif; font-size:1.7rem; line-height:2.6rem;
+  text-align:right; direction:rtl; unicode-bidi:isolate; padding:1.35rem 1.7rem;
+  background:#ffffff; border:1px solid #d5e8dd; border-left:4px solid __ACCENT__;
+  border-radius:14px; color:#14261d; box-shadow:0 1px 3px rgba(15,60,40,0.06); }
 
 /* ---- Boutons ---- */
 .stButton, [data-testid="stButton"] { width: 100%; }
@@ -450,14 +608,18 @@ h1, h2, h3, h4 { color: #3a2f1e; font-family: 'Lora', serif; letter-spacing: -0.
 .badge { display:inline-block; padding:0.22rem 0.62rem; border-radius:8px; font-size:0.8rem; font-weight:500;
   border:1px solid rgba(185,138,68,0.45); background:rgba(249,240,214,0.9); color:#6d5226; margin:0 0.35rem 0.35rem 0; }
 
-/* ---- Textes du hadith ---- */
-.arabic-matn { font-family: 'Amiri','Noto Sans Arabic',serif; font-size: 1.7rem; line-height: 2.5rem;
-  text-align: right; direction: rtl; unicode-bidi: isolate; padding: 1.4rem 1.75rem;
-  background: linear-gradient(180deg, #fffaf0 0%, #fdf6e3 100%); border: 1px solid rgba(139,115,85,0.35);
-  border-left: 4px solid __ACCENT__; border-radius: 12px; color: #3a2f1e;
-  box-shadow: inset 0 1px 4px rgba(160,120,75,0.08); }
-.translation-fr { font-size: 1.02rem; line-height: 1.8rem; color: #5b4a30; background: rgba(250,245,230,0.92);
-  border-left: 3px solid __ACCENT__; padding: 1rem 1.25rem; border-radius: 10px; margin-top: 0.75rem; }
+/* ---- Textes du hadith : traduction française en vedette ---- */
+.matn-label { font-family:'Lora',serif; font-size:0.78rem; font-weight:600; letter-spacing:0.16em;
+  text-transform:uppercase; color:__ACCENT__; margin:0 0 0.4rem 0.15rem; opacity:0.95; }
+.translation-fr { font-family:'Lora',serif; font-size:1.22rem; line-height:2.1; color:#3a2c18;
+  background:linear-gradient(180deg,#fffdf6 0%, #f7efd9 100%);
+  border:1px solid rgba(139,115,85,0.35); border-left:4px solid __ACCENT__;
+  border-radius:14px; padding:1.35rem 1.6rem; margin:0 0 1.1rem 0;
+  box-shadow:0 4px 14px rgba(120,90,50,0.10); }
+.arabic-matn { font-family:'Amiri','Noto Sans Arabic',serif; font-size:1.7rem; line-height:2.6rem;
+  text-align:right; direction:rtl; unicode-bidi:isolate; padding:1.35rem 1.7rem;
+  background:linear-gradient(180deg,#fffaf0 0%, #fdf6e3 100%); border:1px solid rgba(139,115,85,0.35);
+  border-left:4px solid __ACCENT__; border-radius:14px; color:#3a2f1e; }
 
 /* ---- Boutons (tons sablés / dorés, texte brun foncé lisible) ---- */
 .stButton, [data-testid="stButton"] { width: 100%; }
@@ -697,26 +859,88 @@ SCROLL_TO_DETAIL_JS = """
 </script>
 """
 
+# Bouton « Retour en haut » : n'apparaît qu'au défilement ; remontée fluide.
+BACK_TO_TOP_JS = """
+<script>
+(function () {
+  var doc = window.parent.document;
+  if (doc.__bttInit) return;
+  doc.__bttInit = true;
+
+  function scroller() {
+    return doc.querySelector('[data-testid="stMain"]') ||
+           doc.querySelector('[data-testid="stAppViewContainer"]') ||
+           doc.scrollingElement || doc.documentElement;
+  }
+  function pos() {
+    var a = 0, sc = scroller();
+    if (sc && typeof sc.scrollTop === 'number') a = Math.max(a, sc.scrollTop);
+    var se = doc.scrollingElement;
+    if (se && typeof se.scrollTop === 'number') a = Math.max(a, se.scrollTop);
+    try { a = Math.max(a, window.parent.scrollY || 0); } catch (e) {}
+    return a;
+  }
+  function refresh() {
+    var b = doc.querySelector('.back-to-top');
+    if (!b) return;
+    if (pos() > 260) b.classList.add('visible');
+    else b.classList.remove('visible');
+  }
+  doc.addEventListener('scroll', refresh, true);
+  doc.addEventListener('wheel', refresh, { passive: true, capture: true });
+  doc.addEventListener('touchmove', refresh, { passive: true, capture: true });
+  doc.addEventListener('click', function (e) {
+    var b = e.target && e.target.closest ? e.target.closest('.back-to-top') : null;
+    if (!b) return;
+    e.preventDefault();
+    var s = scroller();
+    if (s && s.scrollTo) s.scrollTo({ top: 0, behavior: 'smooth' });
+    var se = doc.scrollingElement;
+    if (se && se.scrollTo) se.scrollTo({ top: 0, behavior: 'smooth' });
+    try { window.parent.scrollTo({ top: 0, behavior: 'smooth' }); } catch (err) {}
+  }, true);
+  try {
+    new MutationObserver(refresh).observe(doc.body, { childList: true, subtree: true });
+  } catch (e) {}
+  setInterval(refresh, 800);
+  refresh();
+})();
+</script>
+"""
+
 THEME_ICONS = [("Sombre", "🌙"), ("Clair", "☀️"), ("Sépia", "📜")]
 if st.session_state.get("theme") not in ("Sombre", "Clair", "Sépia"):
     st.session_state.theme = "Sombre"
 
+# Changement de thème via les icônes du sélecteur (paramètre d'URL).
+_qp_theme = st.query_params.get("theme")
+if _qp_theme in ("Sombre", "Clair", "Sépia"):
+    st.session_state.theme = _qp_theme
+
 theme = st.session_state.theme
 st.markdown(theme_css(theme), unsafe_allow_html=True)
+st.markdown('<div id="top"></div>', unsafe_allow_html=True)
+st.markdown(
+    '<a class="back-to-top" href="#top" title="Retour en haut" '
+    'aria-label="Retour en haut">↑</a>',
+    unsafe_allow_html=True,
+)
+components.html(BACK_TO_TOP_JS, height=0, width=0)
 plot = THEME_PLOT[theme]
 
-# Barre d'ambiance : boutons à icônes, alignés à droite.
+# Sélecteur d'ambiance : rangée compacte d'icônes, alignée à droite.
+# Chaque icône porte une infobulle native (attribut title) ; l'icône active est
+# mise en valeur sans cadre vert. Le clic change le thème via un paramètre
+# d'URL relu en tête de script (st.query_params).
 _tl, _tr = st.columns([5, 3])
 with _tr:
-    st.markdown('<div class="theme-switch-label">Ambiance visuelle</div>', unsafe_allow_html=True)
-    _tcols = st.columns(3)
-    for _col, (_name, _icon) in zip(_tcols, THEME_ICONS):
-        with _col:
-            _active = (st.session_state.theme == _name)
-            if st.button(_icon, key=f"theme_{_name}", help=_name,
-                         type=("primary" if _active else "secondary"), width="stretch"):
-                st.session_state.theme = _name
-                st.rerun()
+    _theme_items = "".join(
+        f'<a class="theme-icon{" active" if _name == st.session_state.theme else ""}" '
+        f'href="?theme={_name}" title="Thème {_name}" '
+        f'aria-label="Thème {_name}">{_icon}</a>'
+        for _name, _icon in THEME_ICONS
+    )
+    st.markdown(f'<div class="theme-switch">{_theme_items}</div>', unsafe_allow_html=True)
 
 # En-tête principal ornementé (motifs géométriques islamiques).
 st.markdown(
@@ -783,26 +1007,38 @@ else:
             n_paths = chain.path_count if chain and chain.path_count else "N/A"
             excerpt = (h.matn_translation_fr or h.matn or "")
             excerpt = excerpt[:110] + "…" if len(excerpt) > 110 else excerpt
-            st.markdown(
-                f"""<div class="theme-card">
-                <div><span class="badge">{obedience_fr(h.obedience.value)}</span>
-                <span class="badge">{tawatur_fr(h.tawatur_type.value)}</span></div>
-                <strong>{h.title_fr}</strong>
-                <div style="font-size:0.92rem;margin-top:0.4rem;">{excerpt}</div>
-                <div style="font-size:0.82rem;margin-top:0.5rem;opacity:0.8;">
-                🔗 {n_paths} chemins &nbsp;•&nbsp; 🏷️ {h.id.upper()}</div>
-                </div>""",
-                unsafe_allow_html=True,
-            )
-            if st.button("Consulter", key=f"sel_{h.id}", width="stretch"):
-                st.session_state.sel_id = h.id
+            summit = is_summit(h)
+            card_cls = "theme-card golden" if summit else "theme-card"
+            flag = ('<span class="golden-flag">✦ Sommet du Tawatur</span>'
+                    if summit else "")
+            with st.container(key=f"card_{h.id}"):
+                st.markdown(
+                    f'<div class="{card_cls}">'
+                    f'<div><span class="badge">{obedience_fr(h.obedience.value)}</span>'
+                    f'<span class="badge">{tawatur_fr(h.tawatur_type.value)}</span></div>'
+                    f'<strong>{h.title_fr}</strong>'
+                    f'<div style="font-size:0.92rem;margin-top:0.4rem;">{excerpt}</div>'
+                    f'<div style="font-size:0.82rem;margin-top:0.5rem;opacity:0.8;">'
+                    f'🔗 {n_paths} chemins &nbsp;•&nbsp; 🏷️ {h.id.upper()}</div>'
+                    f'{flag}'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+                opened = st.button(
+                    f"Consulter : {h.title_fr}",
+                    key=f"sel_{h.id}",
+                    help="Cliquer pour afficher le détail, les explications et les chaînes de transmission",
+                )
+            if opened:
+                st.session_state.selected_hadith_id = h.id
                 st.session_state.scroll_detail = True
+                st.rerun()
 
 
 # ---------------------------------------------------------------------------
 # 6. Détail du hadith sélectionné (protégé)
 # ---------------------------------------------------------------------------
-sel_id = st.session_state.get("sel_id")
+sel_id = st.session_state.get("selected_hadith_id")
 sel = next((h for h in hadiths if h.id == sel_id), None)
 
 if sel:
@@ -810,6 +1046,32 @@ if sel:
     if st.session_state.pop("scroll_detail", False):
         components.html(SCROLL_TO_DETAIL_JS, height=0, width=0)
     st.markdown("---")
+
+    # Recherche rapide : changer de hadith sans remonter au catalogue.
+    _dq_raw = st.text_input(
+        "Rechercher un autre hadith",
+        key="detail_search",
+        placeholder="Titre, texte arabe ou traduction…",
+    )
+    _dq = _dq_raw.strip().lower()
+    if _dq:
+        _matches = [
+            h for h in hadiths
+            if _dq in (h.title_fr or "").lower()
+            or _dq in (h.matn or "")
+            or _dq in (h.matn_translation_fr or "").lower()
+        ][:9]
+        if not _matches:
+            st.caption("Aucun hadith correspondant.")
+        else:
+            _mc = st.columns(min(3, len(_matches)))
+            for _i, _h in enumerate(_matches):
+                with _mc[_i % len(_mc)]:
+                    if st.button(_h.title_fr, key=f"dq_{_h.id}", width="stretch"):
+                        st.session_state.selected_hadith_id = _h.id
+                        st.session_state.scroll_detail = True
+                        st.rerun()
+
     try:
         st.header(sel.title_fr)
         if sel.title_ar:
@@ -822,9 +1084,14 @@ if sel:
         m4.metric("Nombre de voies", len(sel.turuq or []))
 
         st.subheader("Texte du Hadith")
-        st.markdown(f'<div class="arabic-matn">{sel.matn}</div>', unsafe_allow_html=True)
+        _matn_blocks = []
         if sel.matn_translation_fr:
-            st.markdown(f'<div class="translation-fr">{sel.matn_translation_fr}</div>', unsafe_allow_html=True)
+            _matn_blocks.append('<div class="matn-label">Traduction française</div>')
+            _matn_blocks.append(f'<div class="translation-fr">{sel.matn_translation_fr}</div>')
+        if sel.matn:
+            _matn_blocks.append('<div class="matn-label">Texte arabe</div>')
+            _matn_blocks.append(f'<div class="arabic-matn">{sel.matn}</div>')
+        st.markdown("".join(_matn_blocks), unsafe_allow_html=True)
 
         sources = sel.validation_sources or []
         if sources:
