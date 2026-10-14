@@ -20,12 +20,14 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from backend.graph.isnad_utils import (
     build_turuq_network,
     format_isnad_text,
+    layout_network,
     obedience_fr,
     reliability_fr,
     tawatur_fr,
 )
 from backend.models.hadith_models import Hadith, IsnadChain, Rawiy
 from database.seed_data import create_seed_data
+from database.data.sources_data import SOURCES
 
 _FAVICON = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), "assets", "favicon.png"
@@ -268,11 +270,24 @@ div[data-baseweb="input"], div[data-baseweb="base-input"],
   color: var(--ui-muted) !important; opacity: 1 !important;
 }
 [data-baseweb="select"] { color: var(--ui-text) !important; }
-[data-baseweb="select"] [data-baseweb="tag"] {
-  background-color: var(--ui-tag-bg) !important; color: var(--ui-tag-text) !important;
-  border: 1px solid var(--ui-border) !important;
+/* PUCS 'tag' (Plan A) : fond transparent, aucune bordure, texte bien lisible.
+   Seule la couleur du texte (--ui-tag-text) subsiste pour repérer les
+   valeurs sélectionnées — aucun bloc blanc/clair n'est possible. */
+[data-baseweb="select"] [data-baseweb="tag"],
+div[data-baseweb="tag"],
+[data-baseweb="select"] [data-baseweb="tag"] *,
+div[data-baseweb="tag"] * {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
-[data-baseweb="select"] [data-baseweb="tag"] span { color: var(--ui-tag-text) !important; }
+[data-baseweb="select"] [data-baseweb="tag"],
+div[data-baseweb="tag"] {
+  color: var(--ui-tag-text) !important;
+  border-radius: 4px !important;
+}
+[data-baseweb="select"] [data-baseweb="tag"] span,
+div[data-baseweb="tag"] span { color: var(--ui-tag-text) !important; }
 [data-baseweb="select"] svg { fill: var(--ui-text) !important; }
 /* ===== Menus déroulants (selectbox / multiselect) : fond feutré, texte lisible ===== */
 div[data-baseweb="popover"],
@@ -301,6 +316,41 @@ div[role="option"][aria-selected="true"] {
   color: var(--ui-menu-text) !important;
 }
 li[role="option"][data-highlighted="true"] { background-color: var(--ui-menu-hover) !important; }
+/* ===== Fond blanc des menus OUVERTS (panneau BaseWeb Dropdown/Listbox) =====
+   Streamlit injecte via son thème (menuFill) un fond clair/blanc (#f6fbf8) et
+   une bordure claire sur les couches internes du menu déroulant, même en thème
+   Sombre. On les éradique définitivement : le panneau interne est fondu dans
+   --ui-menu-bg, et seules les occurrences (li[role=option]) gardent leur
+   état survol/sélection via --ui-menu-hover. Aucun contour blanc ne subsiste. */
+div[data-baseweb="popover"] > div > div,
+div[data-baseweb="popover"] > div > div div,
+div[data-baseweb="popover"] > div > div ul,
+div[data-baseweb="popover"] > div > div input {
+  background-color: var(--ui-menu-bg) !important;
+  color: var(--ui-menu-text) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+div[data-baseweb="popover"] > div > div > div,
+div[data-baseweb="popover"] > div > div > ul {
+  border: none !important;
+}
+div[data-baseweb="popover"] > div > div ul li,
+div[data-baseweb="popover"] > div > div ul [role="option"],
+div[data-baseweb="popover"] > div > div ul div[role="option"] {
+  background-color: transparent !important;
+  color: var(--ui-menu-text) !important;
+  border: none !important;
+}
+div[data-baseweb="popover"] > div > div ul li:hover,
+div[data-baseweb="popover"] > div > div ul [role="option"]:hover,
+div[data-baseweb="popover"] > div > div ul [role="option"][aria-selected="true"],
+div[data-baseweb="popover"] > div > div ul [role="option"][data-highlighted="true"],
+div[data-baseweb="popover"] > div > div ul div[role="option"]:hover {
+  background-color: var(--ui-menu-hover) !important;
+  color: var(--ui-menu-text) !important;
+}
+div[data-baseweb="popover"] > div > div svg { fill: var(--ui-menu-text) !important; }
 
 /* Labels & textes */
 [data-testid="stWidgetLabel"] p, [data-testid="stWidgetLabel"] label { color: var(--ui-text) !important; }
@@ -358,10 +408,12 @@ hr { border-color: var(--ui-border) !important; }
 }
 
 /* ===== Défilement fluide + bouton « Retour en haut » flottant ===== */
+/* Bouton ancré à mi-hauteur, contre le bord droit (1.5rem = moitié de sa
+   taille 3rem : le centre du cercle est exactement à 50 % du viewport). */
 html, body, section.main, [data-testid="stAppViewContainer"],
 [data-testid="stMain"] { scroll-behavior: smooth; }
 .back-to-top {
-  position: fixed; right: 30px; bottom: 40px; z-index: 99999;
+  position: fixed; right: 22px; bottom: calc(50% - 1.5rem); z-index: 99999;
   display: inline-flex; align-items: center; justify-content: center;
   width: 3rem; height: 3rem; border-radius: 50%;
   background: var(--ui-btn-bg-strong); color: var(--ui-btn-text) !important;
@@ -372,7 +424,7 @@ html, body, section.main, [data-testid="stAppViewContainer"],
   transition: opacity .25s ease, transform .25s ease, visibility .25s ease,
               filter .15s ease;
 }
-.back-to-top.visible { opacity: 1; visibility: visible; transform: none; }
+.back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
 .back-to-top:hover { filter: brightness(1.08); transform: translateY(-2px); }
 
 /* ===== Sommet du Tawatur : lueur dorée (Golden Glow) ===== */
@@ -501,39 +553,47 @@ html, body, section.main, [data-testid="stAppViewContainer"],
   box-shadow: 0 0 0 3px var(--ui-tag-bg, rgba(120,120,120,0.10)) !important;
 }
 
-/* ===== Champs de saisie & filtres : habillage unifié, SANS bordure blanche =====
-   Ciblage GLOBAL de tous les sélecteurs : barre de recherche, obédiences, types
-   de tawatur, catégories thématiques et classification des rapporteurs.
-   Un seul fin trait sobre les habille : fond sombre assorti au thème
-   (--ui-field-bg), bordure 1px --ui-field-border, coins 4px. Toute couche
-   interne de BaseWeb (div imbriqués / base-input) est forcée transparente et
-   sans bordure, et l'effet de focus blanc par défaut de Streamlit est annulé. */
+/* ===== Champs de saisie & filtres : SOLUTION DÉFINITIVE (caduques blancs) ====
+   MÊME BLOC CSS EXACT pour la barre de recherche ET tous les sélecteurs
+   (Obédience, Type de Tawatur, Catégorie thématique, Classification des
+   rapporteurs…). Deux plans combinés :
+   - PLAN B (camouflage parfait) : le fond ET la bordure du widget portent
+     EXACTEMENT la couleur de l'arrière-plan du thème (--ui-bg, vert sombre
+     #0b1a17 en Sombre). Tout cadre résiduel hérite donc de la même teinte que
+     le décor et devient invisible. Texte et flèche restent clairs (--ui-text).
+   - PLAN A (transparence) : toutes les couches internes (div imbriqués,
+     base-input, inputs, puces 'tag', conteneurs de listes) sont forcées en
+     transparent et sans bordure ni ombre ; les styles par défaut blancs de
+     Streamlit/BaseWeb sont neutralisés à tous les niveaux. */
 div[data-baseweb="input"],
 div[data-baseweb="select"],
 [data-testid="stMultiSelect"] [data-baseweb="select"],
 [data-testid="stSelectbox"] [data-baseweb="select"] {
   background-color: var(--ui-field-bg, #0b1f1a) !important;
-  border: 1px solid var(--ui-field-border, rgba(0,255,128,0.25)) !important;
+  border: 1px solid var(--ui-field-border, #0b1f1a) !important;
   border-radius: 4px !important;
   box-shadow: none !important;
+  outline: none !important;
   color: var(--ui-text) !important;
   transition: border-color .15s ease;
 }
-/* Survol / focus : un vert un peu plus franc, jamais de blanc, aucun anneau. */
+/* Survol / focus : léger fil d'accent, jamais de blanc, aucun anneau. */
 div[data-baseweb="input"]:hover,
 div[data-baseweb="input"]:focus-within,
 div[data-baseweb="select"]:hover,
 div[data-baseweb="select"]:focus-within {
-  border-color: color-mix(in srgb, var(--ui-accent) 62%, var(--ui-field-border, rgba(0,255,128,0.25))) !important;
+  border-color: color-mix(in srgb, var(--ui-accent) 45%, var(--ui-field-border, #0b1f1a)) !important;
   box-shadow: none !important;
+  outline: none !important;
 }
-/* Éradication FORCÉE des bordures/fonds blancs sur TOUTES les couches internes
-   des sélecteurs et du champ texte (div imbriqués, base-input, inputs). */
+/* PLAN A — Éradication FORCÉE des fonds/bordures sur TOUTES les couches
+   internes des sélecteurs, des puces et du champ texte. */
 div[data-baseweb="select"] > div,
 div[data-testid="stMultiSelect"] div[data-baseweb="select"] > div,
 div[data-testid="stSelectbox"] div[data-baseweb="select"] > div,
 div[data-baseweb="input"] > div,
 div[data-baseweb="base-input"],
+div[data-baseweb="listbox"],
 div[data-testid="stMultiSelect"] div[data-baseweb="select"] > div > div:not([data-baseweb="tag"]),
 div[data-testid="stSelectbox"] div[data-baseweb="select"] > div > div:not([data-baseweb="tag"]),
 div[data-testid="stMultiSelect"] div[data-baseweb="select"] input,
@@ -542,7 +602,7 @@ div[data-testid="stSelectbox"] div[data-baseweb="select"] input {
   border: none !important;
   box-shadow: none !important;
 }
-/* Conteneurs de widgets : aucun fond blanc/clair ni cadre rigide. */
+/* PLAN A/B — Conteneurs de widgets : fond et bordure fusionnés dans le thème. */
 [data-testid="stMultiSelect"],
 [data-testid="stSelectbox"],
 [data-testid="stMultiSelect"] > div,
@@ -550,6 +610,7 @@ div[data-testid="stSelectbox"] div[data-baseweb="select"] input {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
+  outline: none !important;
 }
 /* Étiquette de section (Classification des rapporteurs & de la chaîne). */
 .filter-section-label {
@@ -564,6 +625,52 @@ div[data-testid="stSelectbox"] div[data-baseweb="select"] input {
   white-space: normal !important; overflow: visible !important;
   text-overflow: clip !important; overflow-wrap: anywhere; word-break: break-word;
 }
+/* ===== Onglets de vue (Bibliothèque / Sources & Savants) ===== */
+.st-key-view_switch { margin: 0.15rem 0 0.1rem; gap: 0.5rem; }
+.st-key-view_switch [data-testid="stButton"] { width: 100% !important; }
+.st-key-view_switch [data-testid="stButton"] button {
+  white-space: nowrap;
+  background: linear-gradient(135deg, rgba(16,185,129,0.14) 0%, rgba(16,185,129,0.05) 100%) !important;
+  border: 1px solid var(--ui-accent, #10b981) !important;
+  border-radius: 12px !important;
+  color: var(--ui-text, #e2e8f0) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
+  padding: 0.55rem 1.05rem !important;
+  box-shadow: 0 4px 10px -2px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.06) !important;
+  transition: background .3s ease, border-color .3s ease, box-shadow .3s ease, transform .18s ease !important;
+}
+.st-key-view_switch [data-testid="stButton"] button:hover {
+  background: linear-gradient(135deg, rgba(16,185,129,0.28) 0%, rgba(16,185,129,0.12) 100%) !important;
+  border-color: var(--ui-accent, #10b981) !important;
+  box-shadow: 0 0 16px rgba(16,185,129,0.35), 0 4px 12px -2px rgba(0,0,0,0.3) !important;
+  transform: translateY(-1px) !important;
+}
+.st-key-view_switch [data-testid="stButton"] button[kind="primary"] {
+  background: linear-gradient(135deg, rgba(16,185,129,0.30) 0%, rgba(16,185,129,0.12) 100%) !important;
+  border-color: #f59e0b !important;
+  box-shadow: 0 0 0 1px rgba(245,158,11,0.35), 0 0 18px rgba(245,158,11,0.25) !important;
+}
+/* ===== Répertoire « Sources & Savants » (cartes adaptatives via var(--ui-*)) ===== */
+.source-card {
+  background: var(--ui-surface, #0f251e);
+  border: 1px solid var(--ui-border, rgba(52,211,153,0.25));
+  border-radius: 14px; padding: 1.05rem 1.15rem 1.15rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.22);
+  color: var(--ui-text); display: flex; flex-direction: column;
+  gap: 0.32rem; height: 100%;
+}
+.source-card .sc-title { font-family:'Lora',serif; font-size:1.02rem; font-weight:700;
+  color: var(--ui-text); line-height:1.35; }
+.source-card .sc-ar { font-family:'Amiri','Lora',serif; direction:rtl;
+  font-size:1.08rem; color: var(--ui-accent); unicode-bidi:isolate; }
+.source-card .sc-scholar { font-size:0.92rem; color: var(--ui-text); }
+.source-card .sc-scholar b { font-weight:700; }
+.source-card .sc-dates { font-size:0.82rem; color: var(--ui-accent); font-weight:600; }
+.source-card .sc-contribution { font-size:0.86rem; line-height:1.55;
+  color: var(--ui-text); opacity:0.95; }
+.source-card .sc-links { font-size:0.8rem; color: var(--ui-muted); line-height:1.6;
+  padding-top:0.1rem; border-top:1px dashed var(--ui-border); }
 """
 
 
@@ -588,15 +695,15 @@ DARK_CSS = """
 <style>
 __FONTS__
 * { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-body, .stApp { background: radial-gradient(ellipse at top, #0b1a17 0%, #050d0b 100%); color: #dcefe6; }
+body, .stApp { background: radial-gradient(ellipse at top, #0b1f1a 0%, #050d0b 100%); color: #dcefe6; }
 :root, .stApp {
-  --ui-bg:#0b1a17; --ui-surface:#0f251e; --ui-surface-2:#123027; --ui-border:rgba(52,211,153,0.25);
+  --ui-bg:#0b1f1a; --ui-surface:#0f251e; --ui-surface-2:#123027; --ui-border:rgba(52,211,153,0.25);
   --ui-text:#dcefe6; --ui-muted:#93b7a8; --ui-accent:#34d399;
   --ui-tag-bg:rgba(16,185,129,0.16); --ui-tag-text:#a7f3d0;
   --ui-btn-bg:linear-gradient(180deg,#1f9d63,#0f7a4d); --ui-btn-bg-strong:linear-gradient(180deg,#18a06b,#0f7d54);
   --ui-btn-text:#ffffff;
-  --ui-menu-bg:#0a1c17; --ui-menu-text:#e6f4ec; --ui-menu-hover:#143a2c; --ui-menu-border:rgba(52,211,153,0.30);
-  --ui-field-bg:#0b1f1a; --ui-field-border:rgba(0,255,128,0.25);
+  --ui-menu-bg:#061310; --ui-menu-text:#e6f4ec; --ui-menu-hover:#143a2c; --ui-menu-border:rgba(52,211,153,0.30);
+  --ui-field-bg:var(--ui-bg); --ui-field-border:var(--ui-bg);
 }
 h1, h2, h3, h4 { color: #eafaf1; letter-spacing: -0.02em; }
 
@@ -666,6 +773,75 @@ h1, h2, h3, h4 { color: #eafaf1; letter-spacing: -0.02em; }
   margin-right:0.35rem; vertical-align:-2px; }
 .chart-legend .legend-item { display:inline-flex; align-items:center; }
 __SAFETY__
+/* CORRECTION CRITIQUE — Suppression totale des bordures et fonds blancs en
+   mode sombre. Ce bloc n'est injecté QUE par DARK_CSS (thème Sombre) : les
+   thèmes Clair/Sépia ne sont jamais touchés. La boîte visible reçoit un fond
+   légèrement surélevé par rapport à la page (blanc translucide → gris-vert
+   très sombre) et un liseré vert 1px de la charte (#10b981). Placé après
+   __SAFETY__ (le Plan A), il gagne la cascade aux égalités de spécificité. */
+div[data-baseweb="select"] {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+div[data-baseweb="select"] > div,
+div[data-testid="stMultiSelect"] [data-baseweb="select"] > div,
+div[data-testid="stSelectbox"] [data-baseweb="select"] > div {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid #10b981 !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+}
+
+/* Texte interne du sélecteur (« Choose options », valeur, saisie, placeholder) :
+   clair et parfaitement lisible sur le fond surélevé. */
+div[data-baseweb="select"] span,
+div[data-baseweb="select"] input,
+div[data-baseweb="select"] div[class*="value"],
+div[data-baseweb="select"] div[class*="placeholder"],
+div[data-baseweb="select"] div[class*="Value"],
+div[data-baseweb="select"] div[class*="Placeholder"],
+div[data-baseweb="select"] [data-baseweb="tag"] {
+    color: #f8fafc !important;
+}
+
+/* Placeholder natif du input BaseWeb */
+div[data-baseweb="select"] input::placeholder {
+    color: #cbd5e1 !important;
+    opacity: 1 !important;
+}
+
+/* Puces (tags) des valeurs sélectionnées : teinte verte translucide de la
+   charte et texte clair, cohérents avec le mode sombre. */
+div[data-baseweb="tag"] {
+    background-color: rgba(16, 185, 129, 0.2) !important;
+    border: 1px solid #10b981 !important;
+    color: #ffffff !important;
+}
+div[data-baseweb="tag"] span { color: #ffffff !important; }
+
+/* Compteur global de hadiths dans l'en-tête */
+.app-counter {
+  font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ui-accent); font-weight: 600; margin: 0.4rem 0 0.2rem;
+  opacity: 0.9;
+}
+.app-counter strong {
+  font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 700;
+  color: var(--ui-text); background: linear-gradient(90deg, var(--ui-accent), #f59e0b);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; padding: 0 0.2rem;
+}
+
+/* Supprime l'effet de focus blanc/clair de Streamlit. */
+[data-baseweb="select"] > div:focus-within,
+[data-baseweb="select"] > div:hover {
+    border-color: #34d399 !important;
+    box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.35) !important;
+}
+
+/* Clair & Sépia — cadres volontairement VISIBLES (fond blanc/écru + fine
+   bordure verte ou brune) : la régression du blanc reste ici assumée. */
 </style>
 """
 
@@ -681,7 +857,7 @@ body, .stApp { background: linear-gradient(180deg, #f6fbf8 0%, #eaf4ee 100%); co
   --ui-btn-bg:linear-gradient(180deg,#1f9d63,#178052); --ui-btn-bg-strong:linear-gradient(180deg,#12b76a,#0e8a52);
   --ui-btn-text:#ffffff;
   --ui-menu-bg:#e8f1ec; --ui-menu-text:#12261c; --ui-menu-hover:#d7e9df; --ui-menu-border:#c9e0d4;
-  --ui-field-bg:transparent; --ui-field-border:rgba(15,122,77,0.30);
+  --ui-field-bg:#ffffff; --ui-field-border:#c6e0d2;
 }
 h1, h2, h3, h4 { color: #0f2419; letter-spacing: -0.01em; }
 
@@ -750,6 +926,20 @@ h1, h2, h3, h4 { color: #0f2419; letter-spacing: -0.01em; }
 .chart-legend .dot { display:inline-block; width:13px; height:13px; border-radius:50%;
   margin-right:0.35rem; vertical-align:-2px; }
 .chart-legend .legend-item { display:inline-flex; align-items:center; }
+
+/* Compteur global de hadiths dans l'en-tête */
+.app-counter {
+  font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ui-accent); font-weight: 600; margin: 0.4rem 0 0.2rem;
+  opacity: 0.9;
+}
+.app-counter strong {
+  font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 700;
+  color: var(--ui-text); background: linear-gradient(90deg, var(--ui-accent), #f59e0b);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; padding: 0 0.2rem;
+}
+
 __SAFETY__
 </style>
 """
@@ -766,7 +956,7 @@ body, .stApp { background: radial-gradient(ellipse at top, #f8f3e3 0%, #efe6d0 1
   --ui-btn-bg:linear-gradient(180deg,#e2c184,#cba269); --ui-btn-bg-strong:linear-gradient(180deg,#d8b876,#b98a44);
   --ui-btn-text:#33271a;
   --ui-menu-bg:#f1ead6; --ui-menu-text:#33291a; --ui-menu-hover:#e6dcc2; --ui-menu-border:rgba(139,115,85,0.45);
-  --ui-field-bg:transparent; --ui-field-border:rgba(139,115,85,0.45);
+  --ui-field-bg:#fffaf0; --ui-field-border:rgba(160,130,85,0.45);
 }
 h1, h2, h3, h4 { color: #3a2f1e; font-family: 'Lora', serif; letter-spacing: -0.01em; }
 
@@ -835,6 +1025,20 @@ h1, h2, h3, h4 { color: #3a2f1e; font-family: 'Lora', serif; letter-spacing: -0.
 .chart-legend .dot { display:inline-block; width:13px; height:13px; border-radius:50%;
   margin-right:0.35rem; vertical-align:-2px; }
 .chart-legend .legend-item { display:inline-flex; align-items:center; }
+
+/* Compteur global de hadiths dans l'en-tête */
+.app-counter {
+  font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ui-accent); font-weight: 600; margin: 0.4rem 0 0.2rem;
+  opacity: 0.9;
+}
+.app-counter strong {
+  font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 700;
+  color: var(--ui-text); background: linear-gradient(90deg, var(--ui-accent), #f59e0b);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; padding: 0 0.2rem;
+}
+
 __SAFETY__
 </style>
 """
@@ -916,13 +1120,13 @@ def layout_network(nodes, edges):
     return pos
 
 
-def build_network_figure(net, plot, highlight_madar, color_mode):
+def build_network_figure(net, plot, highlight_madar, color_mode, mode="vertical"):
     """Figure Plotly du réseau complet des Turuq : tous les nœuds et liens,
     épaisseur/opacité des liens selon le poids (chemins), taille des nœuds
     selon la fréquence, couleur selon la fiabilité ou la fréquence."""
     nodes = net["nodes"]
     edges = net["edges"]
-    pos = layout_network(nodes, edges)
+    pos = layout_network(nodes, edges, mode=mode)
     palette = plot["palette"]
 
     fig = go.Figure()
@@ -999,7 +1203,7 @@ def build_network_figure(net, plot, highlight_madar, color_mode):
         paper_bgcolor=plot["paper"], plot_bgcolor=plot["paper"],
         font=dict(color=plot["text"]),
         hoverlabel=dict(bgcolor=plot["paper"], font=dict(color=plot["text"])),
-        height=720, dragmode="pan",
+        height=720, dragmode=False,
         xaxis=dict(showgrid=False, zeroline=False, showticklabels=False,
                    range=[-0.05, 1.05], fixedrange=False),
         yaxis=dict(showgrid=False, zeroline=False, showticklabels=False,
@@ -1036,6 +1240,100 @@ def build_legend_html(plot, color_mode, highlight_madar):
                 "Pivot (Madar)</span>"
             )
     return '<div class="chart-legend">' + "".join(items) + "</div>"
+
+
+def _source_hits(source, text_lines):
+    """Lignes texte (sources de hadith / de chaîne) qui référencent cette source."""
+    toks = [t.lower() for t in source.get("tokens", [])]
+    if not toks:
+        return []
+    return [l for l in text_lines if any(t in (l or "").lower() for t in toks)]
+
+
+def _source_stats(source, hadiths, chains):
+    """Lien de la source avec l'outil : nombre de hadiths et de chaînes la
+    citant, familles thématiques associées."""
+    n_had, n_ch = 0, 0
+    cats = set()
+    for h in hadiths:
+        vhits = _source_hits(source, h.validation_sources or [])
+        ch_hits = 0
+        for voie in h.turuq or []:
+            c = chains.get(voie.isnad_chain_id)
+            if c and _source_hits(source, c.sources or []):
+                ch_hits += 1
+        if vhits or ch_hits:
+            n_had += 1
+            if h.thematic_category:
+                cats.add(h.thematic_category)
+        n_ch += ch_hits
+    return n_had, n_ch, sorted(cats)[:3]
+
+
+def render_sources_view(hadiths, chains):
+    """Vue « Sources & Savants » : répertoire des recueils et compilateurs."""
+    st.subheader("Sources & Savants du corpus")
+    st.caption(
+        "Répertoire des sources hadithiques mobilisées par l'outil — compilateurs, "
+        "obédience, période du savant et contribution aux Turuq (voies de "
+        "transmission) ainsi qu'aux hadiths référencés."
+    )
+    _ob_choices = ["Commun (Sunnite & Chiite)", "Sunnite", "Chiite"]
+    with st.container():
+        s1, s2, _ = st.columns([2.2, 1.4, 2.4])
+        with s1:
+            src_search = st.text_input(
+                "Rechercher une source / un savant",
+                key="src_search",
+                placeholder="Nom du recueil ou du savant…",
+            )
+        with s2:
+            src_ob = st.multiselect(
+                "Obédience", _ob_choices, key="src_ob", default=[]
+            )
+    rows = []
+    q = (src_search or "").strip().lower()
+    for src in SOURCES:
+        n_had, n_ch, cats = _source_stats(src, hadiths, chains)
+        obey = obedience_fr(src["obedience"])
+        if src_ob and obey not in set(src_ob):
+            continue
+        if q:
+            hay = (
+                f'{src["collection_fr"]} {src["scholar_fr"]} '
+                f'{src["collection_ar"]} {src["scholar_ar"]}'
+            ).lower()
+            if q not in hay:
+                continue
+        rows.append((n_had + n_ch, n_had, n_ch, cats, src))
+    rows.sort(key=lambda r: (-r[0], r[4]["collection_fr"].lower()))
+    st.markdown(
+        '<div style="font-size:0.8rem;color:var(--ui-muted);margin:0.2rem 0 0.6rem;">'
+        f"{len(SOURCES)} sources répertoriées · {len(rows)} affichée(s) · "
+        "tri : contribution décroissante</div>",
+        unsafe_allow_html=True,
+    )
+    if not rows:
+        st.info("Aucune source ne correspond à ces filtres.")
+        return
+    cols = st.columns(3)
+    for i, (_score, n_had, n_ch, cats, src) in enumerate(rows):
+        with cols[i % 3]:
+            badge = f'<span class="badge">{obedience_fr(src["obedience"])}</span>'
+            cats_html = " · ".join(cats) if cats else "référence transversale"
+            st.markdown(
+                f'<div class="source-card">'
+                f"<div>{badge}</div>"
+                f'<div class="sc-title">{src["collection_fr"]}</div>'
+                f'<div class="sc-ar">{src["collection_ar"]}</div>'
+                f'<div class="sc-scholar"><b>{src["scholar_fr"]}</b></div>'
+                f'<div class="sc-dates">{src["dates_fr"]} · {src["century_hijri"]}</div>'
+                f'<div class="sc-contribution">{src["contribution"]}</div>'
+                f'<div class="sc-links">🔗 {n_had} hadith(s) · {n_ch} chaîne(s) · '
+                f"🏷️ {cats_html}</div>"
+                f"</div>",
+                unsafe_allow_html=True,
+            )
 
 
 # ---------------------------------------------------------------------------
@@ -1160,14 +1458,16 @@ with _tr:
                 st.rerun()
 
 # En-tête principal ornementé (motifs géométriques islamiques).
+total_hadiths = len(hadiths)
 st.markdown(
-    """
+    f"""
     <div class="app-header">
       <div class="orn-row">
         <span class="orn-line"></span><span class="orn-star">۞</span><span class="orn-line"></span>
       </div>
       <h1 class="app-title">Tawatur Hadith</h1>
-      <div class="app-subtitle">Visualisation des Hadiths Mutawatir · Isnad &amp; Turuq</div>
+      <div class="app-subtitle">Visualisation des Hadiths Mutawatir · Isnad & Turuq</div>
+      <div class="app-counter">Nombre total de hadiths indexés : <strong>{total_hadiths}</strong></div>
       <div class="orn-row">
         <span class="orn-line"></span><span class="orn-star">❖</span><span class="orn-line"></span>
       </div>
@@ -1175,6 +1475,40 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
+
+# ---------------------------------------------------------------------------
+# 3bis. Onglets de vue : Bibliothèque des Hadiths / Sources & Savants
+# ---------------------------------------------------------------------------
+if "view" not in st.session_state:
+    st.session_state.view = "hadiths"
+_view = st.session_state.view
+with st.container(key="view_switch"):
+    _tab1, _tab2, _tabx = st.columns([1, 1, 4])
+    with _tab1:
+        if st.button(
+            "📖 La Bibliothèque",
+            key="view_hadiths",
+            type="primary" if _view == "hadiths" else "secondary",
+            help="Parcourir, filtrer et consulter les hadiths mutawatir",
+        ):
+            st.session_state.view = "hadiths"
+            st.rerun()
+    with _tab2:
+        if st.button(
+            "📚 Sources & Savants",
+            key="view_sources",
+            type="primary" if _view == "sources" else "secondary",
+            help="Répertoire des recueils et compilateurs mobilisés",
+        ):
+            st.session_state.view = "sources"
+            st.rerun()
+
+if _view == "sources":
+    render_sources_view(hadiths, chains)
+    st.markdown("---")
+    st.caption("Corpus islamique d'étude comparative des hadiths mutawatir.")
+    st.stop()
 
 
 # ---------------------------------------------------------------------------
@@ -1377,7 +1711,7 @@ if sel:
 
             max_path = max((chains.get(t.isnad_chain_id).path_count or 0
                             for t in sel.turuq if chains.get(t.isnad_chain_id)), default=0)
-            ctrl1, ctrl2, ctrl3 = st.columns([3, 2, 2])
+            ctrl1, ctrl2, ctrl3, ctrl4 = st.columns([3, 2, 2, 2])
             with ctrl1:
                 min_paths = st.slider(
                     "Force minimale d'une voie (chemins déclarés)",
@@ -1389,6 +1723,21 @@ if sel:
                 highlight_madar = st.checkbox("Surligner les pivots (Madar)", value=True)
             with ctrl3:
                 color_mode = st.radio("Couleur des nœuds", ["Fiabilité", "Fréquence"], horizontal=True)
+            with ctrl4:
+                graph_mode = st.radio(
+                    "Mode de visualisation",
+                    ["Standard / Vertical", "Radial / Soleil", "Hybride"],
+                    index=0,
+                    horizontal=True,
+                    help="Standard : arborescence chronologique (haut→bas). "
+                         "Radial : disposition circulaire concentrique. "
+                         "Hybride : compromis fluide."
+                )
+                mode_map = {
+                    "Standard / Vertical": "vertical",
+                    "Radial / Soleil": "radial",
+                    "Hybride": "hybrid",
+                }
 
             net = build_turuq_network(sel, chains, rawis, min_paths=min_paths)
             stats = net["stats"]
@@ -1406,14 +1755,15 @@ if sel:
 
                 st.markdown(build_legend_html(plot, color_mode, highlight_madar), unsafe_allow_html=True)
 
-                fig = build_network_figure(net, plot, highlight_madar, color_mode)
+                fig = build_network_figure(net, plot, highlight_madar, color_mode, mode=mode_map[graph_mode])
                 st.plotly_chart(
                     fig, width="stretch",
-                    config={"scrollZoom": True, "displaylogo": False,
-                            "modeBarButtonsToAdd": ["pan2d", "zoomIn2d", "zoomOut2d", "resetScale2d"]},
+                    config={"scrollZoom": False, "displaylogo": False,
+                            "modeBarButtons": [["zoomIn2d", "zoomOut2d", "resetScale2d"]]},
                 )
                 st.caption(
-                    "💡 Molette = zoom • Glisser = déplacer • Double-clic = réinitialiser. "
+                    "💡 Zoom ↔ avec les boutons + / − • Défilement de la page libre "
+                    "• Déplacement (pan/glisser) désactivé • Double-clic = réinitialiser. "
                     "Épaisseur des liens ∝ nombre de chemins ; taille des nœuds ∝ fréquence."
                 )
 
@@ -1537,10 +1887,12 @@ if sel:
 
 
 # ---------------------------------------------------------------------------
-# 7. Pied de page
+# 7. Pied de page — épuré (copyright minimaliste)
 # ---------------------------------------------------------------------------
 st.markdown("---")
-st.caption(
-    "Tawatur Hadith Project • Navigation sans barre latérale, thèmes Clair/Sombre/Sépia "
-    "et support multi-voies (Turuq)."
+st.markdown(
+    '<div style="text-align:center;font-size:0.8rem;color:var(--ui-muted);'
+    'padding-bottom:0.6rem;">© 2026 Tawatur Hadith — Corpus islamique de '
+    "visualisation des hadiths mutawatir · Isnad &amp; Turuq</div>",
+    unsafe_allow_html=True,
 )

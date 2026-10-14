@@ -4,18 +4,21 @@
 Point d'entrée unique : ``create_seed_data()``.
 
 Les données brutes sont séparées (package ``database.data``) pour rester
-maintenables et extensibles :
+maintenables et extensibles, et agrégées par le catalogue central
+(``database/data/catalog.py``) qui en pilote l'intégration progressive vers
+le corpus complet des hadiths mutawatir validés par les savants (~300).
 
-- ``rawis_data.RAWIS``    : registre des narrateurs (Rijal) ;
+Registres de narrateurs :
+- ``rawis_data_Rawis.RAWIS`` : registre des narrateurs (Rijal) ;
 - ``rawis_data_extra.RAWIS_EXTRA`` : narrateurs additionnels (fusionnés) ;
 - ``rawis_rijal.RAWIS_RIJAL`` : narrateurs intermédiaires (Tabi'un, atba'
-  al-tabi'in, shuyukh des compilateurs) issus du dépouillement des asanid ;
-- ``hadiths_data.HADITHS``: catalogue des hadiths mutawatir, chacun portant
-  ses voies (Turuq) avec la chaîne COMPLÈTE inline (Compagnon → Tabi'i/Imam
-  → compilateur) ;
-- ``hadiths_data_mw1.HADITHS_MW1`` / ``hadiths_data_mw2.HADITHS_MW2`` :
-  vagues d'extension du catalogue ;
-- ``hadiths_data_mw3.HADITHS_MW3`` : mutawatir supplémentaires sourcés ;
+  al-tabi'in, shuyukh des compilateurs) issus du dépouillement des asanid.
+
+Registres de hadiths (vagues d'extension, voir le manifeste du catalogue) :
+- ``hadiths_data.HADITHS``, ``hadiths_data_mw1.HADITHS_MW1``,
+  ``hadiths_data_mw2.HADITHS_MW2``, ``hadiths_data_mw3.HADITHS_MW3``,
+  ``hadiths_data_mw4.HADITHS_MW4`` : chacun porte ses voies (Turuq) avec la
+  chaîne COMPLÈTE inline (Compagnon → Tabi'i/Imam → compilateur) ;
 - ``isnad_expansions.ISNAD_EXPANSIONS`` : chaînes détaillées (narrateur par
   narrateur) ajoutées aux hadiths existants, d'après les asanid des recueils.
 
@@ -25,7 +28,7 @@ L'assembleur :
 3. valide l'intégrité référentielle (narrateurs et turuq non vides) ;
 4. trie les hadiths par ``rank`` (1 = plus haut degré d'authenticité).
 
-Performance : l'ensemble (~98 hadiths, ~390 chaînes) se construit en quelques
+Performance : l'ensemble (~100 hadiths, ~370 chaînes) se construit en quelques
 dizaines de millisecondes et est mis en cache côté application Streamlit.
 """
 
@@ -38,17 +41,13 @@ from backend.models.hadith_models import (
     IsnadTuruq,
     Rawiy,
 )
-from database.data.hadiths_data import HADITHS
-from database.data.hadiths_data_mw1 import HADITHS_MW1
-from database.data.hadiths_data_mw2 import HADITHS_MW2
-from database.data.hadiths_data_mw3 import HADITHS_MW3
+from database.data.catalog import (
+    ALL_HADITHS,
+    ALL_RAWIS,
+    MODULES,
+    coverage_status,
+)
 from database.data.isnad_expansions import ISNAD_EXPANSIONS
-from database.data.rawis_data import RAWIS
-from database.data.rawis_data_extra import RAWIS_EXTRA
-from database.data.rawis_rijal import RAWIS_RIJAL
-
-ALL_HADITHS = HADITHS + HADITHS_MW1 + HADITHS_MW2 + HADITHS_MW3
-ALL_RAWIS = {**RAWIS, **RAWIS_EXTRA, **RAWIS_RIJAL}
 
 
 class SeedDataError(ValueError):
@@ -132,8 +131,14 @@ def create_seed_data() -> Dict:
 
 if __name__ == "__main__":
     data = create_seed_data()
+    cov = coverage_status()
     print(
         f"OK — {len(data['hadiths'])} hadiths, "
         f"{len(data['isnad_chains'])} chaînes, "
         f"{len(data['rawis'])} narrateurs."
+    )
+    print(
+        f"Progression : {cov['current']}/{cov['target']} catalogués "
+        f"({cov['validated']} validés), {cov['modules_validated']}/"
+        f"{cov['modules']} modules VALIDATED, {cov['remaining']} restants."
     )

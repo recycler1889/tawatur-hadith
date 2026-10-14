@@ -1,3 +1,4 @@
+import math
 from typing import Dict, List
 
 from backend.models.hadith_models import IsnadChain, Rawiy, ReliabilityFR, TawaturTypeFR, ObedienceFR
@@ -136,3 +137,176 @@ def get_ancestry_path(isnad_chain: IsnadChain, start_idx: int = 0, end_idx: int 
     if end_idx is None:
         end_idx = len(isnad_chain.nodes)
     return [n.rawi_name for n in isnad_chain.nodes[start_idx:end_idx]]
+
+
+# --- Layouts alternatifs ---
+
+def layout_radial(nodes, edges, max_level=None):
+    """Disposition radiale / « Soleil » : noyau central (compilateur niveau 0),
+    expansion concentrique vers les Compagnons (niveaux supérieurs).
+    Retourne {node_id: (x, y)} dans [0,1]."""
+    if not nodes:
+        return {}
+    
+    if max_level is None:
+        max_level = max((n["level"] for n in nodes), default=1) or 1
+    
+    # Grouper les nœuds par niveau
+    levels = {}
+    for n in nodes:
+        levels.setdefault(n["level"], []).append(n)
+    
+    # Trier chaque niveau par fréquence décroissante
+    for lvl in levels:
+        levels[lvl].sort(key=lambda x: (-x["frequency"], -x["paths"]))
+    
+    # Construire l'adjacence pour le barycentre
+    adjacency = {}
+    for e in edges:
+        adjacency.setdefault(e["source"], set()).add(e["target"])
+        adjacency.setdefault(e["target"], set()).add(e["source"])
+    
+    pos = {}
+    center_x, center_y = 0.5, 0.5
+    
+    # Le compilateur (niveau 0) au centre
+    if 0 in levels:
+        for n in levels[0]:
+            pos[n["id"]] = (center_x, center_y)
+    
+    # Niveaux concentriques
+    max_radius = 0.45
+    for lvl in sorted(levels.keys()):
+        if lvl == 0:
+            continue
+        ns = levels[lvl]
+        count = len(ns)
+        radius = (lvl / max_level) * max_radius
+        for i, n in enumerate(ns):
+            angle = (2 * math.pi * i) / count
+            # Décalage léger pour éviter la superposition parfaite
+            angle += 0.1 * (n.get("frequency", 1) % 3)
+            x = center_x + radius * math.cos(angle)
+            y = center_y + radius * math.sin(angle)
+            pos[n["id"]] = (x, y)
+    
+    return pos
+
+
+def layout_hybrid(nodes, edges, max_level=None):
+    """Disposition hybride : arbre vertical pour la structure principale,
+    avec les sous-branches déployées en éventail radial.
+    Compromis entre lisibilité chronologique et compacité."""
+    if not nodes:
+        return {}
+    
+    if max_level is None:
+        max_level = max((n["level"] for n in nodes), default=1) or 1
+    
+    # Grouper par niveau
+    levels = {}
+    for n in nodes:
+        levels.setdefault(n["level"], []).append(n)
+    
+    for lvl in levels:
+        levels[lvl].sort(key=lambda x: (-x["frequency"], -x["paths"]))
+    
+    adjacency = {}
+    for e in edges:
+        adjacency.setdefault(e["source"], set()).add(e["target"])
+        adjacency.setdefault(e["target"], set()).add(e["source"])
+    
+    idx = {}
+    for lvl, ns in levels.items():
+        for i, n in enumerate(ns):
+            idx[n["id"]] = i
+    
+    # Barycentre comme layout vertical
+    for _ in range(4):
+        for lvl in sorted(levels):
+            ns = levels[lvl]
+            def bary(n):
+                vals = [idx[m] for m in adjacency.get(n["id"], ()) if m in idx]
+                return (sum(vals) / len(vals)) if vals else idx[n["id"]]
+            ns.sort(key=bary)
+            for i, n in enumerate(ns):
+                idx[n["id"]] = i
+    
+    pos = {}
+    # Niveaux principaux en vertical (haut -> bas)
+    # Mais avec un écartement horizontal plus large (éventail)
+    for lvl in sorted(levels.keys()):
+        ns = levels[lvl]
+        count = len(ns)
+        # y : vertical (0 = haut = Compagnons, 1 = bas = Compilateur)
+        y = 1.0 - (lvl / max_level) if max_level else 0.5
+        # x : éventail centré, plus large que le layout vertical standard
+        if count == 1:
+            pos[ns[0]["id"]] = (0.5, y)
+        else:
+            # Espacement dynamique selon le niveau
+            spread = 0.8 if lvl > 0 else 0.6
+            start = 0.5 - spread / 2
+            for i, n in enumerate(ns):
+                x = start + (i + 0.5) * spread / count
+                pos[n["id"]] = (x, y)
+    
+    return pos
+
+
+def layout_network(nodes, edges, mode="vertical"):
+    """Disposition du réseau selon le mode choisi.
+    
+    Args:
+        mode: "vertical" (standard), "radial" (soleil), "hybrid" (compromis)
+    """
+    if mode == "radial":
+        return layout_radial(nodes, edges)
+    elif mode == "hybrid":
+        return layout_hybrid(nodes, edges)
+    else:
+        # Layout vertical original
+        return _layout_vertical(nodes, edges)
+
+
+def _layout_vertical(nodes, edges):
+    """Layout vertical original (renommé pour éviter la collision)."""
+    if not nodes:
+        return {}
+    max_level = max((n["level"] for n in nodes), default=1) or 1
+
+    levels = {}
+    for n in nodes:
+        levels.setdefault(n["level"], []).append(n)
+
+    adjacency = {}
+    for e in edges:
+        adjacency.setdefault(e["source"], set()).add(e["target"])
+        adjacency.setdefault(e["target"], set()).add(e["source"])
+
+    idx = {}
+    for lvl, ns in levels.items():
+        ns.sort(key=lambda x: (-x["frequency"], -x["paths"]))
+        for i, n in enumerate(ns):
+            idx[n["id"]] = i
+
+    for _ in range(6):
+        for lvl in sorted(levels):
+            ns = levels[lvl]
+
+            def bary(n):
+                vals = [idx[m] for m in adjacency.get(n["id"], ()) if m in idx]
+                return (sum(vals) / len(vals)) if vals else idx[n["id"]]
+
+            ns.sort(key=bary)
+            for i, n in enumerate(ns):
+                idx[n["id"]] = i
+
+    pos = {}
+    for lvl, ns in levels.items():
+        count = len(ns)
+        y = (lvl / max_level) if max_level else 0.5
+        for i, n in enumerate(ns):
+            x = (i + 1) / (count + 1)
+            pos[n["id"]] = (x, y)
+    return pos
