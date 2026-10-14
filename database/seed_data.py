@@ -41,13 +41,13 @@ from backend.models.hadith_models import (
     IsnadTuruq,
     Rawiy,
 )
-from database.data.catalog import (
+from .data.catalog import (
     ALL_HADITHS,
     ALL_RAWIS,
     MODULES,
     coverage_status,
 )
-from database.data.isnad_expansions import ISNAD_EXPANSIONS
+from .data.isnad_expansions import ISNAD_EXPANSIONS
 
 
 class SeedDataError(ValueError):
