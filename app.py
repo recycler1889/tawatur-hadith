@@ -802,14 +802,14 @@ __SAFETY__
    très sombre) et un liseré vert 1px de la charte (#10b981). Placé après
    __SAFETY__ (le Plan A), il gagne la cascade aux égalités de spécificité. */
 div[data-baseweb="select"] {
-    background-color: transparent !important;
-    border: none !important;
+    background-color: rgba(16, 185, 129, 0.08) !important;
+    border: 1px solid #10b981 !important;
     box-shadow: none !important;
 }
 div[data-baseweb="select"] > div,
 div[data-testid="stMultiSelect"] [data-baseweb="select"] > div,
 div[data-testid="stSelectbox"] [data-baseweb="select"] > div {
-    background-color: rgba(255, 255, 255, 0.05) !important;
+    background-color: rgba(16, 185, 129, 0.08) !important;
     border: 1px solid #10b981 !important;
     border-radius: 6px !important;
     box-shadow: none !important;
@@ -829,7 +829,7 @@ div[data-baseweb="select"] [data-baseweb="tag"] {
 
 /* Placeholder natif du input BaseWeb */
 div[data-baseweb="select"] input::placeholder {
-    color: #cbd5e1 !important;
+    color: #f8fafc !important;
     opacity: 1 !important;
 }
 
@@ -855,11 +855,10 @@ div[data-baseweb="tag"] span { color: #ffffff !important; }
   background-clip: text; padding: 0 0.2rem;
 }
 
-/* Supprime l'effet de focus blanc/clair de Streamlit. */
-[data-baseweb="select"] > div:focus-within,
-[data-baseweb="select"] > div:hover {
-    border-color: #34d399 !important;
-    box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.35) !important;
+/* État permanent - pas de survol nécessaire */
+[data-baseweb="select"] > div:focus-with-in,
+[ data-baseweb="select"] > div:hover {
+    /* État permanent déja appliqué - pas de changement supplémentaire */
 }
 
 /* Clair & Sépia — cadres volontairement VISIBLES (fond blanc/écru + fine
