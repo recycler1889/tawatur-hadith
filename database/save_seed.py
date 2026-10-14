@@ -6,7 +6,7 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-from .seed_data import create_seed_data
+from database.seed_data import create_seed_data
 
 
 def save_seed_data(filepath: str):

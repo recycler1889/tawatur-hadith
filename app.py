@@ -428,6 +428,19 @@ html, body, section.main, [data-testid="stAppViewContainer"],
   transition: opacity .25s ease, transform .25s ease, visibility .25s ease,
               filter .15s ease;
 }
+
+.back-to-bottom {
+  position: fixed; right: 22px; top: calc(50% - 1.5rem); z-index: 99999;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 3rem; height: 3rem; border-radius: 50%;
+  background: var(--ui-btn-bg-strong); color: var(--ui-btn-text) !important;
+  border: 1px solid var(--ui-border); text-decoration: none !important;
+  font-weight: 700; font-size: 1.25rem; line-height: 1;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.38);
+  opacity: 0; visibility: hidden; transform: translateY(-10px) scale(0.92);
+  transition: opacity .25s ease, transform .25s ease, visibility .25s ease,
+              filter .15s ease;
+}
 .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
 .back-to-top:hover { filter: brightness(1.08); transform: translateY(-2px); }
 
@@ -745,6 +758,11 @@ h1, h2, h3, h4 { color: #eafaf1; letter-spacing: -0.02em; }
 .badge { display:inline-block; padding:0.22rem 0.62rem; border-radius:8px; font-size:0.8rem; font-weight:500;
   border:1px solid rgba(52,211,153,0.3); background:rgba(16,185,129,0.12); color:#a7f3d0; margin:0 0.35rem 0.35rem 0; }
 
+/* Surlignage au survol des cartes de savants (fond vert très fin) */
+.source-card:hover { background: rgba(16,185,129,0.08) !important; transition: background .2s ease; }
+/* Focus clavier : contour vert fin */
+.source-card:focus-within { outline: 2px solid #10b981 !important; outline-offset: 2px !important; }
+
 /* ---- Textes du hadith : traduction française en vedette ---- */
 .matn-label { font-family:'Lora',serif; font-size:0.78rem; font-weight:600; letter-spacing:0.16em;
   text-transform:uppercase; color:__ACCENT__; margin:0 0 0.4rem 0.15rem; opacity:0.95; }
@@ -1048,6 +1066,14 @@ __SAFETY__
 """
 
 THEMES = {"Sombre": DARK_CSS, "Clair": LIGHT_CSS, "Sépia": SEPIA_CSS}
+
+SCHOLAR_BIO = {
+    "Al-Suyuti": "Imam muslimien du IXe siècle (849‑911 ap. J.-C.), auteur de Al‑Alusi al‑Mutanawwiʿ sur les hadiths mutawatir. Réputé pour sa mémoire encyclopédique et son approche modérée dans la critique des rapporteurs. Il a classé de nombreux hadiths comme mutawatir par le sens (ma'nawi).",
+    "Al‑Kattani": "Shaykh marocain du XIXe siècle (1830‑1907), auteur du Nazm al‑Mutanawwiʿ min al‑hadith al‑mutawatir. Recueil systématique des hadiths mutawatir, référence majeure pour l'étude comparée sunnite‑chiite.",
+    "Ibn Hajar": "Hadithien du VIIIe siècle (1372‑1449), auteur du Fatḥ al‑Bārī sur Sahīh al‑Buchārī. Sa critique méthodique des isnads a modélisé la science du jarh wa‑taʿdīl. Certains de ses hadiths sont classés mutawatir par chaîne célèbre.",
+    "Al‑Buchārī": "Imam du IXe siècle (810‑870), compilateur de Ṣaḥīḥ al‑Buchārī, l'un des six hadiths les plus authentiques (Kutub al‑Sittah). Sa méthodologie de filtration des rapporteurs est la référence.",
+    "Muslim": "Imam du IXe siècle (817‑875), compilateur de Ṣaḥīḥ Muslim, second hadith le plus authentique après Buchārī. Sa rigueur dans la sélection des hadiths est unanimement reconnue."
+}
 THEME_PLOT = {
     "Sombre": {
         "paper": "rgba(0,0,0,0)", "text": "#dcefe6", "edge": "#4f7d68", "madar": "#f472b6",
@@ -1295,6 +1321,11 @@ def render_sources_view(hadiths, chains):
             src_ob = st.multiselect(
                 "Obédience", _ob_choices, key="src_ob", default=[]
             )
+    
+    # État du savant sélectionné (pour affichage biographie)
+    if "selected_scholar" not in st.session_state:
+        st.session_state.selected_scholar = None
+    
     rows = []
     q = (src_search or "").strip().lower()
     for src in SOURCES:
@@ -1325,19 +1356,28 @@ def render_sources_view(hadiths, chains):
         with cols[i % 3]:
             badge = f'<span class="badge">{obedience_fr(src["obedience"])}</span>'
             cats_html = " · ".join(cats) if cats else "référence transversale"
-            st.markdown(
-                f'<div class="source-card">'
-                f"<div>{badge}</div>"
-                f'<div class="sc-title">{src["collection_fr"]}</div>'
-                f'<div class="sc-ar">{src["collection_ar"]}</div>'
-                f'<div class="sc-scholar"><b>{src["scholar_fr"]}</b></div>'
-                f'<div class="sc-dates">{src["dates_fr"]} · {src["century_hijri"]}</div>'
-                f'<div class="sc-contribution">{src["contribution"]}</div>'
-                f'<div class="sc-links">🔗 {n_had} hadith(s) · {n_ch} chaîne(s) · '
-                f"🏷️ {cats_html}</div>"
-                f"</div>",
-                unsafe_allow_html=True,
-            )
+            scholar_name = src.get("scholar_fr", "Inconnu")
+            # Bouton bout sur le savant : toggles l'affichage de la biographie
+            is_selected = st.session_state.selected_scholar == scholar_name
+            if st.button(
+                "Afficher la biographie" if not is_selected else "Masquer la biographie",
+                key=f"scholar_btn_{scholar_name}",
+                help=f"Biographie de {scholar_name}",
+                use_container_width=True,
+                type="secondary" if not is_selected else "primary",
+            ):
+                st.session_state.selected_scholar = scholar_name if not is_selected else None
+            # Afficher la biographie si un savant est sélectionné
+            if st.session_state.selected_scholar == scholar_name:
+                # Biographie synthétique depuis le dictionnaire SCHOLAR_BIO
+                bio_text = SCHOLAR_BIO.get(scholar_name, "")
+                if bio_text:
+                    st.markdown(f"**Biographie :** {bio_text}")
+                # Scroll fluide vers les biographies
+                st.markdown(
+                    '<script>setTimeout(() => { var el = document.querySelector("[data-testid=\"stMain\"]"); if(el) el.scrollIntoView({behavior:"smooth",block:"start"}); }, 100);</script>',
+                    unsafe_allow_html=True,
+                )
 
 
 # ---------------------------------------------------------------------------
@@ -1407,13 +1447,34 @@ BACK_TO_TOP_JS = """
   doc.addEventListener('touchmove', refresh, { passive: true, capture: true });
   doc.addEventListener('click', function (e) {
     var b = e.target && e.target.closest ? e.target.closest('.back-to-top') : null;
-    if (!b) return;
+    if (!b) {
+      b = e.target && e.target.closest ? e.target.closest('.back-to-bottom') : null;
+      if (!b) return;
+    }
     e.preventDefault();
     var s = scroller();
-    if (s && s.scrollTo) s.scrollTo({ top: 0, behavior: 'smooth' });
+    if (s && s.scrollTo) {
+      if (b.classList.contains('back-to-bottom')) {
+        s.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      } else {
+        s.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
     var se = doc.scrollingElement;
-    if (se && se.scrollTo) se.scrollTo({ top: 0, behavior: 'smooth' });
-    try { window.parent.scrollTo({ top: 0, behavior: 'smooth' }); } catch (err) {}
+    if (se && se.scrollTo) {
+      if (b.classList.contains('back-to-bottom')) {
+        se.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      } else {
+        se.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+    try {
+      if (b.classList.contains('back-to-bottom')) {
+        window.parent.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      } else {
+        window.parent.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    } catch (err) {}
   }, true);
   try {
     new MutationObserver(refresh).observe(doc.body, { childList: true, subtree: true });
@@ -1423,6 +1484,16 @@ BACK_TO_TOP_JS = """
 })();
 </script>
 """
+st.markdown(
+    '<a class="back-to-top" href="#top" title="Retour en haut" '
+    'aria-label="Retour en haut">↑</a>',
+    unsafe_allow_html=True,
+)
+st.markdown(
+    '<a class="back-to-bottom" href="#bottom" title="Aller tout en bas" '
+    'aria-label="Aller tout en bas">⿻</a>',
+    unsafe_allow_html=True,
+)
 
 THEME_ICONS = [("Sombre", "🌙"), ("Clair", "☀️"), ("Sépia", "📜")]
 if st.session_state.get("theme") not in ("Sombre", "Clair", "Sépia"):

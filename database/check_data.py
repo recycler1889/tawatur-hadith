@@ -29,23 +29,23 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if ROOT not in sys.path:
     sys.path.insert(0, ROOT)
 
-from .data.catalog import (
+from database.data.catalog import (
     ALL_HADITHS,
     MODULES,
     _status_ok,
     coverage_status,
     module_status,
 )
-from .data.hadiths_data import HADITHS
-from .data.hadiths_data_mw1 import HADITHS_MW1
-from .data.hadiths_data_mw2 import HADITHS_MW2
-from .data.hadiths_data_mw3 import HADITHS_MW3
-from .data.hadiths_data_mw4 import HADITHS_MW4
-from .data.rawis_data import RAWIS
-from .data.rawis_data_extra import RAWIS_EXTRA
-from .data.rawis_rijal import RAWIS_RIJAL
-from .data.sources_data import SOURCES, SOURCE_IDS
-from .seed_data import SeedDataError, create_seed_data
+from database.data.hadiths_data import HADITHS
+from database.data.hadiths_data_mw1 import HADITHS_MW1
+from database.data.hadiths_data_mw2 import HADITHS_MW2
+from database.data.hadiths_data_mw3 import HADITHS_MW3
+from database.data.hadiths_data_mw4 import HADITHS_MW4
+from database.data.rawis_data import RAWIS
+from database.data.rawis_data_extra import RAWIS_EXTRA
+from database.data.rawis_rijal import RAWIS_RIJAL
+from database.data.sources_data import SOURCES, SOURCE_IDS
+from database.seed_data import SeedDataError, create_seed_data
 
 _HADITH_REGISTRIES = {
     "hadiths_data": HADITHS,
