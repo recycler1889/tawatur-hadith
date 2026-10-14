@@ -15,7 +15,14 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Assure que la racine du projet est dans sys.path (local + Streamlit Cloud)
+_PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, _PROJECT_ROOT)
+
+# Fallback : si le CWD est déjà la racine, ajouter le répertoire courant
+if os.getcwd() not in sys.path:
+    sys.path.insert(0, os.getcwd())
 
 from backend.graph.isnad_utils import (
     build_turuq_network,
