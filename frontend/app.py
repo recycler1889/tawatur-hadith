@@ -10,19 +10,20 @@ Tawatur Hadith — Visualiseur d'Isnad (Streamlit)
 
 import os
 import sys
+from pathlib import Path
 
-import pandas as pd
-import plotly.graph_objects as go
-import streamlit as st
-
-# Assure que la racine du projet est dans sys.path (local + Streamlit Cloud)
-_PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if _PROJECT_ROOT not in sys.path:
-    sys.path.insert(0, _PROJECT_ROOT)
+# Ajoute la racine du projet (/mount/src/tawatur-hadith ou parent du dossier frontend) au sys.path
+ROOT_DIR = Path(__file__).resolve().parent.parent
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
 
 # Fallback : si le CWD est déjà la racine, ajouter le répertoire courant
 if os.getcwd() not in sys.path:
     sys.path.insert(0, os.getcwd())
+
+import pandas as pd
+import plotly.graph_objects as go
+import streamlit as st
 
 from backend.graph.isnad_utils import (
     build_turuq_network,
