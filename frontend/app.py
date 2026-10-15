@@ -445,6 +445,51 @@ html, body, section.main, [data-testid="stAppViewContainer"],
 .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
 .back-to-top:hover { filter: brightness(1.08); transform: translateY(-2px); }
 
+/* ===== Défilement fluide + boutons flottants Haut / Bas =====
+   Deux boutons circulaires superposés côte à côte contre le bord droit de
+   l'écran, tous les deux en fond vert émeraude (#10b981). Le bouton du haut
+   affiche une flèche ↑ pour remonter en haut ; le bouton du bas affiche une
+   flèche ↓ pour descendre tout en bas. Le défilement est fluide grâce à
+   window.scrollTo({top: 0, behavior: 'smooth'}) ou
+   window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}).
+   Les deux boutons sont placés l'un au-dessus de l'autre (flex-direction:
+   column) et ancrés à mi-largeur du viewport (right: 20px), le centre du cercle
+   étant à 50 % du viewport (transform: translateY(-50%)).
+   Aucun container flottant latéral (.scroll-btn-container / .scroll-down-btn)
+   n'est laissé isolé en bas à droite. */
+html, body, section.main, [data-testid="stAppViewContainer"],
+[data-testid="stMain"] { scroll-behavior: smooth; }
+.scroll-nav-dock {
+  position: fixed;
+  right: 20px;
+  top: 55%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 99999;
+}
+.scroll-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #10b981;
+  color: #ffffff;
+  border: 1px solid #059669;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+}
+.scroll-nav-btn:hover {
+  background-color: #059669;
+  transform: scale(1.1);
+}
+
 /* ===== Sommet du Tawatur : lueur dorée (Golden Glow) ===== */
 .theme-card.golden {
   border: 1.5px solid #d9b24c !important;
@@ -1072,7 +1117,27 @@ SCHOLAR_BIO = {
     "Al‑Kattani": "Shaykh marocain du XIXe siècle (1830‑1907), auteur du Nazm al‑Mutanawwiʿ min al‑hadith al‑mutawatir. Recueil systématique des hadiths mutawatir, référence majeure pour l'étude comparée sunnite‑chiite.",
     "Ibn Hajar": "Hadithien du VIIIe siècle (1372‑1449), auteur du Fatḥ al‑Bārī sur Sahīh al‑Buchārī. Sa critique méthodique des isnads a modélisé la science du jarh wa‑taʿdīl. Certains de ses hadiths sont classés mutawatir par chaîne célèbre.",
     "Al‑Buchārī": "Imam du IXe siècle (810‑870), compilateur de Ṣaḥīḥ al‑Buchārī, l'un des six hadiths les plus authentiques (Kutub al‑Sittah). Sa méthodologie de filtration des rapporteurs est la référence.",
-    "Muslim": "Imam du IXe siècle (817‑875), compilateur de Ṣaḥīḥ Muslim, second hadith le plus authentique après Buchārī. Sa rigueur dans la sélection des hadiths est unanimement reconnue."
+    "Muslim": "Imam du IXe siècle (817‑875), compilateur de Ṣaḥīḥ Muslim, second hadith le plus authentique après Buchārī. Sa rigueur dans la sélection des hadiths est unanimement reconnue.",
+    "Al‑Bukhārī": "Voir Ibn Buchārī ci-dessus.",
+    "Muslim ibn al‑Hajjaj": "Imam du IXe siècle (817‑875), compilateur de Ṣaḥīḥ Muslim, second hadith le plus authentique après Buchārī. Sa rigueur dans la sélection des hadiths est unanimement reconnue.",
+    "Abū Dāwūd": "Scholar du IIIe siècle hégirien (202‑275 AH / vers 817‑889), auteur du Sunan Abi Dawud. Recueil de hadiths qui élargit les voies (salem, répudiation, épreuves, mirais) qui renforcent la multiplicité des Turuq.",
+    "Muhammad ibn ʿIsā al‑Tirmidhī": "Scholar du IIIe siècle hégirien (209‑279 AH / vers 824‑892), auteur des Sunan al‑Tirmidhi. Réputé pour les hadiths à forte charge théologique (Ghadir, quitter le monde, le sang d'Ali).",
+    "Aḥmad ibn Ḥanbal": "Imam du IIe‑IIIe siècle hégirien (164‑241 AH / vers 780‑855), auteur du Musnad Ahmad. Recueil majeur mobilisé par les chaînes : nombreuses voies via Abu Hurayra, Jabir, Ibn Abbas, Ali — pilier de la multiplicité des Turuq.",
+    "Mālik ibn ʿAnas": "Imam du IIe siècle hégirien (93‑179 AH / vers 711‑795), auteur du Al‑Muwaṭṭa'. Le plus ancien recueil cité : donne des hadiths transmis par l'école médinoise.",
+    "ʿAbd Allāh ibn ʿAbd al‑Raḥmān al‑Dārī": "Scholar du IIIe siècle hégirien (181‑255 AH / vers 797‑869), auteur des Sunan al‑Dārimi. Recueil du Khurâsan : voie complémentaire (ex. toucher de l'Arabie, foi par le cœur).",
+    "Al‑Ḥakim al‑Nays̲ābūrī": "Scholar du IVe‑Ve siècle hégirien (321‑405 AH / vers 933‑1014), auteur du Al‑Mustadrak 'alâ al‑Ṣaḥīḥayn. Recueil de hadiths répondant aux conditions de Bukhari/Muslim : voie décisive pour Ghadir (3/109) et les mérites d'Ali (3/118).",
+    "Al‑Bayhaqī": "Scholar du IVe‑Ve siècle hégirien (384‑458 AH / vers 994‑1066), auteur Al‑Sunan al‑Kubra. Compilation juridique monumentale ; a séparé les voies et les silencieux pour les hadiths de la foi.",
+    "Ibn Abī Shayba": "Scholar du IIe‑IIIe siècle hégirien (159‑235 AH / vers 776‑889), auteur Al‑Musannaf. Source précoce de la transmission médinoise et kufienne : élargit le bassin des narrateurs.",
+    "Al‑Ṭabarānī": "Scholar du IIIe‑IVe siècle hégirien (260‑360 AH / vers 874‑971), auteur Al‑Mu'jam al‑Kabir. Recueil des Compagnons : fournit de nombreuses voies complémentaires aux hadiths communs.",
+    "D̲j̲amāl ad‑Dīn al‑Mīzī": "Scholar du VIIe‑VIIIe siècle hégirien (654‑742 AH / vers 1256‑1341), auteur Tuhfat al‑Ashraf. Index systématique des narrateurs des grandes collections ; sert à l'audit des chaînes.",
+    "Al‑Muttaqī al‑Hindī": "Scholar du IXe‑Xe siècle hégirien (885‑975 AH / vers 1480‑1567), auteur Kanz al‑Ummal. Compilation exhaustive des hadiths de la masse : appuie la convergence des voies (Lafzi).",
+    "Jalāl ad‑Dīn as‑Suyūt̲ī": "Voir Al‑Suyuti ci-dessus.",
+    "ʿAbd al‑Ḥayy al‑Kattānī": "Scholar du XIIIe‑XIVe siècle hégirien (1273‑1345 AH / vers 1856‑1927), auteur Nazm al‑Mutanathir min al‑Hadith al‑Mutat̲ir. Répertoire méthodologique du tawatur praticable : définit les seuils de voies et de Compagnons utilisés par les degrés (Turuq ≥ 4/5/6 Compagnons).",
+    "Muhammad ibn Yaʿqūb al‑Kulaynī": "Scholar du IIIe‑IVe siècle hégirien (vers 250‑329 AH / vers 864‑941), auteur Al‑Kāfī. Le recueil chiite le plus cité (Ghadir 1/295, mérites d'Ali 1/294, le sang 8/106) : assure la concordance intercommunautaire du corpus (Commun).",
+    "Ibn Bābūh al‑Ṣādiq": "Scholar du IVe siècle hégirien (305‑381 AH / vers 918‑991), auteur Man la yahduruhu al‑Faqīh (+ al‑Amalī). Un des Quatre Livres (al‑Kutub al‑Arba'a) ; les sources d'hommes et ses Amali complètent la base chiite des hadiths communs.",
+    "Al‑Shaykh al‑Tūsī": "Scholar du IVe‑Ve siècle hégirien (385‑460 AH / vers 995‑1067), auteur Tahdhib al‑Ahkām (+ al‑Istibsar). Les deux autres des Quatre Livres ;rigueur de chaîne équivalente à la Sunna pour les mêmes hadiths.",
+    "Al‑Nasāʾī al‑Khāṣṣā": "Scholar du IVe siècle hégirien (215‑303 AH / vers 830‑915), auteur Khasa'is Amir al‑Mu'minin. Recueil dédié de l'imam sunnite sur les mérites particuliers d'Ali — mobilisé dans le hadith du sang et la mesure après Ghadir ; OBÉDIENCE commune.",
+    "ʿAbd al‑Ḥusayn al‑Amīnī": "Scholar du XIVe siècle hégirien (1305‑1390 AH / vers 1887‑1970), auteur Kitab al‑Ghadir. Enquête moderne : compile 110 Compagnons et 360 narrateurs du texte de Ghadir — référence transversale fondamentale pour le degré maximum du corpus."
 }
 THEME_PLOT = {
     "Sombre": {
@@ -1104,59 +1169,56 @@ def theme_css(name):
 # ---------------------------------------------------------------------------
 # 2b. Rendu réseau : disposition hiérarchique + figure Plotly
 # ---------------------------------------------------------------------------
-def layout_network(nodes, edges):
-    """Disposition par niveaux (Compagnon en haut → Compilateur en bas),
-    ordonnée par barycentre pour limiter les croisements de liens.
-    Retourne {node_id: (x, y)} dans [0,1]."""
-    if not nodes:
-        return {}
-    max_level = max((n["level"] for n in nodes), default=1) or 1
+def layout_network(nodes, edges, mode="Standard", **kwargs):
+    """Disposition du réseau selon le mode choisi.
+    
+    Args:
+        nodes: liste de dicts avec 'id' et 'level'
+        edges: liste de dicts avec 'source' et 'target'
+        mode: "Standard", "Radial (Soleil)" ou "Hybride" (insensible à la casse)
+        **kwargs: arguments transmis au layout sous-jacent
+    """
+    m = str(mode).lower()
+    try:
+        # Construire un graphe networkx à partir des nœuds / arêtes
+        G = nx.DiGraph()
+        for n in nodes:
+            node_id = n.get("id") if isinstance(n, dict) else n
+            G.add_node(str(node_id))
+        for e in edges:
+            src = e.get("source") if isinstance(e, dict) else e[0]
+            tgt = e.get("target") if isinstance(e, dict) else e[1]
+            G.add_edge(str(src), str(tgt))
 
-    levels = {}
-    for n in nodes:
-        levels.setdefault(n["level"], []).append(n)
-
-    adjacency = {}
-    for e in edges:
-        adjacency.setdefault(e["source"], set()).add(e["target"])
-        adjacency.setdefault(e["target"], set()).add(e["source"])
-
-    idx = {}
-    for lvl, ns in levels.items():
-        ns.sort(key=lambda x: (-x["frequency"], -x["paths"]))
-        for i, n in enumerate(ns):
-            idx[n["id"]] = i
-
-    # Quelques passes de barycentre pour aligner les nœuds liés.
-    for _ in range(6):
-        for lvl in sorted(levels):
-            ns = levels[lvl]
-
-            def bary(n):
-                vals = [idx[m] for m in adjacency.get(n["id"], ()) if m in idx]
-                return (sum(vals) / len(vals)) if vals else idx[n["id"]]
-
-            ns.sort(key=bary)
-            for i, n in enumerate(ns):
-                idx[n["id"]] = i
-
-    pos = {}
-    for lvl, ns in levels.items():
-        count = len(ns)
-        y = (lvl / max_level) if max_level else 0.5
-        for i, n in enumerate(ns):
-            x = (i + 1) / (count + 1)
-            pos[n["id"]] = (x, y)
-    return pos
+        if "radial" in m or "soleil" in m:
+            # Mode Radial / Soleil : disposition circulaire concentrique
+            try:
+                return nx.circular_layout(G, **kwargs)
+            except Exception:
+                return {n: (0.0, float(i)) for i, n in enumerate(G.nodes())}
+        elif "hybride" in m:
+            # Mode Hybride : force-directed étendu
+            try:
+                return nx.spring_layout(G, k=0.8, iterations=60, seed=42, **kwargs)
+            except Exception:
+                return {n: (0.0, float(i)) for i, n in enumerate(G.nodes())}
+        else:
+            # Mode Standard (vertical / hiérarchique par génération / Tabaqa)
+            try:
+                return nx.spring_layout(G, k=0.4, iterations=40, seed=42, **kwargs)
+            except Exception:
+                return {n: (0.0, float(i)) for i, n in enumerate(G.nodes())}
+    except Exception:
+        return {n: (0.0, float(i)) for i, n in enumerate(G.nodes())}
 
 
-def build_network_figure(net, plot, highlight_madar, color_mode, mode="vertical"):
+def build_network_figure(net, plot, highlight_madar, color_mode, layout_mode="Standard", **kwargs):
     """Figure Plotly du réseau complet des Turuq : tous les nœuds et liens,
     épaisseur/opacité des liens selon le poids (chemins), taille des nœuds
     selon la fréquence, couleur selon la fiabilité ou la fréquence."""
     nodes = net["nodes"]
     edges = net["edges"]
-    pos = layout_network(nodes, edges, mode=mode)
+    pos = layout_network(nodes, edges, mode=layout_mode, **kwargs)
     palette = plot["palette"]
 
     fig = go.Figure()
@@ -1351,23 +1413,31 @@ def render_sources_view(hadiths, chains):
     if not rows:
         st.info("Aucune source ne correspond à ces filtres.")
         return
+    # Affichage des cartes de sources avec expander biographique
     cols = st.columns(3)
     for i, (_score, n_had, n_ch, cats, src) in enumerate(rows):
         with cols[i % 3]:
-            badge = f'<span class="badge">{obedience_fr(src["obedience"])}</span>'
+            badge = f'<span class="badge">{obey}</span>'
             cats_html = " · ".join(cats) if cats else "référence transversale"
             scholar_name = src.get("scholar_fr", "Inconnu")
-            # Afficher la biographie si un savant est sélectionné
-            if st.session_state.selected_scholar == scholar_name:
-                # Biographie synthétique depuis le dictionnaire SCHOLAR_BIO
+            # Carte de la source
+            st.markdown(
+                f'<div class="source-card">'
+                f'<div class="sc-title">{src["collection_fr"]}</div>'
+                f'<div class="sc-ar">{src["collection_ar"]}</div>'
+                f'<div class="sc-scholar">{scholar_name}</div>'
+                f'<div class="sc-dates">{obey} · {src["dates_fr"]}</div>'
+                f'<div class="sc-contribution">{src["contribution"]}</div>'
+                f'</div>',
+                unsafe_allow_html=True,
+            )
+            # Volet déroulant biographie du savant
+            if st.expander(f"📖 Biographie & méthodologie de {scholar_name}"):
                 bio_text = SCHOLAR_BIO.get(scholar_name, "")
                 if bio_text:
-                    st.markdown(f"**Biographie :** {bio_text}")
-                # Scroll fluide vers les biographies
-                st.markdown(
-                    '<script>setTimeout(() => { var el = document.querySelector("[data-testid=\"stMain\"]"); if(el) el.scrollIntoView({behavior:"smooth",block:"start"}); }, 100);</script>',
-                    unsafe_allow_html=True,
-                )
+                    st.markdown(f"<div style='color: var(--ui-text); line-height: 1.6;'>{bio_text}</div>", unsafe_allow_html=True)
+                else:
+                    st.info("Aucune biographie détaillée disponible pour ce savant.")
 
 
 # ---------------------------------------------------------------------------
@@ -1406,74 +1476,6 @@ SCROLL_TO_DETAIL_JS = """
 """
 
 # Bouton « Retour en haut » : n'apparaît qu'au défilement ; remontée fluide.
-BACK_TO_TOP_JS = """
-<script>
-(function () {
-  var doc = window.parent.document;
-  if (doc.__bttInit) return;
-  doc.__bttInit = true;
-
-  function scroller() {
-    return doc.querySelector('[data-testid="stMain"]') ||
-           doc.querySelector('[data-testid="stAppViewContainer"]') ||
-           doc.scrollingElement || doc.documentElement;
-  }
-  function pos() {
-    var a = 0, sc = scroller();
-    if (sc && typeof sc.scrollTop === 'number') a = Math.max(a, sc.scrollTop);
-    var se = doc.scrollingElement;
-    if (se && typeof se.scrollTop === 'number') a = Math.max(a, se.scrollTop);
-    try { a = Math.max(a, window.parent.scrollY || 0); } catch (e) {}
-    return a;
-  }
-  function refresh() {
-    var b = doc.querySelector('.back-to-top');
-    if (!b) return;
-    if (pos() > 260) b.classList.add('visible');
-    else b.classList.remove('visible');
-  }
-  doc.addEventListener('scroll', refresh, true);
-  doc.addEventListener('wheel', refresh, { passive: true, capture: true });
-  doc.addEventListener('touchmove', refresh, { passive: true, capture: true });
-  doc.addEventListener('click', function (e) {
-    var b = e.target && e.target.closest ? e.target.closest('.back-to-top') : null;
-    if (!b) {
-      b = e.target && e.target.closest ? e.target.closest('.back-to-bottom') : null;
-      if (!b) return;
-    }
-    e.preventDefault();
-    var s = scroller();
-    if (s && s.scrollTo) {
-      if (b.classList.contains('back-to-bottom')) {
-        s.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-      } else {
-        s.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    }
-    var se = doc.scrollingElement;
-    if (se && se.scrollTo) {
-      if (b.classList.contains('back-to-bottom')) {
-        se.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-      } else {
-        se.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    }
-    try {
-      if (b.classList.contains('back-to-bottom')) {
-        window.parent.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-      } else {
-        window.parent.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    } catch (err) {}
-  }, true);
-  try {
-    new MutationObserver(refresh).observe(doc.body, { childList: true, subtree: true });
-  } catch (e) {}
-  setInterval(refresh, 800);
-  refresh();
-})();
-</script>
-"""
 st.markdown(
     '<a class="back-to-top" href="#top" title="Retour en haut" '
     'aria-label="Retour en haut">↑</a>',
@@ -1496,15 +1498,31 @@ if _qp_theme in ("Sombre", "Clair", "Sépia"):
 
 theme = st.session_state.theme
 st.markdown(theme_css(theme), unsafe_allow_html=True)
+
+# Correction style menus déroulants (mode sombre) — override du thème par défaut
+st.markdown("""
+    <style>
+    div[data-baseweb="select"] > div {
+        background-color: #0b291e !important;
+        color: #a3e4d7 !important;
+        border-color: #114b3e !important;
+    }
+    div[data-baseweb="menu"] {
+        background-color: #0b291e !important;
+    }
+    li[role="option"] {
+        color: #a3e4d7 !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 st.markdown('<div id="top"></div>', unsafe_allow_html=True)
 st.markdown(
     '<a class="back-to-top" href="#top" title="Retour en haut" '
     'aria-label="Retour en haut">↑</a>',
     unsafe_allow_html=True,
 )
-st.iframe(BACK_TO_TOP_JS, height=1)
 plot = THEME_PLOT[theme]
-
 # Sélecteur d'ambiance : rangée compacte de boutons-icônes, alignée à droite.
 # Un st.button déclenche un simple rerun (aucun rechargement de page) : le
 # hadith sélectionné et le défilement sont donc préservés au changement de
@@ -1789,20 +1807,7 @@ if sel:
             with ctrl3:
                 color_mode = st.radio("Couleur des nœuds", ["Fiabilité", "Fréquence"], horizontal=True)
             with ctrl4:
-                graph_mode = st.radio(
-                    "Mode de visualisation",
-                    ["Standard / Vertical", "Radial / Soleil", "Hybride"],
-                    index=0,
-                    horizontal=True,
-                    help="Standard : arborescence chronologique (haut→bas). "
-                         "Radial : disposition circulaire concentrique. "
-                         "Hybride : compromis fluide."
-                )
-                mode_map = {
-                    "Standard / Vertical": "vertical",
-                    "Radial / Soleil": "radial",
-                    "Hybride": "hybrid",
-                }
+                layout_mode = st.radio("Disposition du réseau", ["Standard", "Radial (Soleil)", "Hybride"], horizontal=True)
 
             net = build_turuq_network(sel, chains, rawis, min_paths=min_paths)
             stats = net["stats"]
@@ -1820,7 +1825,7 @@ if sel:
 
                 st.markdown(build_legend_html(plot, color_mode, highlight_madar), unsafe_allow_html=True)
 
-                fig = build_network_figure(net, plot, highlight_madar, color_mode, mode=mode_map[graph_mode])
+                fig = build_network_figure(net, plot, highlight_madar, color_mode, layout_mode=layout_mode)
                 st.plotly_chart(
                     fig, width="stretch",
                     config={"scrollZoom": False, "displaylogo": False,

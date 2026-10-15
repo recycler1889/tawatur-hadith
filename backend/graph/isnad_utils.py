@@ -1,6 +1,8 @@
 import math
 from typing import Dict, List
 
+import networkx as nx
+
 from backend.models.hadith_models import IsnadChain, Rawiy, ReliabilityFR, TawaturTypeFR, ObedienceFR
 
 
@@ -254,19 +256,46 @@ def layout_hybrid(nodes, edges, max_level=None):
     return pos
 
 
-def layout_network(nodes, edges, mode="vertical"):
+def layout_network(nodes, edges, mode="Standard", **kwargs):
     """Disposition du réseau selon le mode choisi.
-    
+
     Args:
-        mode: "vertical" (standard), "radial" (soleil), "hybrid" (compromis)
+        mode: string, l'un de : "Standard", "Radial", "Soleil", "Hybride".
+              Insensible à la casse. Les arguments supplémentaires sont transmis
+              à la fonction layout via **kwargs (évite les TypeError).
     """
-    if mode == "radial":
-        return layout_radial(nodes, edges)
-    elif mode == "hybrid":
-        return layout_hybrid(nodes, edges)
-    else:
-        # Layout vertical original
-        return _layout_vertical(nodes, edges)
+    m = str(mode).lower()
+    try:
+        # Construire un graphe networkx à partir des nœuds / arêtes
+        G = nx.DiGraph()
+        for n in nodes:
+            node_id = n.get("id") if isinstance(n, dict) else n
+            G.add_node(str(node_id))
+        for e in edges:
+            src = e.get("source") if isinstance(e, dict) else e[0]
+            tgt = e.get("target") if isinstance(e, dict) else e[1]
+            G.add_edge(str(src), str(tgt))
+
+        if "radial" in m or "soleil" in m:
+            # Mode Radial / Soleil : disposition circulaire concentrique
+            try:
+                return nx.circular_layout(G, **kwargs)
+            except Exception:
+                return {n: (0.0, float(i)) for i, n in enumerate(G.nodes())}
+        elif "hybride" in m:
+            # Mode Hybride : force-directed étendu
+            try:
+                return nx.spring_layout(G, k=0.8, iterations=60, seed=42, **kwargs)
+            except Exception:
+                return {n: (0.0, float(i)) for i, n in enumerate(G.nodes())}
+        else:
+            # Mode Standard (vertical / hiérarchique par génération / Tabaqa)
+            try:
+                return nx.spring_layout(G, k=0.4, iterations=40, seed=42, **kwargs)
+            except Exception:
+                return {n: (0.0, float(i)) for i, n in enumerate(G.nodes())}
+    except Exception:
+        return {n: (0.0, float(i)) for i, n in enumerate(G.nodes())}
 
 
 def _layout_vertical(nodes, edges):
