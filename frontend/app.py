@@ -13,7 +13,8 @@ import sys
 from pathlib import Path
 
 # Racine du projet = dossier courant (app.py à la racine)
-ROOT_DIR = Path(__file__).resolve().parent
+# app.py étant dans frontend/, on remonte d'un niveau pour obtenir la racine du projet
+ROOT_DIR = Path(__file__).resolve().parent.parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
@@ -1356,16 +1357,6 @@ def render_sources_view(hadiths, chains):
             badge = f'<span class="badge">{obedience_fr(src["obedience"])}</span>'
             cats_html = " · ".join(cats) if cats else "référence transversale"
             scholar_name = src.get("scholar_fr", "Inconnu")
-            # Bouton bout sur le savant : toggles l'affichage de la biographie
-            is_selected = st.session_state.selected_scholar == scholar_name
-            if st.button(
-                "Afficher la biographie" if not is_selected else "Masquer la biographie",
-                key=f"scholar_btn_{scholar_name}",
-                help=f"Biographie de {scholar_name}",
-                use_container_width=True,
-                type="secondary" if not is_selected else "primary",
-            ):
-                st.session_state.selected_scholar = scholar_name if not is_selected else None
             # Afficher la biographie si un savant est sélectionné
             if st.session_state.selected_scholar == scholar_name:
                 # Biographie synthétique depuis le dictionnaire SCHOLAR_BIO
