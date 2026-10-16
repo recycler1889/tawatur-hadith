@@ -413,84 +413,6 @@ hr { border-color: var(--ui-border) !important; }
   background: var(--ui-btn-bg-strong) !important;
 }
 
-/* ===== Défilement fluide + bouton « Retour en haut » flottant ===== */
-/* Bouton ancré à mi-hauteur, contre le bord droit (1.5rem = moitié de sa
-   taille 3rem : le centre du cercle est exactement à 50 % du viewport). */
-html, body, section.main, [data-testid="stAppViewContainer"],
-[data-testid="stMain"] { scroll-behavior: smooth; }
-.back-to-top {
-  position: fixed; right: 22px; bottom: calc(50% - 1.5rem); z-index: 99999;
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 3rem; height: 3rem; border-radius: 50%;
-  background: var(--ui-btn-bg-strong); color: var(--ui-btn-text) !important;
-  border: 1px solid var(--ui-border); text-decoration: none !important;
-  font-weight: 700; font-size: 1.25rem; line-height: 1;
-  box-shadow: 0 10px 26px rgba(0,0,0,0.38);
-  opacity: 0; visibility: hidden; transform: translateY(10px) scale(0.92);
-  transition: opacity .25s ease, transform .25s ease, visibility .25s ease,
-              filter .15s ease;
-}
-
-.back-to-bottom {
-  position: fixed; right: 22px; top: calc(50% - 1.5rem); z-index: 99999;
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 3rem; height: 3rem; border-radius: 50%;
-  background: var(--ui-btn-bg-strong); color: var(--ui-btn-text) !important;
-  border: 1px solid var(--ui-border); text-decoration: none !important;
-  font-weight: 700; font-size: 1.25rem; line-height: 1;
-  box-shadow: 0 10px 26px rgba(0,0,0,0.38);
-  opacity: 0; visibility: hidden; transform: translateY(-10px) scale(0.92);
-  transition: opacity .25s ease, transform .25s ease, visibility .25s ease,
-              filter .15s ease;
-}
-.back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
-.back-to-top:hover { filter: brightness(1.08); transform: translateY(-2px); }
-
-/* ===== Défilement fluide + boutons flottants Haut / Bas =====
-   Deux boutons circulaires superposés côte à côte contre le bord droit de
-   l'écran, tous les deux en fond vert émeraude (#10b981). Le bouton du haut
-   affiche une flèche ↑ pour remonter en haut ; le bouton du bas affiche une
-   flèche ↓ pour descendre tout en bas. Le défilement est fluide grâce à
-   window.scrollTo({top: 0, behavior: 'smooth'}) ou
-   window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}).
-   Les deux boutons sont placés l'un au-dessus de l'autre (flex-direction:
-   column) et ancrés à mi-largeur du viewport (right: 20px), le centre du cercle
-   étant à 50 % du viewport (transform: translateY(-50%)).
-   Aucun container flottant latéral (.scroll-btn-container / .scroll-down-btn)
-   n'est laissé isolé en bas à droite. */
-html, body, section.main, [data-testid="stAppViewContainer"],
-[data-testid="stMain"] { scroll-behavior: smooth; }
-.scroll-nav-dock {
-  position: fixed;
-  right: 20px;
-  top: 33%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 99999;
-}
-.scroll-nav-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background-color: #10b981;
-  color: #ffffff;
-  border: 1px solid #059669;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 20px;
-  font-weight: bold;
-  transition: all 0.2s ease-in-out;
-}
-.scroll-nav-btn:hover {
-  background-color: #059669;
-  transform: scale(1.1);
-}
-
 /* ===== Sommet du Tawatur : lueur dorée (Golden Glow) ===== */
 .theme-card.golden {
   border: 1.5px solid #d9b24c !important;
@@ -1430,16 +1352,7 @@ SCROLL_TO_DETAIL_JS = """
 """
 
 # Bouton « Retour en haut » : n'apparaît qu'au défilement ; remontée fluide.
-st.markdown(
-    '<a class="back-to-top" href="#top" title="Retour en haut" '
-    'aria-label="Retour en haut">↑</a>',
-    unsafe_allow_html=True,
-)
-st.markdown(
-    '<a class="back-to-bottom" href="#bottom" title="Aller tout en bas" '
-    'aria-label="Aller tout en bas">⿻</a>',
-    unsafe_allow_html=True,
-)
+
 
 THEME_ICONS = [("Sombre", "🌙"), ("Clair", "☀️"), ("Sépia", "📜")]
 if st.session_state.get("theme") not in ("Sombre", "Clair", "Sépia"):
@@ -1453,65 +1366,7 @@ if _qp_theme in ("Sombre", "Clair", "Sépia"):
 theme = st.session_state.theme
 st.markdown(theme_css(theme), unsafe_allow_html=True)
 
-# Injection du CSS pour positionner les boutons natifs en dock flottant à droite au milieu
-scroll_active_html = """
-<style>
-#active-scroll-dock {
-    position: fixed;
-    right: 25px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 999999;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-.active-scroll-btn {
-    background-color: #041c14;
-    color: #ffffff;
-    border: 2px solid #134e38;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: bold;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-    transition: all 0.2s ease-in-out;
-    text-decoration: none;
-}
-.active-scroll-btn:hover {
-    background-color: #0b3d2c;
-    border-color: #27ae60;
-    color: #2ecc71;
-    transform: scale(1.1);
-}
-</style>
 
-<div id="active-scroll-dock">
-    <div class="active-scroll-btn" onclick="
-        const mainContainer = window.parent.document.querySelector('.main') || window.parent.document.querySelector('[data-testid=\\'stAppViewContainer\\']') || window.parent;
-        if (mainContainer.scrollTo) {
-            mainContainer.scrollTo({top: 0, behavior: 'smooth'});
-        }
-        window.parent.scrollTo({top: 0, behavior: 'smooth'});
-    " title="Haut de page">▲</div>
-    
-    <div class="active-scroll-btn" onclick="
-        const mainContainer = window.parent.document.querySelector('.main') || window.parent.document.querySelector('[data-testid=\\'stAppViewContainer\\']') || window.parent;
-        const targetHeight = mainContainer.scrollHeight || document.body.scrollHeight || 5000;
-        if (mainContainer.scrollTo) {
-            mainContainer.scrollTo({top: targetHeight, behavior: 'smooth'});
-        }
-        window.parent.scrollTo({top: targetHeight, behavior: 'smooth'});
-    " title="Bas de page">▼</div>
-</div>
-"""
-
-st.markdown(scroll_active_html, unsafe_allow_html=True)
 
 # Correction style menus déroulants (mode sombre) — override du thème par défaut
 st.markdown("""
@@ -1530,12 +1385,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div id="top"></div>', unsafe_allow_html=True)
-st.markdown(
-    '<a class="back-to-top" href="#top" title="Retour en haut" '
-    'aria-label="Retour en haut">↑</a>',
-    unsafe_allow_html=True,
-)
+
 plot = THEME_PLOT[theme]
 # Sélecteur d'ambiance : rangée compacte de boutons-icônes, alignée à droite.
 # Un st.button déclenche un simple rerun (aucun rechargement de page) : le
