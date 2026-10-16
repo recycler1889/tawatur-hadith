@@ -150,53 +150,45 @@ def get_ancestry_path(isnad_chain: IsnadChain, start_idx: int = 0, end_idx: int 
     return [n.rawi_name for n in isnad_chain.nodes[start_idx:end_idx]]
 
 
-def layout_network(nodes, edges, *args, **kwargs):
-    """Disposition hiérarchique verticale par strates (Tabaqat) — mode Standard."""
-    return _layout_vertical(nodes, edges)
+def layout_network(nodes, edges, **kwargs):
+    import networkx as nx
+    G = nx.DiGraph()
+    try:
+        if isinstance(nodes, dict):
+            for n in nodes.keys(): G.add_node(n)
+        elif isinstance(nodes, (list, tuple, set)):
+            for n in nodes:
+                nid = n.get("id", n.get("name", str(n))) if isinstance(n, dict) else n
+                G.add_node(nid)
+        if isinstance(edges, (list, tuple, set)):
+            for e in edges:
+                src = e.get("source") if isinstance(e, dict) else e[0]
+                tgt = e.get("target") if isinstance(e, dict) else e[1]
+                if src and tgt: G.add_edge(src, tgt)
+        if len(G.nodes) == 0: return {}
 
+        roots = [n for n in G.nodes() if G.in_degree(n) == 0] or list(G.nodes())[:1]
+        levels = {}
+        for n in G.nodes():
+            d = 0
+            for r in roots:
+                if nx.has_path(G, r, n):
+                    p = len(nx.shortest_path(G, r, n)) - 1
+                    if p > d: d = p
+            levels[n] = d
 
-def _layout_vertical(nodes, edges):
-    """Disposition verticale stricte par strates (Tabaqat).
-    
-    Niveaux Y :
-      - Génération 0 (Compagnons)     : Y = 4.0
-      - Génération 1 (Grands Tabi'un) : Y = 3.0
-      - Génération 2 (Petits Tabi'un) : Y = 2.0
-      - Génération 3 (Suivants)       : Y = 1.0
-      - Génération 4 (Compilateurs)   : Y = 0.0
-    
-    Sur l'axe X : répartir équitablement les narrateurs de chaque niveau
-    pour qu'ils ne se chevauchent jamais.
-    """
-    if not nodes:
-        return {}
-    max_level = max((n["level"] for n in nodes), default=1) or 1
+        layers = {}
+        for n, l in levels.items(): layers.setdefault(l, []).append(n)
 
-    # Grouper par niveau (tabaqa)
-    levels = {}
-    for n in nodes:
-        levels.setdefault(n["level"], []).append(n)
+        pos = {}
+        for l in sorted(layers.keys()):
+            nds = layers[l]
+            count = len(nds)
+            for i, n in enumerate(nds):
+                x = (i - (count - 1) / 2.0) * 2.5
+                y = -float(l) * 3.0
+                pos[n] = (float(x), float(y))
+        return pos
+    except Exception:
+        return {str(n): (float(i * 2), 0.0) for i, n in enumerate(G.nodes())}
 
-    pos = {}
-    for lvl, ns in levels.items():
-        count = len(ns)
-        # Y position based on generation (stratum)
-        # Génération 0 (Compagnons)   -> Y = 4.0
-        # Génération 1 (Grands Tabi'un) -> Y = 3.0
-        # Génération 2 (Petits Tabi'un) -> Y = 2.0
-        # Génération 3 (Suivants)       -> Y = 1.0
-        # Génération 4 (Compilateurs)   -> Y = 0.0
-        y = 4.0 - float(lvl)
-
-        # X: répartir équitablement pour éviter les chevauchements
-        if count <= 1:
-            x = 0.5
-        else:
-            margin = 0.1
-            available = 1.0 - 2 * margin
-            step = available / (count - 1)
-            for i, n in enumerate(ns):
-                x = margin + i * step
-                pos[n["id"]] = (x, y)
-
-    return pos

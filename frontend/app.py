@@ -1251,12 +1251,10 @@ def build_network_figure(net, plot, highlight_madar, color_mode, layout_mode="St
         paper_bgcolor=plot["paper"], plot_bgcolor=plot["paper"],
         font=dict(color=plot["text"]),
         hoverlabel=dict(bgcolor=plot["paper"], font=dict(color=plot["text"])),
-        height=720, dragmode=False,
-        xaxis=dict(showgrid=False, zeroline=False, showticklabels=False,
-                   range=[-0.05, 1.05], fixedrange=False),
-        yaxis=dict(showgrid=False, zeroline=False, showticklabels=False,
-                   range=[-0.09, 1.09], fixedrange=False),
-        margin=dict(l=20, r=20, t=12, b=20),
+        height=750, dragmode="pan",
+        xaxis=dict(showgrid=False, zeroline=False, showticklabels=False, autorange=True),
+        yaxis=dict(showgrid=False, zeroline=False, showticklabels=False, autorange=True),
+        margin=dict(l=40, r=40, t=40, b=40),
     )
     return fig
 
@@ -1388,7 +1386,7 @@ def render_sources_view(hadiths, chains):
                 unsafe_allow_html=True,
             )
             # Volet déroulant biographie du savant
-            if st.expander(f"📖 Biographie & méthodologie de {scholar_name}"):
+            with st.expander(f"📖 Biographie & méthodologie de {scholar_name}"):
                 bio_text = SCHOLAR_BIO.get(scholar_name, "")
                 if bio_text:
                     st.markdown(f"<div style='color: var(--ui-text); line-height: 1.6;'>{bio_text}</div>", unsafe_allow_html=True)
@@ -1454,6 +1452,66 @@ if _qp_theme in ("Sombre", "Clair", "Sépia"):
 
 theme = st.session_state.theme
 st.markdown(theme_css(theme), unsafe_allow_html=True)
+
+# Injection du CSS pour positionner les boutons natifs en dock flottant à droite au milieu
+scroll_active_html = """
+<style>
+#active-scroll-dock {
+    position: fixed;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.active-scroll-btn {
+    background-color: #041c14;
+    color: #ffffff;
+    border: 2px solid #134e38;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+}
+.active-scroll-btn:hover {
+    background-color: #0b3d2c;
+    border-color: #27ae60;
+    color: #2ecc71;
+    transform: scale(1.1);
+}
+</style>
+
+<div id="active-scroll-dock">
+    <div class="active-scroll-btn" onclick="
+        const mainContainer = window.parent.document.querySelector('.main') || window.parent.document.querySelector('[data-testid=\\'stAppViewContainer\\']') || window.parent;
+        if (mainContainer.scrollTo) {
+            mainContainer.scrollTo({top: 0, behavior: 'smooth'});
+        }
+        window.parent.scrollTo({top: 0, behavior: 'smooth'});
+    " title="Haut de page">▲</div>
+    
+    <div class="active-scroll-btn" onclick="
+        const mainContainer = window.parent.document.querySelector('.main') || window.parent.document.querySelector('[data-testid=\\'stAppViewContainer\\']') || window.parent;
+        const targetHeight = mainContainer.scrollHeight || document.body.scrollHeight || 5000;
+        if (mainContainer.scrollTo) {
+            mainContainer.scrollTo({top: targetHeight, behavior: 'smooth'});
+        }
+        window.parent.scrollTo({top: targetHeight, behavior: 'smooth'});
+    " title="Bas de page">▼</div>
+</div>
+"""
+
+st.markdown(scroll_active_html, unsafe_allow_html=True)
 
 # Correction style menus déroulants (mode sombre) — override du thème par défaut
 st.markdown("""
