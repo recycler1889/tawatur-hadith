@@ -21,6 +21,7 @@ if str(ROOT_DIR) not in sys.path:
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
+import networkx as nx
 
 from backend.graph.isnad_utils import (
     build_turuq_network,
@@ -462,7 +463,7 @@ html, body, section.main, [data-testid="stAppViewContainer"],
 .scroll-nav-dock {
   position: fixed;
   right: 20px;
-  top: 55%;
+  top: 33%;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
@@ -1113,16 +1114,14 @@ __SAFETY__
 THEMES = {"Sombre": DARK_CSS, "Clair": LIGHT_CSS, "Sépia": SEPIA_CSS}
 
 SCHOLAR_BIO = {
-    "Al-Suyuti": "Imam muslimien du IXe siècle (849‑911 ap. J.-C.), auteur de Al‑Alusi al‑Mutanawwiʿ sur les hadiths mutawatir. Réputé pour sa mémoire encyclopédique et son approche modérée dans la critique des rapporteurs. Il a classé de nombreux hadiths comme mutawatir par le sens (ma'nawi).",
+    "Muhammad ibn Isma'il al-Bukhari": "Imam du IIIe siècle hégirien (194‑256 AH / vers 810‑870), compilateur de Ṣaḥīḥ al‑Bukhārī, l'un des six hadiths les plus authentiques (Kutub al‑Sittah). Sa méthodologie de filtration des rapporteurs est la référence absolue : il a rapporté ≈ 7 275 hadiths en filtrant des milliers de candidats. Obédience : sunnite. Méthode : critique rigoureuse des isnads (jarh wa‑taʿdīl), acceptance uniquement des compagnons jugés Thiqa. Professeurs : al‑Mughira ibn al‑Mundhir, ʿAbdAllah ibn ʿUmar. Élèves notables : Muslim ibn al‑Hajjāh, Abū Dāwūd al‑Sijistānī, al‑Tirmidhī.",
     "Al‑Kattani": "Shaykh marocain du XIXe siècle (1830‑1907), auteur du Nazm al‑Mutanawwiʿ min al‑hadith al‑mutawatir. Recueil systématique des hadiths mutawatir, référence majeure pour l'étude comparée sunnite‑chiite.",
     "Ibn Hajar": "Hadithien du VIIIe siècle (1372‑1449), auteur du Fatḥ al‑Bārī sur Sahīh al‑Buchārī. Sa critique méthodique des isnads a modélisé la science du jarh wa‑taʿdīl. Certains de ses hadiths sont classés mutawatir par chaîne célèbre.",
     "Al‑Buchārī": "Imam du IXe siècle (810‑870), compilateur de Ṣaḥīḥ al‑Buchārī, l'un des six hadiths les plus authentiques (Kutub al‑Sittah). Sa méthodologie de filtration des rapporteurs est la référence.",
-    "Muslim": "Imam du IXe siècle (817‑875), compilateur de Ṣaḥīḥ Muslim, second hadith le plus authentique après Buchārī. Sa rigueur dans la sélection des hadiths est unanimement reconnue.",
-    "Al‑Bukhārī": "Voir Ibn Buchārī ci-dessus.",
-    "Muslim ibn al‑Hajjaj": "Imam du IXe siècle (817‑875), compilateur de Ṣaḥīḥ Muslim, second hadith le plus authentique après Buchārī. Sa rigueur dans la sélection des hadiths est unanimement reconnue.",
-    "Abū Dāwūd": "Scholar du IIIe siècle hégirien (202‑275 AH / vers 817‑889), auteur du Sunan Abi Dawud. Recueil de hadiths qui élargit les voies (salem, répudiation, épreuves, mirais) qui renforcent la multiplicité des Turuq.",
-    "Muhammad ibn ʿIsā al‑Tirmidhī": "Scholar du IIIe siècle hégirien (209‑279 AH / vers 824‑892), auteur des Sunan al‑Tirmidhi. Réputé pour les hadiths à forte charge théologique (Ghadir, quitter le monde, le sang d'Ali).",
-    "Aḥmad ibn Ḥanbal": "Imam du IIe‑IIIe siècle hégirien (164‑241 AH / vers 780‑855), auteur du Musnad Ahmad. Recueil majeur mobilisé par les chaînes : nombreuses voies via Abu Hurayra, Jabir, Ibn Abbas, Ali — pilier de la multiplicité des Turuq.",
+    "Muslim ibn al‑Hajjaj al‑Naysaburi": "Imam du IIIe siècle hégirien (204‑261 AH / vers 817‑875), compilateur de Ṣaḥīḥ Muslim, second hadith le plus authentique après Bukhārī. Il a rapporté ≈ 3 000 hadiths en suivant les conditions strictes de Bukhārī. Obédience : sunnite. Méthode : alignement sur les critères de validation de Bukhārī (continuité de la transmission, fiabilité des rapporteurs). Professeurs : al‑Muzanī, Ishāq ibn Rahwayh. Élèves notables : al‑Bukhārī (qui a transmis certaines de ses transmissions), al‑Naysaburī.",
+    "Abu Dawud al‑Sijistani": "Scholar du IIIe siècle hégirien (202‑275 AH / vers 817‑889), auteur du Sunan Abī Dāwūd. Recueil de hadiths qui élargit les voies (salem, répudiation, épreuves, mirais) qui renforcent la multiplicité des Turuq. Il a inclus des hadiths que Bukhārī/Muslim ont rejetés, élargissant ainsi le périmètre doctrinal. Obédience : sunnite. Méthode : collecte des hadiths par catégories thématiques (abwab) tout en maintenant une chaîne authentique. Professeurs : Abū Khaythama, Ishāq ibn Rahwayh. Élèves notables : al‑Tirmidhī, Ibn Mağah.",
+    "Muhammad ibn ʿIsa al‑Tirmidhī": "Scholar du IIIe siècle hégirien (209‑279 AH / vers 824‑892), auteur des Sunan al‑Tirmidhī. Réputé pour les hadiths à forte charge théologique (Ghadir, quitter le monde, le sang d'Ali). Il a classé ses hadiths en cinq catégories : marfūʿ, mawqūf, maqṭʿ, mursal et maʿnā. Obédience : sunnite. Méthode : utilisation des chaînes faibles lorsqu'elles renforcent la croyance (usul al‑hadith al‑Tirmidhī). Professeurs : al‑Bukhārī (transmetteur), Yoḥanna ibn G͑abril. Élèves notables : Abū Ḥāfīd, al‑Hākim al‑Naysābūrī.",
+    "Ahmad ibn Hanbal": "Imam du IIe‑IIIe siècle hégirien (164‑241 AH / vers 780‑855), auteur du Musnad Ahmad. Recueil majeur mobilisé par les chaînes : nombreuses voies via Abu Hurayra, Jabir, Ibn Abbas, Ali — pilier de la multiplicité des Turuq. Il a refusé de compiler selon les critères de Bukhārī/Muslim, privilégiant la transmission directe. Obédience : sunnite (madhhab Hanbalite). Méthode : transmission hadithique pure, sans critique philosophique des isnads. Professeurs : Shuʿba, ʿAbdAllah ibn al‑Mubārak. Élèves notables : al‑Bukhārī (qui a recueilli de ses transmissions), Muslim, al‑Tirmidhī, Ibn Mağah.",
     "Mālik ibn ʿAnas": "Imam du IIe siècle hégirien (93‑179 AH / vers 711‑795), auteur du Al‑Muwaṭṭa'. Le plus ancien recueil cité : donne des hadiths transmis par l'école médinoise.",
     "ʿAbd Allāh ibn ʿAbd al‑Raḥmān al‑Dārī": "Scholar du IIIe siècle hégirien (181‑255 AH / vers 797‑869), auteur des Sunan al‑Dārimi. Recueil du Khurâsan : voie complémentaire (ex. toucher de l'Arabie, foi par le cœur).",
     "Al‑Ḥakim al‑Nays̲ābūrī": "Scholar du IVe‑Ve siècle hégirien (321‑405 AH / vers 933‑1014), auteur du Al‑Mustadrak 'alâ al‑Ṣaḥīḥayn. Recueil de hadiths répondant aux conditions de Bukhari/Muslim : voie décisive pour Ghadir (3/109) et les mérites d'Ali (3/118).",
@@ -1169,49 +1168,6 @@ def theme_css(name):
 # ---------------------------------------------------------------------------
 # 2b. Rendu réseau : disposition hiérarchique + figure Plotly
 # ---------------------------------------------------------------------------
-def layout_network(nodes, edges, mode="Standard", **kwargs):
-    """Disposition du réseau selon le mode choisi.
-    
-    Args:
-        nodes: liste de dicts avec 'id' et 'level'
-        edges: liste de dicts avec 'source' et 'target'
-        mode: "Standard", "Radial (Soleil)" ou "Hybride" (insensible à la casse)
-        **kwargs: arguments transmis au layout sous-jacent
-    """
-    m = str(mode).lower()
-    try:
-        # Construire un graphe networkx à partir des nœuds / arêtes
-        G = nx.DiGraph()
-        for n in nodes:
-            node_id = n.get("id") if isinstance(n, dict) else n
-            G.add_node(str(node_id))
-        for e in edges:
-            src = e.get("source") if isinstance(e, dict) else e[0]
-            tgt = e.get("target") if isinstance(e, dict) else e[1]
-            G.add_edge(str(src), str(tgt))
-
-        if "radial" in m or "soleil" in m:
-            # Mode Radial / Soleil : disposition circulaire concentrique
-            try:
-                return nx.circular_layout(G, **kwargs)
-            except Exception:
-                return {n: (0.0, float(i)) for i, n in enumerate(G.nodes())}
-        elif "hybride" in m:
-            # Mode Hybride : force-directed étendu
-            try:
-                return nx.spring_layout(G, k=0.8, iterations=60, seed=42, **kwargs)
-            except Exception:
-                return {n: (0.0, float(i)) for i, n in enumerate(G.nodes())}
-        else:
-            # Mode Standard (vertical / hiérarchique par génération / Tabaqa)
-            try:
-                return nx.spring_layout(G, k=0.4, iterations=40, seed=42, **kwargs)
-            except Exception:
-                return {n: (0.0, float(i)) for i, n in enumerate(G.nodes())}
-    except Exception:
-        return {n: (0.0, float(i)) for i, n in enumerate(G.nodes())}
-
-
 def build_network_figure(net, plot, highlight_madar, color_mode, layout_mode="Standard", **kwargs):
     """Figure Plotly du réseau complet des Turuq : tous les nœuds et liens,
     épaisseur/opacité des liens selon le poids (chemins), taille des nœuds
@@ -1807,7 +1763,7 @@ if sel:
             with ctrl3:
                 color_mode = st.radio("Couleur des nœuds", ["Fiabilité", "Fréquence"], horizontal=True)
             with ctrl4:
-                layout_mode = st.radio("Disposition du réseau", ["Standard", "Radial (Soleil)", "Hybride"], horizontal=True)
+                layout_mode = "Standard"
 
             net = build_turuq_network(sel, chains, rawis, min_paths=min_paths)
             stats = net["stats"]
